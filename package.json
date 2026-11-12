@@ -1,0 +1,16 @@
+{
+  "name": "easestudy",
+  "version": "1.0.0",
+  "description": "EaseStudy - Learn with clarity",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static HTML project - no build step required'"
+  },
+  "keywords": ["education", "learning", "study"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.12"
+  }
+}
