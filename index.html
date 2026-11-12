@@ -64,16 +64,37 @@ input,select{padding:10px 14px;border-radius:14px;border:1px solid var(--line);b
 .mo{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:20px;z-index:8}.mo[hidden]{display:none}.md{background:var(--surface);border-radius:24px;padding:24px;max-width:380px;width:100%;display:grid;gap:12px;text-align:center}
 .qr{display:grid;grid-template-columns:repeat(21,1fr);width:210px;aspect-ratio:1;margin:0 auto;background:#fff;padding:8px;border-radius:12px}.qr i{background:#fff}.qr i.b{background:#111}
 #toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--navy);color:#fff;padding:12px 18px;border-radius:16px;opacity:0;pointer-events:none;transition:.2s;max-width:90%;z-index:9}#toast.on{opacity:1;transform:translate(-50%,0)}
-@media(max-width:900px){.app{flex-direction:column}.side{position:static;width:auto;height:auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;overflow-x:auto}.nav{margin:0;display:flex}.split,.grid2{grid-template-columns:1fr}.pack{max-height:none}}
+.plan{display:flex;flex-direction:column;position:relative}.plan ul{flex:1}.plan button{margin-top:auto}.plan.rec{border-color:var(--violet);box-shadow:0 0 0 4px color-mix(in srgb,var(--violet) 25%,transparent),var(--shadow)}
+.rb{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#7C3AED,#2563EB);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;padding:4px 12px;border-radius:99px;white-space:nowrap}
+.old{text-decoration:line-through;color:var(--muted);font-weight:600}
+.warn{flex-basis:100%;background:#FEF3C7;color:#78350F;border-radius:16px;padding:10px 14px;font-size:13px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}@keyframes sp{to{transform:rotate(360deg)}}
+.score{background:var(--card);border-radius:20px;padding:14px;margin-bottom:12px;font-weight:700;animation:pop .35s}@keyframes pop{0%{transform:scale(.9)}60%{transform:scale(1.04)}}
+.ey{transform-box:fill-box;transform-origin:center;animation:bl 4s infinite}@keyframes bl{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+#tb{position:fixed;inset:0;z-index:30}
+#sp{position:fixed;z-index:31;border-radius:20px;pointer-events:none;box-shadow:0 0 0 9999px rgba(0,0,0,.7),0 0 0 3px #fff,0 0 26px 8px rgba(37,99,235,.85);transition:all .25s}
+#bub{position:fixed;z-index:32;left:50%;transform:translateX(-50%);width:min(460px,calc(100% - 32px));background:var(--surface);border-radius:24px;padding:18px 18px 16px 84px;box-shadow:0 20px 60px #0008}
+#bub .mas{position:absolute;left:14px;top:14px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#7C3AED);display:grid;place-items:center;animation:fl 2s ease-in-out infinite}@keyframes fl{50%{transform:translateY(-6px)}}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#7C3AED);display:grid;place-items:center;box-shadow:0 10px 30px #2563eb66;z-index:12}
+.chat{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));width:min(360px,calc(100% - 32px));height:min(480px,calc(100dvh - 140px));background:var(--surface);border-radius:24px;box-shadow:0 20px 60px #0004;display:flex;flex-direction:column;overflow:hidden;z-index:12}.chat[hidden]{display:none}
+.chat header{background:var(--navy);color:#fff;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:2px}.chat header small{grid-column:1;color:#ffffffaa;font-size:11px}.chat header .ib{grid-row:1/3;grid-column:2;color:var(--text)}
+#cm{flex:1;overflow:auto;padding:14px;display:grid;gap:8px;align-content:start}.cbb{max-width:88%;padding:10px 14px;border-radius:18px;font-size:14px;white-space:pre-line}.cbb.b{background:var(--card)}.cbb.u{background:var(--navy);color:#fff;justify-self:end}
+.qc{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 8px}.qc button{padding:6px 12px;border-radius:99px;background:var(--pastel);color:var(--brand);font-size:12px;font-weight:600}
+#cf{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--line)}#cf input{flex:1}
+.mbar{display:none}.ov{display:none}
+@media(max-width:900px){.app{flex-direction:column}.mbar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--side);color:#fff;position:sticky;top:0;z-index:6}.side{position:fixed;inset:0 auto 0 0;z-index:7;transform:translateX(-100%);transition:transform .25s;height:100dvh;overflow:auto}.side.open{transform:none}.ov.on{display:block;position:fixed;inset:0;background:#0007;z-index:6}.split,.grid2{grid-template-columns:1fr}.pack{max-height:none}main{padding:20px 16px}}
+@media(prefers-reduced-motion:reduce){.ey,.spin,.score,#bub .mas{animation:none}.side{transition:none}}
 @media(prefers-reduced-motion:reduce){#toast{transition:none}}
 </style>
 </head>
 <body>
 <div class="app">
+  <header class="mbar"><button class="ib" id="mb" data-a="menu" aria-label="Mở menu" aria-expanded="false">☰</button><b>EaseStudy</b></header>
+  <div id="ov" class="ov" data-a="menu"></div>
   <aside class="side">
     <div class="logo"><i>🎓</i><div><b>EaseStudy</b><small>LEARN WITH CLARITY</small></div></div>
     <nav class="nav" aria-label="Điều hướng chính">
-      <button class="on" data-a="home">Dashboard</button><button data-a="lectures">My lectures</button><button data-a="materials">Study materials</button><button data-a="pricing">Pricing &amp; Upgrade</button><button data-a="settings">Settings</button><button class="up" id="plan" data-a="pricing"></button>
+      <button class="on" data-a="home">Dashboard</button><button data-a="lectures">My lectures</button><button data-a="materials">Study materials</button><button data-a="pricing">Pricing &amp; Upgrade</button><button data-a="settings">Settings</button><button class="up" id="plan" data-a="pricing"></button><button data-a="tour">🧭 Khám phá nhanh</button>
     </nav>
   </aside>
   <main id="main"></main>
@@ -123,12 +144,13 @@ function takeSlide(f){if(!f)return;const x=f.name.split('.').pop().toLowerCase()
   else if(x==='pptx')toast('Bản demo chưa xem được PPTX. Hãy xuất sang PDF rồi tải lên.');else toast('Chỉ hỗ trợ PDF hoặc PPTX.');(S.view==='create'?create:home)()}
 
 function live(reset){stopAll();if(reset){S.segs=[];S.t0=null;S.interim=''}if(!S.pdf)S.slide=Math.min(S.slide,S.deck.slides.length);
-  $('#main').innerHTML=`<div class="split">${viewer()}<div class="col"><section class="mic"><button id="micb" class="mic-btn" data-a="mic" aria-pressed="false" aria-label="Bật hoặc tắt micro">🎙</button><div><b id="mst">Micro đang tắt</b><small>Phụ đề tự gắn với slide đang chiếu</small></div><select id="lg" aria-label="Ngôn ngữ phụ đề"><option value="vi-VN">Tiếng Việt</option><option value="en-US">English</option></select><button class="white" data-a="finish">Kết thúc &amp; tạo học liệu</button></section>
+  $('#main').innerHTML=`<div class="split">${viewer()}<div class="col"><section class="mic"><button id="micb" class="mic-btn" data-a="mic" aria-pressed="false" aria-label="Bật hoặc tắt micro">🎙</button><div><b id="mst">Micro đang tắt</b><small>Phụ đề tự gắn với slide đang chiếu</small></div><select id="lg" aria-label="Ngôn ngữ phụ đề"><option value="vi-VN">Tiếng Việt</option><option value="en-US">English</option></select><button class="white" data-a="finish">Kết thúc &amp; tạo học liệu</button><div id="mw" class="warn" role="alert" hidden><b>Micro đang bị chặn hoặc không khả dụng.</b> Bấm biểu tượng 🔒 cạnh thanh địa chỉ → Micro → Cho phép, rồi tải lại trang. Trong lúc đó bạn vẫn gõ tay hoặc phát bài giảng mẫu được.</div></section>
 <section class="panel tr" aria-live="polite"><h2 style="margin:0 0 12px;font-size:17px">Live transcript</h2><ul id="tr"></ul><form id="addf" class="addf"><input id="addi" placeholder="Gõ nhanh một câu giảng…" aria-label="Thêm câu vào transcript"><button class="sec" style="padding:10px 16px">Thêm</button></form><button id="demob" class="ghost" data-a="demo">▶ Phát bài giảng mẫu</button></section>
 <section class="terms"><h2 id="th"></h2><div id="tm"></div><h2 style="margin-top:14px">Research nhanh (mô phỏng)</h2><div id="rs" class="muted">${S.kw?'Phạm vi: '+esc(S.kw):'Gợi ý mở rộng sẽ hiện sau khi có lời giảng.'}</div></section></div></div>`;
   $('#addf').onsubmit=e=>{e.preventDefault();const i=$('#addi');if(i.value.trim())addSeg(i.value.trim());i.value=''};const lg=$('#lg');lg.value=P.lang;lg.onchange=e=>{P.lang=e.target.value;save();if(rec)rec.lang=P.lang};drawSlide();drawTr()}
 function addSeg(text,slide,en){if(!text)return;S.t0=S.t0||Date.now();S.segs.push({text,slide:slide||S.slide,ms:Date.now()-S.t0,en});drawTr();
-  setTimeout(()=>{const r=$('#rs'),x=EXT.find(e=>text.toLowerCase().includes(e.k));if(r&&x)r.innerHTML=`<p>${esc(x.x)}</p><small>Nguồn: mô phỏng, chưa tra cứu web thật.</small>`},700+Math.random()*300)}
+  {const r0=$('#rs');if(r0)r0.innerHTML='<span class="spin"></span> Đang nghiên cứu…'}
+  setTimeout(()=>{const r=$('#rs'),x=EXT.find(e=>text.toLowerCase().includes(e.k));if(r&&!x)r.innerHTML='<span class="muted">Không có gợi ý mở rộng cho câu này.</span>';if(r&&x)r.innerHTML=`<p>${esc(x.x)}</p><small>Nguồn: mô phỏng, chưa tra cứu web thật.</small>`},700+Math.random()*300)}
 function drawTr(){const u=$('#tr');if(!u)return;u.innerHTML=S.segs.length||S.interim?S.segs.map(s=>`<li><button data-a="jump" data-n="${s.slide}"><span class="ts">${fmt(s.ms)} · Slide ${s.slide}</span>${esc(s.text)}</button></li>`).join('')+(S.interim?`<li class="interim">${esc(S.interim)}</li>`:''):'<li class="muted">Bật micro, gõ tay hoặc phát bài giảng mẫu để bắt đầu.</li>';u.scrollTop=u.scrollHeight}
 function micUI(){const b=$('#micb');if(!b)return;b.classList.toggle('on',S.live);b.textContent=S.live?'■':'🎙';b.setAttribute('aria-pressed',S.live);$('#mst').textContent=S.live?'Đang ghi âm…':'Micro đang tắt'}
 function mic(){if(S.live){S.live=false;if(rec){rec.onend=null;rec.stop();rec=null}S.interim='';drawTr();return micUI()}
@@ -136,8 +158,8 @@ function mic(){if(S.live){S.live=false;if(rec){rec.onend=null;rec.stop();rec=nul
   rec=new R();rec.lang=P.lang;rec.continuous=true;rec.interimResults=true;
   rec.onresult=e=>{let p='';for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal){S.interim='';addSeg(r[0].transcript.trim())}else p+=r[0].transcript}S.interim=p;drawTr()};
   rec.onend=()=>{if(S.live)try{rec.start()}catch{}};
-  rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){S.live=false;micUI();toast('Trình duyệt đang chặn micro. Hãy cho phép micro, hoặc dùng ô gõ tay / bài giảng mẫu.')}};
-  S.live=true;try{rec.start()}catch{}micUI()}
+  rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){S.live=false;micUI();warn()}};
+  S.live=true;try{rec.start()}catch{}micUI();if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)warn();else navigator.mediaDevices.getUserMedia({audio:true}).then(s=>s.getTracks().forEach(t=>t.stop())).catch(warn)}
 function playDemo(){const b=$('#demob');if(S.demo){clearInterval(S.demo);S.demo=null;b.textContent='▶ Phát bài giảng mẫu';return}
   S.deck=DEMO;S.pdf=null;S.segs=[];S.t0=null;S.slide=1;drawSlide();drawTr();let i=0;b.textContent='❚❚ Dừng phát';
   S.demo=setInterval(()=>{if(i>=DEMO.script.length){clearInterval(S.demo);S.demo=null;b.textContent='▶ Phát lại';toast('Đã phát hết. Bấm “Kết thúc & tạo học liệu” để xem kết quả.');return}const k=i++,[sl,tx]=DEMO.script[k];go(sl);addSeg(tx,sl,EN[k])},2200)}
@@ -202,8 +224,53 @@ const X={lectures,materials,pricing,settings,help,close:()=>modal(),
   sl:el=>{S.sl=el.dataset.v;drawPack()},flip:()=>{S.flip=!S.flip;drawPack()},fp:()=>{S.fi=(S.fi+S.cards.length-1)%S.cards.length;S.flip=0;drawPack()},fn:()=>{S.fi=(S.fi+1)%S.cards.length;S.flip=0;drawPack()},
   buy:el=>buy(+el.dataset.i),paid:el=>pay(+el.dataset.i),reset:()=>{try{localStorage.removeItem('es')}catch{}location.reload()},
   mictest:async()=>{const r=$('#mr');try{const st=await navigator.mediaDevices.getUserMedia({audio:true});st.getTracks().forEach(t=>t.stop());r.textContent='✓ Micro hoạt động'}catch{r.textContent='Không truy cập được micro. Hãy cho phép micro trong trình duyệt.'}}};
+const MS='<svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><line x1="24" y1="3" x2="24" y2="11" stroke="#fff" stroke-width="2"/><circle cx="24" cy="4" r="3" fill="#FBBF24"/><rect x="6" y="11" width="36" height="28" rx="12" fill="#fff"/><rect x="10" y="16" width="28" height="18" rx="9" fill="#2563EB"/><circle class="ey" cx="19" cy="25" r="3" fill="#fff"/><circle class="ey" cx="29" cy="25" r="3" fill="#fff"/><path d="M20 30q4 3 8 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
+PL[1].rec='ĐỀ XUẤT TỐI ƯU';
+const warn=()=>{S.live=false;try{rec&&rec.stop()}catch{}micUI();const w=$('#mw');if(w)w.hidden=false};
+const navOn=k=>document.querySelectorAll('.nav [data-a]').forEach(b=>b.classList.toggle('on',b.dataset.a===k&&!b.id));
+function closeMenu(){$('.side').classList.remove('open');$('#ov').classList.remove('on');$('#mb').setAttribute('aria-expanded','false')}
+['home','create','live','process','review','lectures','materials','pricing','settings'].forEach(n=>{const f=window[n],k={create:'home',live:'home',process:'lectures',review:'lectures'}[n]||n;window[n]=(...a)=>{navOn(k);closeMenu();return f(...a)}});
+function pricing(){stopAll();$('#main').innerHTML=`<header class="head"><div><p class="eyebrow">GÓI HIỆN TẠI: ${esc(P.plan.toUpperCase())}</p><h1>Pricing &amp; Upgrade</h1><p class="muted">Còn ${Math.max(0,P.cap-P.used)}/${P.cap} bài giảng trong kỳ này.</p></div></header><div class="plans">${PL.map((p,i)=>`<article class="plan ${p.n===P.plan?'cur':''} ${p.rec?'rec':''}">${p.rec?`<span class="rb">${p.rec}</span>`:''}<b>${p.n}</b>${p.c===4?'<div class="pr">0đ</div><small class="muted">Miễn phí, không cần thẻ</small>':`<div class="old">${p.p} ${p.u}</div><div class="pr">₫0 <small>/ tháng đầu tiên</small></div><small class="muted">Sau đó ${p.p} ${p.u}, tự động gia hạn. Cần đăng ký tài khoản/thẻ để kích hoạt ưu đãi.</small>`}<ul>${p.f.map(f=>`<li>${f}</li>`).join('')}</ul><button class="${p.n===P.plan?'ghost':'pri'}" ${p.n===P.plan?'disabled':''} data-a="buy" data-i="${i}">${p.n===P.plan?'Đang dùng':p.c===4?'Đăng ký':'Mua ngay'}</button></article>`).join('')}</div>`}
+function buy(i){const p=PL[i];if(p.c===4){P.plan='Free';P.cap=4;save();toast('Đã chuyển về gói Free.');return pricing()}
+  modal(`<h3>Kích hoạt gói ${p.n}</h3><b>Hôm nay: ₫0 (tháng đầu tiên)</b><div class="qr">${Array.from({length:441},()=>`<i class="${Math.random()<.5?'b':''}"></i>`).join('')}</div><p class="muted" style="margin:0;font-size:13px">Quét mã chuyển khoản mô phỏng để xác thực. Từ tháng thứ 2: ${p.p} ${p.u}, tự động gia hạn. Không trừ tiền thật.</p><button class="pri" data-a="paid" data-i="${i}">Tôi đã chuyển khoản</button><button class="ghost" data-a="close">Huỷ</button>`)}
+{const dp=window.drawPack;window.drawPack=()=>{dp();if(S.tab==='quiz'&&S.quiz.length){const N=S.quiz.length,n=Object.keys(S.picked).length,ok=S.quiz.filter((q,i)=>S.picked[i]!==undefined&&q.opts[S.picked[i]]===q.a).length,r=ok/N;
+  const msg=n<N?'Đã trả lời '+n+'/'+N+' · đúng '+ok:r>=.8?'🎉 Quá đỉnh! '+ok+'/'+N:r>=.5?'👍 Khá ổn! '+ok+'/'+N+'. Ôn thêm chút là chắc.':'🌱 '+ok+'/'+N+'. Không sao, flashcard đang chờ bạn!';const p=$('#pk');if(p)p.insertAdjacentHTML('afterbegin',`<div class="score" role="status">${msg}</div>`)}}}
+const QC=['Tóm tắt nhanh slide này','Giải thích thuật ngữ khó','Tạo câu hỏi ôn tập'];
+function bot(q){const l=q.toLowerCase(),sl=!S.pdf&&S.deck.slides[S.slide-1],T=S.pdf?[]:S.deck.terms,here=S.segs.filter(s=>s.slide===S.slide);
+  if(S.pdf)return 'Bản demo chưa đọc được nội dung file PDF bạn tải lên nên chưa trả lời theo slide đó được. Bạn thử bài mẫu Kinh tế vi mô nhé.';
+  if(l.includes('tóm tắt')){if(!sl&&!here.length)return 'Slide này chưa có nội dung để tóm tắt.';return 'Slide '+S.slide+(sl?' “'+sl.t+'”: '+sl.b.join('; ')+'.':'')+(here.length?'\nLời giảng: '+here.slice(0,2).map(s=>s.text).join(' '):'')}
+  if(/câu hỏi|ôn tập|quiz|kiểm tra/.test(l)){const A=T.filter(t=>t.slide===S.slide),L=(A.length?A:T).slice(0,3);if(!L.length)return 'Mình chưa có thuật ngữ để ra câu hỏi cho bài này. Thử mở bài mẫu Kinh tế vi mô.';return L.map((t,i)=>'Câu '+(i+1)+': “'+t.def+'” là khái niệm nào?').join('\n')+'\n\nĐáp án: '+L.map((t,i)=>(i+1)+') '+t.term).join('; ')+'.\nMuốn luyện đầy đủ hơn, mở tab Tự kiểm tra.'}
+  const hit=[...T].sort((a,b)=>b.term.length-a.term.length).find(t=>{const k=t.term.toLowerCase();return l.includes(k)||l.includes(k.replace(/\s*\(.*\)/,''))});
+  if(hit){const e=EXT.find(x=>hit.term.toLowerCase().includes(x.k));return hit.term+': '+hit.def+(e?'\n'+e.x:'')+'\n(Xuất hiện ở Slide '+hit.slide+'.)'}
+  if(/thuật ngữ|giải thích|khó/.test(l)){const L=T.filter(t=>t.slide===S.slide),A=L.length?L:T;return A.length?(L.length?'Thuật ngữ ở slide này:\n':'Slide này chưa có thuật ngữ riêng. Các thuật ngữ của bài:\n')+A.map(t=>'• '+t.term+': '+t.def).join('\n'):'Chưa có thuật ngữ nào.'}
+  if(/^(xin )?chào|hello/.test(l))return 'Chào bạn! Hỏi mình về slide đang mở nhé.';
+  return 'Mình chưa hiểu câu này. Thử hỏi “Giải thích thặng dư tiêu dùng”, hoặc bấm một gợi ý bên dưới. (Bản demo trả lời theo quy tắc, chưa gọi mô hình AI thật.)'}
+function cmsg(r,t){const m=$('#cm');m.insertAdjacentHTML('beforeend',`<div class="cbb ${r}">${t}</div>`);m.scrollTop=m.scrollHeight}
+function ask(q){q=q.trim();if(!q)return;cmsg('u',esc(q));cmsg('b','<span class="spin"></span> Đang suy nghĩ…');const m=$('#cm'),w=m.lastElementChild;setTimeout(()=>{w.innerHTML=esc(bot(q));m.scrollTop=m.scrollHeight},700+Math.random()*300)}
+document.body.insertAdjacentHTML('beforeend',`<button id="cbtn" class="fab" data-a="chat" aria-label="Mở trợ lý AI" aria-expanded="false">${MS}</button><section id="chat" class="chat" hidden aria-label="EaseStudy AI Assistant"><header><b>EaseStudy AI Assistant</b><small>Demo: trả lời theo quy tắc, dựa trên bài đang mở</small><button class="ib" data-a="chat" aria-label="Đóng chat">✕</button></header><div id="cm" aria-live="polite"></div><div class="qc">${QC.map(q=>`<button data-a="chip" data-q="${q}">${q}</button>`).join('')}</div><form id="cf"><input id="ci" placeholder="Hỏi về bài học…" aria-label="Câu hỏi" autocomplete="off"><button class="pri" style="padding:10px 16px">Gửi</button></form></section>`);
+cmsg('b','Chào bạn! Mình là Ease 🤖. Hỏi mình về bài đang mở, hoặc bấm một gợi ý bên dưới nhé.');
+$('#cf').onsubmit=e=>{e.preventDefault();const i=$('#ci');ask(i.value);i.value=''};
+const TS=[
+{s:'.create',pre:()=>home(),t:'Chào mừng! Mình là Ease 🤖, hướng dẫn viên của bạn. Đây là Dashboard: khu viền nét đứt này để tạo buổi học mới. Bấm “+ New live lecture” là bắt đầu.'},
+{s:'#main .panel',pre:()=>create(),t:'Tải slide PDF/PPTX vào ô này, rồi gõ từ khóa để mình chỉ “research” đúng chủ đề. Mình giỏi nhiều thứ, nhưng chưa biết bói đề thi đâu 😅'},
+{s:'.col',pre:()=>{live(true);go(2);addSeg(DEMO.script[2][1],2,EN[2])},t:'Đây là Live! Phụ đề hiện bên trái, còn mình đang chạy đi tra cứu mở rộng (khoảng 0,8 giây, nhanh hơn pha ly cà phê ☕). Nhìn khung “Research nhanh” nhé.'},
+{s:'.pack',pre:()=>{openLec(1,'map');S.sel=1;dMap($('#pk'));go(2)},t:'Bản đồ bài giảng: bấm một dòng để nhảy tới slide tương ứng và nghe lại. Sổ tay thuật ngữ nằm trong Study materials ở thanh bên.'},
+{s:'.pack',pre:()=>openLec(1,'flash'),t:'Flashcard: bấm vào thẻ để lật. Sang tab “Tự kiểm tra”, mình sẽ chấm điểm và khen (hoặc động viên) bạn. Tất cả cũng được gom trong Study materials.'}];
+let ti=0;
+function tour(i){ti=i;TS[i].pre();if(!$('#tb'))document.body.insertAdjacentHTML('beforeend','<div id="tb"></div><div id="sp"></div><div id="bub" role="dialog" aria-live="polite"></div>');
+  setTimeout(()=>{const d=TS[i],el=document.querySelector(d.s),sp=$('#sp'),b=$('#bub');let low=false;
+    if(el){el.scrollIntoView({block:'center'});const r=el.getBoundingClientRect(),p=8;Object.assign(sp.style,{display:'block',left:r.left-p+'px',top:r.top-p+'px',width:r.width+2*p+'px',height:r.height+2*p+'px'});$('#tb').style.background='transparent';low=r.top+r.height/2<innerHeight/2}
+    else{sp.style.display='none';$('#tb').style.background='rgba(0,0,0,.7)'}
+    b.style.top=low?'auto':'calc(16px + env(safe-area-inset-top,0px))';b.style.bottom=low?'calc(16px + env(safe-area-inset-bottom,0px))':'auto';
+    b.innerHTML=`<div class="mas">${MS}</div><p style="margin:0 0 12px">${esc(d.t)}</p><div class="row"><small class="muted">${i+1}/${TS.length}</small><button class="ghost" data-a="tskip">Bỏ qua hướng dẫn</button><span style="flex:1"></span>${i?'<button class="ghost" data-a="tprev">Quay lại</button>':''}<button class="pri" data-a="tnext">${i<TS.length-1?'Tiếp tục':'Hoàn tất'}</button></div>`},80)}
+function endTour(){['tb','sp','bub'].forEach(i=>{const e=$('#'+i);if(e)e.remove()});P.tour=1;save();home()}
+Object.assign(X,{lectures,materials,pricing,settings,
+  menu:()=>{const o=$('.side').classList.toggle('open');$('#ov').classList.toggle('on',o);$('#mb').setAttribute('aria-expanded',o)},
+  tour:()=>{closeMenu();tour(0)},tnext:()=>ti<TS.length-1?tour(ti+1):endTour(),tprev:()=>tour(ti-1),tskip:endTour,
+  chat:()=>{const c=$('#chat'),o=c.hidden;c.hidden=!o;$('#cbtn').setAttribute('aria-expanded',o);if(o)$('#ci').focus()},chip:el=>ask(el.dataset.q)});
 updPlan();
 home();
+if(!P.tour)setTimeout(()=>tour(0),700);
 </script>
 </body>
 </html>
