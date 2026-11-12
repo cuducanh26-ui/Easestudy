@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EaseStudy — Learn with clarity</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--bg:#F8FAFF;--surface:#fff;--card:#EFF6FF;--pastel:#E8F0FE;--navy:#12192C;--side:#12192C;--text:#0F172A;--muted:#5B6785;--line:#E3E9F7;--brand:#2563EB;--violet:#7C3AED;--green:#059669;--shadow:0 8px 30px rgba(15,23,42,.06);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1020;--surface:#151C32;--card:#1B2440;--pastel:#222C4D;--navy:#27345F;--side:#070B16;--text:#E6ECFF;--muted:#9AA7C7;--line:#263052;--brand:#6E9BFF;--violet:#A78BFA;--green:#34D399;--shadow:0 8px 30px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#0B1020;--surface:#151C32;--card:#1B2440;--pastel:#222C4D;--navy:#27345F;--side:#070B16;--text:#E6ECFF;--muted:#9AA7C7;--line:#263052;--brand:#6E9BFF;--violet:#A78BFA;--green:#34D399;--shadow:0 8px 30px rgba(0,0,0,.35)}
+*{box-sizing:border-box}html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font:15px/1.5 'Plus Jakarta Sans',Inter,system-ui,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+h1{font-size:30px;font-weight:800;margin:4px 0 0}h2{font-size:19px;margin:32px 0 14px}h3{margin:0}
+.muted{color:var(--muted)}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.app{display:flex;min-height:100vh}
+.side{width:248px;flex:none;background:var(--side);color:#fff;padding:24px;position:sticky;top:0;align-self:flex-start;height:100dvh}
+.logo{display:flex;gap:12px;align-items:center}.logo i{width:40px;height:40px;border-radius:14px;background:#2563EB;display:grid;place-items:center;font-style:normal}
+.logo b{font-size:18px;display:block;line-height:1.1}.logo small{font-size:10px;letter-spacing:.18em;color:#ffffff88;font-weight:600}
+.nav{margin-top:36px;display:grid;gap:4px}.nav button{text-align:left;padding:12px 16px;border-radius:16px;color:#ffffffa8;font-weight:500;white-space:nowrap}.nav .on{background:#ffffff1c;color:#fff}
+main{flex:1;min-width:0;padding:28px 24px;max-width:1180px;margin:0 auto}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.eyebrow{margin:0;font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--brand)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.split{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.panel{background:var(--surface);border-radius:24px;box-shadow:var(--shadow);padding:20px}
+.lcard{position:relative;text-align:left;background:var(--card);border-radius:24px;padding:24px 24px 24px 30px;box-shadow:var(--shadow);overflow:hidden;width:100%}
+.lcard:before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:var(--c)}.lcard h3{font-size:21px;margin:14px 0 2px}.lcard p{margin:0;color:var(--muted)}
+.blue{--c:var(--brand)}.purple{--c:var(--violet)}
+.chip{display:inline-block;padding:4px 12px;border-radius:99px;font-size:12px;font-weight:600;background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)}
+.create{border:2px dashed color-mix(in srgb,var(--brand) 45%,transparent);border-radius:24px;padding:24px;background:var(--surface)}
+.drop{background:var(--card);border-radius:24px;padding:32px;text-align:center;display:grid;gap:8px;justify-items:center}.drop.over{outline:2px solid var(--brand)}
+.pri{background:var(--navy);color:#fff;padding:12px 20px;border-radius:16px;font-weight:600}.sec{background:var(--pastel);color:var(--brand);padding:12px 20px;border-radius:16px;font-weight:600}
+.ghost{background:var(--surface);box-shadow:var(--shadow);padding:10px 16px;border-radius:16px;font-weight:600}.white{background:#fff;color:#12192C;padding:10px 16px;border-radius:16px;font-weight:600}
+.badge{margin-left:auto;font-size:12px;font-weight:700;padding:4px 12px;border-radius:99px;background:color-mix(in srgb,var(--green) 14%,transparent);color:var(--green)}
+.fine{margin:16px 0 0;font-size:12px;color:var(--muted)}
+.viewer{display:flex;flex-direction:column;padding:0;overflow:hidden;min-height:520px}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);gap:8px;flex-wrap:wrap}
+.ib{width:36px;height:36px;border-radius:12px;background:var(--surface);box-shadow:var(--shadow);font-size:18px}
+.stage{flex:1;background:var(--card);position:relative;min-height:440px;display:grid;place-items:center;padding:20px;overflow:auto}.stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.slide{background:var(--surface);border-radius:20px;padding:32px;width:100%;max-width:640px;aspect-ratio:16/10;box-shadow:var(--shadow)}.slide small{color:var(--brand);font-weight:700}.slide h3{font-size:1.7em;margin:.4em 0 .6em}.slide li{font-size:1.05em;margin:.3em 0}
+.col{display:grid;gap:16px;grid-template-rows:auto minmax(260px,1fr) auto;min-width:0}
+.mic{background:var(--navy);color:#fff;border-radius:24px;padding:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}.mic .white{margin-left:auto}
+.mic-btn{width:48px;height:48px;border-radius:50%;background:#2563EB;color:#fff;font-size:20px}.mic-btn.on{background:#EF4444}.mic small{display:block;color:#ffffffaa;font-size:12px}
+.tr{display:flex;flex-direction:column;min-height:0}.tr ul{list-style:none;margin:0;padding:0;overflow:auto;max-height:330px;display:grid;gap:10px;align-content:start}.tr li button{text-align:left}
+.ts{color:var(--brand);font-weight:700;font-size:12px;margin-right:8px}.interim{color:var(--muted);font-style:italic}
+.addf{display:flex;gap:8px;margin:12px 0}.addf input{flex:1;min-width:0;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+.terms{background:var(--card);border-radius:24px;padding:18px}.terms h2{margin:0 0 10px;font-size:16px}.terms dl{margin:0}.terms dt{font-weight:700}.terms dd{margin:0 0 8px;color:var(--muted);font-size:14px}
+.pack{max-height:calc(100dvh - 56px);overflow:auto}.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}.tabs button{padding:8px 16px;border-radius:14px;background:var(--card);font-weight:600;color:var(--muted)}.tabs [aria-selected=true]{background:var(--navy);color:#fff}
+.note{background:var(--card);border-radius:22px;padding:18px;margin-bottom:12px}.note p{margin:6px 0;font-size:14px}.def{color:var(--brand);font-weight:600}
+.jump{margin-top:6px;padding:4px 12px;border-radius:99px;background:var(--surface);color:var(--brand);font-size:12px;font-weight:700}
+.opt{display:block;width:100%;text-align:left;padding:10px 14px;margin-top:8px;border-radius:14px;background:var(--surface)}.opt.ok{background:color-mix(in srgb,var(--green) 18%,transparent);color:var(--green)}.opt.bad{background:color-mix(in srgb,#EF4444 16%,transparent);color:#EF4444}.opt.dim{opacity:.55}
+.green{--c:var(--green)}
+.nav .up{margin-top:12px;background:linear-gradient(135deg,#2563EB,#7C3AED);color:#fff;font-weight:700;white-space:normal}
+label{display:grid;gap:6px;font-weight:600;font-size:14px}
+input,select{padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit;min-width:0}
+.mic select{background:#ffffff22;color:#fff;border-color:#ffffff33}.mic option{color:#000}
+.prog{height:12px;border-radius:99px;background:var(--card);overflow:hidden;margin:16px 0}.prog i{display:block;height:100%;width:0;background:var(--brand);transition:width .15s}
+.ln{padding:8px 10px;border-radius:14px;margin-bottom:4px}.ln button{text-align:left}.ln.sel{background:var(--card)}
+.fc{width:100%;min-height:200px;margin:12px 0;padding:28px;border-radius:24px;background:var(--card);font-size:18px;font-weight:600;text-align:center}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:20px}
+.plan{background:var(--surface);border-radius:24px;box-shadow:var(--shadow);padding:22px;display:grid;gap:10px;align-content:start;border:2px solid transparent}.plan.cur{border-color:var(--brand)}.plan b{font-size:20px}.plan .pr{font-size:26px;font-weight:800}.plan .pr small{font-size:13px;font-weight:500;color:var(--muted)}.plan ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+.mo{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:20px;z-index:8}.mo[hidden]{display:none}.md{background:var(--surface);border-radius:24px;padding:24px;max-width:380px;width:100%;display:grid;gap:12px;text-align:center}
+.qr{display:grid;grid-template-columns:repeat(21,1fr);width:210px;aspect-ratio:1;margin:0 auto;background:#fff;padding:8px;border-radius:12px}.qr i{background:#fff}.qr i.b{background:#111}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--navy);color:#fff;padding:12px 18px;border-radius:16px;opacity:0;pointer-events:none;transition:.2s;max-width:90%;z-index:9}#toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.app{flex-direction:column}.side{position:static;width:auto;height:auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;overflow-x:auto}.nav{margin:0;display:flex}.split,.grid2{grid-template-columns:1fr}.pack{max-height:none}}
+@media(prefers-reduced-motion:reduce){#toast{transition:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="logo"><i>🎓</i><div><b>EaseStudy</b><small>LEARN WITH CLARITY</small></div></div>
+    <nav class="nav" aria-label="Điều hướng chính">
+      <button class="on" data-a="home">Dashboard</button><button data-a="lectures">My lectures</button><button data-a="materials">Study materials</button><button data-a="pricing">Pricing &amp; Upgrade</button><button data-a="settings">Settings</button><button class="up" id="plan" data-a="pricing"></button>
+    </nav>
+  </aside>
+  <main id="main"></main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="modal" class="mo" data-a="close" hidden role="dialog" aria-modal="true"></div>
+<script>
+const DEMO={title:'Kinh tế vi mô',
+slides:[{t:'Lý thuyết hành vi người tiêu dùng',b:['Mục tiêu: tối đa hóa thỏa dụng','Ràng buộc: thu nhập (ngân sách) có hạn']},{t:'Thỏa dụng biên (MU)',b:['Thỏa dụng tăng thêm khi dùng thêm 1 đơn vị','Quy luật: MU giảm dần']},{t:'Đường bàng quan',b:['Các rổ hàng cho cùng mức thỏa dụng','Độ dốc = tỷ lệ thay thế biên (MRS)']},{t:'Thặng dư tiêu dùng',b:['CS = giá sẵn sàng trả − giá thực trả']}],
+terms:[{slide:1,term:'Thỏa dụng',def:'Mức độ hài lòng người tiêu dùng có được khi dùng hàng hóa.'},{slide:2,term:'Thỏa dụng biên (MU)',def:'Thỏa dụng tăng thêm khi tiêu dùng thêm một đơn vị hàng hóa.'},{slide:3,term:'Đường bàng quan',def:'Tập hợp các rổ hàng cho người tiêu dùng cùng một mức thỏa dụng.'},{slide:4,term:'Thặng dư tiêu dùng',def:'Chênh lệch giữa mức giá sẵn sàng trả và giá thực tế phải trả.'}],
+script:[[1,'Hôm nay ta học hành vi người tiêu dùng: họ chọn mua gì khi thu nhập có hạn.'],[1,'Giả định cơ bản là người tiêu dùng luôn muốn tối đa hóa thỏa dụng trong giới hạn ngân sách.'],[2,'Thỏa dụng biên là phần thỏa dụng tăng thêm khi bạn dùng thêm một đơn vị hàng hóa.'],[2,'Chiếc bánh thứ nhất rất ngon, nhưng đến chiếc thứ năm thì thỏa dụng biên giảm dần.'],[3,'Đường bàng quan nối các rổ hàng mang lại cùng một mức thỏa dụng.'],[3,'Độ dốc của đường bàng quan chính là tỷ lệ thay thế biên MRS.'],[4,'Thặng dư tiêu dùng là chênh lệch giữa giá bạn sẵn sàng trả và giá bạn thực sự trả.'],[4,'Giá thị trường càng thấp so với mức sẵn sàng trả thì thặng dư càng lớn.']]};
+const EN=['Today we study consumer behavior: what people choose to buy when income is limited.','The basic assumption is that consumers always aim to maximize utility within their budget.','Marginal utility is the extra utility you gain from consuming one more unit of a good.','The first cake tastes great, but by the fifth one marginal utility is diminishing.','An indifference curve connects bundles of goods that give the same level of utility.','The slope of an indifference curve is the marginal rate of substitution, MRS.','Consumer surplus is the difference between what you are willing to pay and what you actually pay.','The lower the market price relative to willingness to pay, the larger the surplus.'];
+const EXT=[{k:'thỏa dụng biên',x:'Mở rộng: MU của đơn vị thứ n = TU(n) − TU(n−1). Người tiêu dùng tối ưu khi MU/giá bằng nhau giữa các hàng hóa.'},{k:'bàng quan',x:'Mở rộng: đường bàng quan thường lồi về gốc tọa độ và hai đường không cắt nhau.'},{k:'thặng dư',x:'Mở rộng: trên đồ thị, thặng dư tiêu dùng là diện tích dưới đường cầu và trên mức giá.'},{k:'thỏa dụng',x:'Mở rộng: thỏa dụng là khái niệm thứ bậc: so sánh được “thích hơn”, khó đo bằng một con số tuyệt đối.'}];
+const dsegs=()=>DEMO.script.map(([sl,tx],i)=>({text:tx,slide:sl,ms:i*45000,en:EN[i]}));
+const $=(s)=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=ms=>{const s=Math.floor(ms/1000);return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+const SUBJ=['Kinh tế vi mô','Triết học','Kinh tế vĩ mô','Khác'];
+const P={plan:'Free',cap:4,used:1,name:'Learner',lang:'vi-VN',model:'Claude Sonnet',lec:[{id:1,title:'Kinh tế vi mô',sub:'Kinh tế vi mô',st:'Slide Ready',demo:1},{id:2,title:'Triết học',sub:'Triết học',st:'Audio Uploaded',demo:0}]};
+try{Object.assign(P,JSON.parse(localStorage.getItem('es')||'{}'))}catch{}
+const S={deck:DEMO,pdf:null,name:'',slide:1,zoom:100,segs:[],t0:null,live:false,interim:'',demo:null,tab:'notes',picked:{},quiz:[],cards:[],fi:0,flip:0,sel:-1,sl:'vi',view:'home',subj:'Kinh tế vi mô',kw:''};
+let rec=null;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),3600)}
+function stopAll(){S.live=false;if(rec){rec.onend=null;try{rec.stop()}catch{}rec=null}if(S.demo){clearInterval(S.demo);S.demo=null}}
+const greet=()=>{const h=new Date().getHours();return h<12?'Good morning':h<18?'Good afternoon':'Good evening'};
+
+const viewer=()=>`<section class="panel viewer"><div class="bar"><div class="row"><button class="ib" data-a="prev" aria-label="Slide trước">‹</button><b id="sn"></b><button class="ib" data-a="next" aria-label="Slide sau">›</button></div><div class="row"><button class="ib" data-a="zo" aria-label="Thu nhỏ">−</button><span id="zv"></span><button class="ib" data-a="zi" aria-label="Phóng to">+</button></div></div><div id="stage" class="stage"></div></section>`;
+function go(n){S.slide=Math.min(Math.max(1,n),S.pdf||!S.deck.slides.length?999:S.deck.slides.length);drawSlide()}
+function drawSlide(){const st=$('#stage');if(!st)return;
+  $('#sn').textContent='Slide '+S.slide+(S.pdf||!S.deck.slides.length?'':' / '+S.deck.slides.length);$('#zv').textContent=S.zoom+'%';
+  if(S.pdf)st.innerHTML=`<iframe title="Slide bài giảng" src="${S.pdf}#page=${S.slide}&zoom=${S.zoom}"></iframe>`;
+  else{const s=S.deck.slides[S.slide-1]||{t:'Slide '+S.slide,b:['Nạp lại file PDF để xem nội dung slide này.']};st.innerHTML=`<article class="slide" style="font-size:${S.zoom}%"><small>${S.slide}</small><h3>${esc(s.t)}</h3><ul>${s.b.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></article>`}
+  drawTerms()}
+function drawTerms(){const t=$('#tm');if(!t)return;const l=S.pdf?[]:S.deck.terms.filter(x=>x.slide===S.slide);$('#th').textContent='Key terms · Slide '+S.slide;
+  t.innerHTML=l.length?l.map(x=>`<dl><dt>${esc(x.term)}</dt><dd>${esc(x.def)}</dd></dl>`).join(''):'<p class="muted">Chưa có thuật ngữ cho slide này.</p>'}
+
+function home(){stopAll();$('#main').innerHTML=`<header class="head"><div><p class="eyebrow">TIẾP TỤC</p><h1>${greet()}, ${esc(P.name)} 👋</h1></div><div class="row"><button class="ghost" data-a="lectures">My workspace</button><button class="ghost" data-a="help">Help</button></div></header>
+<h2>Bài học gần đây</h2><div class="grid2"><button class="lcard blue" data-a="open1"><span class="chip">Sẵn sàng ôn tập</span><h3>Kinh tế vi mô</h3><p>Bài 03 • Tiêu dùng</p></button><button class="lcard purple" data-a="open2"><span class="chip">Sẵn sàng ôn tập</span><h3>Triết học</h3><p>Bài 02 • Chủ nghĩa duy vật</p></button></div>
+<h2>Tạo buổi học mới</h2><div class="create"><div id="drop" class="drop"><div style="font-size:30px">📄</div><b>${S.name?esc(S.name):'Upload Lecture Slides'}</b><span class="muted">Kéo thả hoặc chọn file PDF / PPTX</span><button class="ghost" data-a="file">Chọn file</button><input id="fs" type="file" accept=".pdf,.pptx" hidden></div>
+<div class="row" style="margin-top:18px"><button class="pri" data-a="newlive">🎙 + New live lecture</button><button class="sec" data-a="audio">⬆ + Upload audio</button><input id="fa" type="file" accept="audio/*,.mp3,.wav" hidden><span class="badge">DESKTOP + MOBILE</span></div>
+<p class="fine">Recording requires the lecturer’s / institution’s permission.</p></div>`;
+  const d=$('#drop');['dragover','dragenter'].forEach(v=>d.addEventListener(v,e=>{e.preventDefault();d.classList.add('over')}));['dragleave','drop'].forEach(v=>d.addEventListener(v,e=>{e.preventDefault();d.classList.remove('over')}));
+  d.addEventListener('drop',e=>takeSlide(e.dataTransfer.files[0]));$('#fs').onchange=e=>takeSlide(e.target.files[0]);
+  $('#fa').onchange=e=>{if(e.target.files[0])addLec(e.target.files[0].name.replace(/\.[^.]+$/,''))}}
+function takeSlide(f){if(!f)return;const x=f.name.split('.').pop().toLowerCase();
+  if(x==='pdf'){if(S.pdf)URL.revokeObjectURL(S.pdf);S.pdf=URL.createObjectURL(f);S.name=f.name;S.slide=1;toast('Đã nạp '+f.name)}
+  else if(x==='pptx')toast('Bản demo chưa xem được PPTX. Hãy xuất sang PDF rồi tải lên.');else toast('Chỉ hỗ trợ PDF hoặc PPTX.');(S.view==='create'?create:home)()}
+
+function live(reset){stopAll();if(reset){S.segs=[];S.t0=null;S.interim=''}if(!S.pdf)S.slide=Math.min(S.slide,S.deck.slides.length);
+  $('#main').innerHTML=`<div class="split">${viewer()}<div class="col"><section class="mic"><button id="micb" class="mic-btn" data-a="mic" aria-pressed="false" aria-label="Bật hoặc tắt micro">🎙</button><div><b id="mst">Micro đang tắt</b><small>Phụ đề tự gắn với slide đang chiếu</small></div><select id="lg" aria-label="Ngôn ngữ phụ đề"><option value="vi-VN">Tiếng Việt</option><option value="en-US">English</option></select><button class="white" data-a="finish">Kết thúc &amp; tạo học liệu</button></section>
+<section class="panel tr" aria-live="polite"><h2 style="margin:0 0 12px;font-size:17px">Live transcript</h2><ul id="tr"></ul><form id="addf" class="addf"><input id="addi" placeholder="Gõ nhanh một câu giảng…" aria-label="Thêm câu vào transcript"><button class="sec" style="padding:10px 16px">Thêm</button></form><button id="demob" class="ghost" data-a="demo">▶ Phát bài giảng mẫu</button></section>
+<section class="terms"><h2 id="th"></h2><div id="tm"></div><h2 style="margin-top:14px">Research nhanh (mô phỏng)</h2><div id="rs" class="muted">${S.kw?'Phạm vi: '+esc(S.kw):'Gợi ý mở rộng sẽ hiện sau khi có lời giảng.'}</div></section></div></div>`;
+  $('#addf').onsubmit=e=>{e.preventDefault();const i=$('#addi');if(i.value.trim())addSeg(i.value.trim());i.value=''};const lg=$('#lg');lg.value=P.lang;lg.onchange=e=>{P.lang=e.target.value;save();if(rec)rec.lang=P.lang};drawSlide();drawTr()}
+function addSeg(text,slide,en){if(!text)return;S.t0=S.t0||Date.now();S.segs.push({text,slide:slide||S.slide,ms:Date.now()-S.t0,en});drawTr();
+  setTimeout(()=>{const r=$('#rs'),x=EXT.find(e=>text.toLowerCase().includes(e.k));if(r&&x)r.innerHTML=`<p>${esc(x.x)}</p><small>Nguồn: mô phỏng, chưa tra cứu web thật.</small>`},700+Math.random()*300)}
+function drawTr(){const u=$('#tr');if(!u)return;u.innerHTML=S.segs.length||S.interim?S.segs.map(s=>`<li><button data-a="jump" data-n="${s.slide}"><span class="ts">${fmt(s.ms)} · Slide ${s.slide}</span>${esc(s.text)}</button></li>`).join('')+(S.interim?`<li class="interim">${esc(S.interim)}</li>`:''):'<li class="muted">Bật micro, gõ tay hoặc phát bài giảng mẫu để bắt đầu.</li>';u.scrollTop=u.scrollHeight}
+function micUI(){const b=$('#micb');if(!b)return;b.classList.toggle('on',S.live);b.textContent=S.live?'■':'🎙';b.setAttribute('aria-pressed',S.live);$('#mst').textContent=S.live?'Đang ghi âm…':'Micro đang tắt'}
+function mic(){if(S.live){S.live=false;if(rec){rec.onend=null;rec.stop();rec=null}S.interim='';drawTr();return micUI()}
+  const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R)return toast('Trình duyệt này chưa hỗ trợ nhận giọng nói. Dùng Chrome/Edge, hoặc gõ tay / phát bài giảng mẫu.');
+  rec=new R();rec.lang=P.lang;rec.continuous=true;rec.interimResults=true;
+  rec.onresult=e=>{let p='';for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal){S.interim='';addSeg(r[0].transcript.trim())}else p+=r[0].transcript}S.interim=p;drawTr()};
+  rec.onend=()=>{if(S.live)try{rec.start()}catch{}};
+  rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){S.live=false;micUI();toast('Trình duyệt đang chặn micro. Hãy cho phép micro, hoặc dùng ô gõ tay / bài giảng mẫu.')}};
+  S.live=true;try{rec.start()}catch{}micUI()}
+function playDemo(){const b=$('#demob');if(S.demo){clearInterval(S.demo);S.demo=null;b.textContent='▶ Phát bài giảng mẫu';return}
+  S.deck=DEMO;S.pdf=null;S.segs=[];S.t0=null;S.slide=1;drawSlide();drawTr();let i=0;b.textContent='❚❚ Dừng phát';
+  S.demo=setInterval(()=>{if(i>=DEMO.script.length){clearInterval(S.demo);S.demo=null;b.textContent='▶ Phát lại';toast('Đã phát hết. Bấm “Kết thúc & tạo học liệu” để xem kết quả.');return}const k=i++,[sl,tx]=DEMO.script[k];go(sl);addSeg(tx,sl,EN[k])},2200)}
+
+function review(){stopAll();S.picked={};S.sel=-1;
+  const sh=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+  mk(sh);
+  $('#main').innerHTML=`<div class="split"><section class="panel pack"><div class="tabs" role="tablist"><button role="tab" data-a="tab" data-v="map">Bản đồ bài giảng</button><button role="tab" data-a="tab" data-v="notes">Học liệu</button><button role="tab" data-a="tab" data-v="flash">Flashcard</button><button role="tab" data-a="tab" data-v="quiz">Tự kiểm tra</button></div><div id="pk"></div></section>${viewer()}</div>`;drawSlide();drawPack()}
+function drawPack(){const p=$('#pk');if(!p)return;document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===S.tab));if(S.tab==='map')return dMap(p);if(S.tab==='flash')return dFlash(p);
+  if(S.tab==='notes'){const by={};S.segs.forEach(s=>(by[s.slide]??=[]).push(s));const ks=Object.keys(by).map(Number).sort((a,b)=>a-b);
+    p.innerHTML=ks.length?'<div class="row"><button class="jump" data-a="sl" data-v="vi">Tiếng Việt</button><button class="jump" data-a="sl" data-v="en">English</button></div><p class="muted" style="font-size:13px">Ghi chú được ghép từ transcript và thuật ngữ theo từng slide (bản demo, chưa dùng AI). Bản dịch chỉ có cho bài mẫu.</p>'+ks.map(n=>{const sl=!S.pdf&&S.deck.slides[n-1],tm=!S.pdf&&S.deck.terms.find(x=>x.slide===n);return `<article class="note"><h3>${esc(sl?sl.t:'Slide '+n)}</h3>${tm?`<p class="def">${esc(tm.term)}: ${esc(tm.def)}</p>`:''}${by[n].map(s=>`<p>${esc(S.sl==='en'&&s.en?s.en:s.text)}</p>`).join('')}<button class="jump" data-a="jump" data-n="${n}">Slide ${n} · ${fmt(by[n][0].ms)}</button> <button class="jump" data-a="tts" data-n="${n}">🔊 Đọc to</button></article>`}).join(''):'<p class="muted">Chưa có nội dung để tạo ghi chú. Hãy thu bài giảng ở màn Live hoặc phát bài giảng mẫu.</p>'}
+  else p.innerHTML=S.quiz.length?S.quiz.map((q,i)=>{const s=S.picked[i];return `<article class="note"><b>${i+1}. ${esc(q.q)}</b>${q.opts.map((o,j)=>{const c=s===undefined?'':o===q.a?'ok':j===s?'bad':'dim';return `<button class="opt ${c}" ${s!==undefined?'disabled':''} data-a="pick" data-q="${i}" data-o="${j}">${esc(o)}</button>`}).join('')}${s!==undefined?`<button class="jump" data-a="src" data-s="${q.slide}" data-m="${q.ms}">Xem đoạn gốc</button>`:''}</article>`}).join(''):'<p class="muted">Quiz cần danh sách thuật ngữ, bản demo hiện chỉ có cho bài mẫu Kinh tế vi mô.</p>'}
+function open1(){S.deck=DEMO;S.pdf=null;S.slide=1;S.segs=DEMO.script.map(([sl,tx],i)=>({text:tx,slide:sl,ms:i*45000}));review()}
+
+document.addEventListener('click',e=>{const el=e.target.closest('[data-a]');if(!el)return;const a=el.dataset.a;
+  const m={home,soon:()=>toast('Tính năng này sẽ có ở phiên bản sau.'),prev:()=>go(S.slide-1),next:()=>go(S.slide+1),zo:()=>{S.zoom=Math.max(50,S.zoom-25);drawSlide()},zi:()=>{S.zoom=Math.min(200,S.zoom+25);drawSlide()},
+  file:()=>$('#fs').click(),audio:()=>$('#fa').click(),newlive:create,mic,demo:playDemo,finish:()=>S.segs.length?process():toast('Chưa có nội dung bài giảng để tạo học liệu.'),
+  open1:()=>openLec(1),open2:()=>openLec(2),...X,jump:()=>go(+el.dataset.n),tab:()=>{S.tab=el.dataset.v;drawPack()},pick:()=>{S.picked[el.dataset.q]=+el.dataset.o;drawPack()}};
+  if(['home','lectures','materials','pricing','settings'].includes(a)){S.view=a;document.querySelectorAll('.nav [data-a]').forEach(b=>b.classList.toggle('on',b.dataset.a===a&&!b.id))}if(m[a])m[a](el)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')modal()});
+const PL=[{n:'Free',p:'0đ',u:'',c:4,f:['4 bài giảng / tháng','Tính năng cơ bản']},{n:'Sinh viên',p:'39.000đ',u:'/ tháng',c:12,f:['12 bài giảng / tháng','Tạo học liệu chuyên sâu']},{n:'Pro',p:'79.000đ',u:'/ tháng',c:30,f:['30 bài giảng / tháng','Dịch thuật nâng cao','Lưu trữ không giới hạn']},{n:'Học kỳ',p:'159.000đ',u:'/ học kỳ',c:30,f:['Quyền lợi tương đương Pro','Áp dụng trong một học kỳ']}];
+function updPlan(){const b=$('#plan');if(b)b.textContent='⭐ '+(P.plan==='Free'?'Nâng cấp Pro':P.plan)+' · còn '+Math.max(0,P.cap-P.used)+' bài'}
+function save(){try{localStorage.setItem('es',JSON.stringify(P))}catch{}updPlan()}
+function modal(h){const m=$('#modal');if(!h){m.hidden=true;m.innerHTML='';return}m.innerHTML=`<div class="md" data-a="x">${h}</div>`;m.hidden=false;const b=m.querySelector('button');if(b)b.focus()}
+function say(t,l){if(!('speechSynthesis' in window))return toast('Trình duyệt này chưa hỗ trợ đọc to.');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=l;speechSynthesis.speak(u)}
+function src(s,m){go(+s);const g=S.segs.find(x=>x.slide==s&&x.ms==m)||S.segs.find(x=>x.slide==s);if(g){say(g.text,P.lang);toast('Đang đọc lại đoạn gốc. Bản demo chưa lưu file ghi âm nên chưa phát được giọng gốc.')}}
+function addLec(t){P.lec.unshift({id:Date.now(),title:t,sub:'Khác',st:'Audio Uploaded',demo:0});save();toast('Đã thêm “'+t+'” vào My lectures. Chuyển ghi âm thành văn bản cần dịch vụ speech-to-text, bản demo chưa nối.')}
+function openLec(id,tab){const l=P.lec.find(x=>x.id==id);if(!l)return;S.deck=l.demo?DEMO:{slides:[],terms:[]};S.pdf=null;S.slide=1;S.segs=l.segs||(l.demo?dsegs():[]);S.tab=tab||'map';review()}
+function mk(sh){const T=(!S.pdf&&S.deck.terms)||[],fm=n=>(S.segs.find(s=>s.slide===n)||{ms:0}).ms;
+  if(T.length){S.cards=T.map(t=>({f:t.term,b:t.def,slide:t.slide,ms:fm(t.slide)}));S.quiz=T.map(t=>({q:'Khái niệm nào được mô tả: “'+t.def+'”?',opts:sh(T.map(x=>x.term)),a:t.term,slide:t.slide,ms:fm(t.slide)}))}
+  else{const W=s=>s.text.split(/\s+/).filter(w=>w.length>4).sort((a,b)=>b.length-a.length)[0],L=S.segs.filter(W).slice(0,6);
+    S.cards=L.map(s=>({f:s.text.replace(W(s),'_____'),b:s.text,slide:s.slide,ms:s.ms}));
+    S.quiz=L.map(s=>({q:'Điền từ còn thiếu: “'+s.text.replace(W(s),'_____')+'”',opts:sh([W(s),...L.filter(x=>x!==s).slice(0,3).map(W)]),a:W(s),slide:s.slide,ms:s.ms}))}
+  S.fi=0;S.flip=0}
+function dMap(p){if(!S.segs.length){p.innerHTML='<p class="muted">Bài này chưa có transcript.</p><button class="pri" data-a="newlive">🎙 Bắt đầu ghi âm</button>';return}
+  p.innerHTML='<p class="muted" style="font-size:13px">Bấm vào một dòng để xem slide tương ứng và nghe lại.</p>'+S.segs.map((s,i)=>`<div class="ln ${S.sel===i?'sel':''}"><button data-a="line" data-i="${i}"><span class="ts">${fmt(s.ms)} · Slide ${s.slide}</span>${esc(s.text)}</button>${S.sel===i?` <button class="jump" data-a="src" data-s="${s.slide}" data-m="${s.ms}">▶ Nghe lại</button>`:''}</div>`).join('')}
+function dFlash(p){const c=S.cards[S.fi];if(!c){p.innerHTML='<p class="muted">Chưa đủ nội dung để tạo flashcard.</p>';return}
+  p.innerHTML=`<p class="muted">Thẻ ${S.fi+1}/${S.cards.length} · bấm vào thẻ để lật</p><button class="fc" data-a="flip">${esc(S.flip?c.b:c.f)}</button><div class="row"><button class="ib" data-a="fp" aria-label="Thẻ trước">‹</button><button class="ib" data-a="fn" aria-label="Thẻ sau">›</button><button class="jump" data-a="src" data-s="${c.slide}" data-m="${c.ms}">Xem đoạn gốc</button></div>`}
+function create(){const cs=$('#cs'),ck=$('#ck');if(cs){S.subj=cs.value;S.kw=ck.value}S.view='create';stopAll();S.deck=DEMO;
+  $('#main').innerHTML=`<header class="head"><div><p class="eyebrow">BƯỚC 1</p><h1>Tạo buổi học</h1></div></header><div class="split" style="margin-top:20px"><section class="panel" style="display:grid;gap:16px"><label>Môn học<select id="cs">${SUBJ.map(s=>`<option ${s===S.subj?'selected':''}>${s}</option>`).join('')}</select></label><div id="drop" class="drop"><b>${S.name?esc(S.name):'Upload Lecture Slides'}</b><span class="muted">Kéo thả hoặc chọn file PDF / PPTX</span><button class="ghost" data-a="file">Chọn file</button><input id="fs" type="file" accept=".pdf,.pptx" hidden></div><label>Từ khóa / prompt giới hạn phạm vi research<input id="ck" value="${esc(S.kw)}" placeholder="vd: thỏa dụng, đường bàng quan"></label><button class="pri" data-a="begin">🎙 Bắt đầu buổi học</button></section><section class="terms"><h2>Thuật ngữ gợi ý từ slide</h2>${S.pdf?'<p class="muted">Bản demo chưa tự trích thuật ngữ từ PDF. Hãy nhập từ khóa ở bên trái.</p>':DEMO.terms.map(t=>`<dl><dt>${esc(t.term)}</dt><dd>${esc(t.def)}</dd></dl>`).join('')+'<p class="muted" style="font-size:13px">Lấy từ slide mẫu Kinh tế vi mô.</p>'}</section></div>`;
+  const d=$('#drop');['dragover','dragenter'].forEach(v=>d.addEventListener(v,e=>{e.preventDefault();d.classList.add('over')}));['dragleave','drop'].forEach(v=>d.addEventListener(v,e=>{e.preventDefault();d.classList.remove('over')}));d.addEventListener('drop',e=>takeSlide(e.dataTransfer.files[0]));$('#fs').onchange=e=>takeSlide(e.target.files[0])}
+function process(){stopAll();const n=new Set(S.segs.map(s=>s.slide)).size,k=new Set(S.segs.flatMap(s=>s.text.toLowerCase().split(/\s+/).filter(w=>w.length>4))).size,T=['Ghép lời giảng với slide…','Bóc tách từ khóa…','Tổng hợp kiến thức…','Hoàn tất'];let p=0;
+  $('#main').innerHTML=`<header class="head"><div><p class="eyebrow">BƯỚC 3</p><h1>Đang xử lý bài giảng…</h1></div></header><div class="panel" style="margin-top:20px"><div class="prog" role="progressbar" aria-label="Tiến trình xử lý"><i id="pb"></i></div><p id="ps" class="muted"></p><div class="row"><span class="chip blue">${n} slide đã ghép</span><span class="chip purple" id="pc">0 từ khóa</span></div></div>`;
+  const t=setInterval(()=>{const b=$('#pb');if(!b)return clearInterval(t);p+=5;b.style.width=p+'%';$('#ps').textContent=T[Math.min(3,Math.floor(p/26))];$('#pc').textContent=Math.round(k*p/100)+' từ khóa';
+    if(p>=100){clearInterval(t);P.used++;P.lec.unshift({id:Date.now(),title:S.name?S.name.replace(/\.pdf$/i,''):S.subj,sub:S.subj,st:S.pdf?'Slide Ready':'Live',demo:S.pdf?0:1,segs:S.segs});save();S.tab='map';review()}},150)}
+function lectures(){stopAll();$('#main').innerHTML=`<header class="head"><h1>My lectures</h1><button class="pri" data-a="newlive">+ New lecture</button></header><div class="row" style="margin:18px 0"><input id="lq" placeholder="Tìm bài giảng…" aria-label="Tìm bài giảng"><select id="lf" aria-label="Lọc theo môn"><option value="">Tất cả môn học</option>${SUBJ.map(s=>`<option>${s}</option>`).join('')}</select></div><div class="grid2" id="ll"></div>`;
+  const d=()=>{const q=$('#lq').value.toLowerCase(),f=$('#lf').value,L=P.lec.filter(l=>l.title.toLowerCase().includes(q)&&(!f||l.sub===f));$('#ll').innerHTML=L.length?L.map(l=>`<button class="lcard ${{'Slide Ready':'blue','Audio Uploaded':'purple',Live:'green'}[l.st]||'blue'}" data-a="open" data-id="${l.id}"><span class="chip">${l.st}</span><h3>${esc(l.title)}</h3><p>${esc(l.sub)}</p></button>`).join(''):'<p class="muted">Không có bài giảng phù hợp.</p>'};$('#lq').oninput=d;$('#lf').onchange=d;d()}
+function materials(){stopAll();const L=P.lec.filter(l=>l.demo||(l.segs||[]).length),N=['Smart Notes','Flashcards','Quizzes'],K=['notes','flash','quiz'],C=['blue','purple','green'];
+  $('#main').innerHTML=`<header class="head"><h1>Study materials</h1></header>${L.length?K.map((t,k)=>`<h2>${N[k]}</h2><div class="grid2">${L.map(l=>`<button class="lcard ${C[k]}" data-a="open" data-id="${l.id}" data-t="${t}"><span class="chip">${N[k]}</span><h3>${esc(l.title)}</h3></button>`).join('')}</div>`).join(''):'<p class="muted">Chưa có học liệu. Hãy tạo buổi học đầu tiên.</p>'}<h2>Sổ tay thuật ngữ</h2><input id="gq" placeholder="Tìm thuật ngữ…" aria-label="Tìm thuật ngữ"><dl id="gl" class="terms" style="margin-top:12px"></dl>`;
+  const g=()=>{const q=$('#gq').value.toLowerCase(),T=L.some(l=>l.demo)?DEMO.terms.filter(t=>(t.term+t.def).toLowerCase().includes(q)):[];$('#gl').innerHTML=T.length?T.map(t=>`<dt>${esc(t.term)}</dt><dd>${esc(t.def)}</dd>`).join(''):'<p class="muted">Chưa có thuật ngữ.</p>'};$('#gq').oninput=g;g()}
+function pricing(){stopAll();$('#main').innerHTML=`<header class="head"><div><p class="eyebrow">GÓI HIỆN TẠI: ${esc(P.plan.toUpperCase())}</p><h1>Pricing &amp; Upgrade</h1><p class="muted">Còn ${Math.max(0,P.cap-P.used)}/${P.cap} bài giảng trong kỳ này.</p></div></header><div class="plans">${PL.map((p,i)=>`<article class="plan ${p.n===P.plan?'cur':''}"><b>${p.n}</b><div class="pr">${p.p}<small> ${p.u}</small></div><ul>${p.f.map(f=>`<li>${f}</li>`).join('')}</ul><button class="${p.n===P.plan?'ghost':'pri'}" ${p.n===P.plan?'disabled':''} data-a="buy" data-i="${i}">${p.n===P.plan?'Đang dùng':p.c===4?'Chọn gói':'Mua ngay'}</button></article>`).join('')}</div>`}
+function buy(i){const p=PL[i];if(p.c===4){P.plan='Free';P.cap=4;save();toast('Đã chuyển về gói Free.');return pricing()}
+  modal(`<h3>Thanh toán gói ${p.n}</h3><b>${p.p} ${p.u}</b><div class="qr">${Array.from({length:441},()=>`<i class="${Math.random()<.5?'b':''}"></i>`).join('')}</div><p class="muted" style="margin:0;font-size:13px">Mã QR mô phỏng, không trừ tiền thật.</p><button class="pri" data-a="paid" data-i="${i}">Tôi đã chuyển khoản</button><button class="ghost" data-a="close">Huỷ</button>`)}
+function pay(i){const p=PL[i];modal('<h3>Đang xác nhận thanh toán…</h3>');setTimeout(()=>{P.plan=p.n;P.cap=p.c;P.used=0;save();modal(`<h3>🎉 Đã mở khóa gói ${p.n}</h3><p style="margin:0">Bạn có ${p.c} bài giảng trong kỳ này.</p><button class="pri" data-a="close">Tiếp tục học</button>`);if(S.view==='pricing')pricing()},1200)}
+function settings(){stopAll();$('#main').innerHTML=`<header class="head"><h1>Settings</h1></header><div class="panel" style="margin-top:20px;display:grid;gap:16px;max-width:560px"><label>Tên hiển thị<input id="sn2" value="${esc(P.name)}"></label><label>Ngôn ngữ nhận diện giọng nói<select id="sl2"><option value="vi-VN">Tiếng Việt</option><option value="en-US">English</option></select></label><label>Model AI<select id="sm">${['Claude Sonnet','GPT-4o','Gemini'].map(m=>`<option ${m===P.model?'selected':''}>${m}</option>`).join('')}</select></label><div class="row"><button class="sec" data-a="mictest">🎙 Kiểm tra micro</button><span id="mr" class="muted"></span></div><p class="fine" style="margin:0">Model AI được lưu làm tùy chọn, bản demo chưa gọi model thật. Gói hiện tại: ${esc(P.plan)}.</p><button class="ghost" data-a="reset">Đặt lại dữ liệu</button></div>`;
+  $('#sl2').value=P.lang;$('#sn2').oninput=e=>{P.name=e.target.value||'Learner';save()};$('#sl2').onchange=e=>{P.lang=e.target.value;save()};$('#sm').onchange=e=>{P.model=e.target.value;save()}}
+function help(){modal('<h3>Cách dùng EaseStudy</h3><p style="text-align:left;margin:0">1. Tạo buổi học: chọn môn, tải slide, nhập từ khóa.<br>2. Bật micro, gõ tay hoặc phát bài mẫu để có phụ đề trực tiếp.<br>3. Kết thúc để tổng hợp, rồi xem bản đồ bài giảng, học liệu, flashcard và quiz.<br>4. Bấm “Xem đoạn gốc” để quay lại đúng slide và dòng lời giảng.</p><button class="pri" data-a="close">Đã hiểu</button>')}
+const X={lectures,materials,pricing,settings,help,close:()=>modal(),
+  begin:()=>{if(P.used>=P.cap){toast('Bạn đã dùng hết bài giảng của gói '+P.plan+'. Hãy nâng cấp để tiếp tục.');return pricing()}S.subj=$('#cs').value;S.kw=$('#ck').value.trim();live(true)},
+  open:el=>openLec(el.dataset.id,el.dataset.t),line:el=>{S.sel=+el.dataset.i;go(S.segs[S.sel].slide);dMap($('#pk'))},src:el=>src(el.dataset.s,el.dataset.m),
+  tts:el=>say(S.segs.filter(s=>s.slide===+el.dataset.n).map(s=>S.sl==='en'&&s.en?s.en:s.text).join('. '),S.sl==='en'?'en-US':'vi-VN'),
+  sl:el=>{S.sl=el.dataset.v;drawPack()},flip:()=>{S.flip=!S.flip;drawPack()},fp:()=>{S.fi=(S.fi+S.cards.length-1)%S.cards.length;S.flip=0;drawPack()},fn:()=>{S.fi=(S.fi+1)%S.cards.length;S.flip=0;drawPack()},
+  buy:el=>buy(+el.dataset.i),paid:el=>pay(+el.dataset.i),reset:()=>{try{localStorage.removeItem('es')}catch{}location.reload()},
+  mictest:async()=>{const r=$('#mr');try{const st=await navigator.mediaDevices.getUserMedia({audio:true});st.getTracks().forEach(t=>t.stop());r.textContent='✓ Micro hoạt động'}catch{r.textContent='Không truy cập được micro. Hãy cho phép micro trong trình duyệt.'}}};
+updPlan();
+home();
+</script>
+</body>
+</html>
