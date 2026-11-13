@@ -5,10 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#2563EB">
 <meta name="description" content="EaseStudy — Nền tảng ghi âm bài giảng, đồng bộ slide và tạo học liệu thông minh bằng AI.">
+<meta property="og:title" content="EaseStudy — Learn with clarity">
+<meta property="og:description" content="Ghi âm bài giảng, đồng bộ slide tự động và tạo Smart Notes, Flashcard, Quiz tức thì.">
+<meta property="og:type" content="website">
 <title>EaseStudy — Learn with clarity</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='14' fill='%232563EB'/><path d='M24 12L8 20l16 8 16-8-16-8zm-10 13.5v6.5c0 3.5 4.5 6.5 10 6.5s10-3 10-6.5v-6.5L24 31l-10-5.5z' fill='%23fff'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap&subset=vietnamese">
 <style>
 :root {
   --bg: #EDF5FF;
@@ -18,19 +22,19 @@
   --navy: #12192C;
   --side: #12192C;
   --text: #0F172A;
-  --muted: #5B6785;
+  --muted: #52607A;
   --line: #D3E2F8;
   --brand: #2563EB;
   --brand-hover: #1D4ED8;
   --violet: #7C3AED;
-  --green: #059669;
-  --amber: #D97706;
-  --danger: #EF4444;
+  --green: #047857;
+  --amber: #B45309;
+  --danger: #DC2626;
   --shadow: 0 14px 44px rgba(37, 99, 235, .10);
   --shadow-sm: 0 4px 16px rgba(15, 23, 42, .06);
-  --sidebg: linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(226, 239, 255, .94));
+  --sidebg: linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(226, 239, 255, .96));
   --sidetx: #0F172A;
-  --glass: rgba(255, 255, 255, .86);
+  --glass: rgba(255, 255, 255, .88);
   --zm: 1;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -53,11 +57,12 @@
     --violet: #A78BFA;
     --green: #34D399;
     --amber: #FBBF24;
+    --danger: #F87171;
     --shadow: 0 14px 44px rgba(0, 0, 0, .48);
     --shadow-sm: 0 4px 16px rgba(0, 0, 0, .32);
     --sidebg: linear-gradient(180deg, #0D1530, #090E20);
     --sidetx: #E6ECFF;
-    --glass: rgba(19, 27, 46, .88);
+    --glass: rgba(19, 27, 46, .90);
   }
   :root:not([data-theme="light"]) body {
     background-image: radial-gradient(900px 500px at 8% -8%, #1e3a8a66, transparent 60%),
@@ -80,11 +85,12 @@
   --violet: #A78BFA;
   --green: #34D399;
   --amber: #FBBF24;
+  --danger: #F87171;
   --shadow: 0 14px 44px rgba(0, 0, 0, .48);
   --shadow-sm: 0 4px 16px rgba(0, 0, 0, .32);
   --sidebg: linear-gradient(180deg, #0D1530, #090E20);
   --sidetx: #E6ECFF;
-  --glass: rgba(19, 27, 46, .88);
+  --glass: rgba(19, 27, 46, .90);
 }
 :root[data-theme="dark"] body {
   background-image: radial-gradient(900px 500px at 8% -8%, #1e3a8a66, transparent 60%),
@@ -113,17 +119,18 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
 button:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
 :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 
-h1 { font-size: 2.05rem; font-weight: 800; margin: 4px 0 0; letter-spacing: -.028em; }
+h1 { font-size: 2rem; font-weight: 800; margin: 4px 0 0; letter-spacing: -.028em; }
 h2 { font-size: 1.25rem; font-weight: 800; margin: 30px 0 14px; letter-spacing: -.015em; }
 h3 { margin: 0; font-weight: 700; }
 .muted { color: var(--muted); }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .between { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ico { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; flex: none; }
 
 /* App Shell */
 .app { display: flex; min-height: 100vh; }
 .side {
-  width: 272px;
+  width: 274px;
   flex: none;
   background: var(--sidebg);
   color: var(--sidetx);
@@ -149,7 +156,7 @@ h3 { margin: 0; font-weight: 700; }
   }
 }
 
-.logo { display: flex; gap: 12px; align-items: center; padding: 0 6px; }
+.logo { display: flex; gap: 12px; align-items: center; padding: 0 6px; cursor: pointer; }
 .logo i {
   width: 44px;
   height: 44px;
@@ -158,12 +165,19 @@ h3 { margin: 0; font-weight: 700; }
   color: #fff;
   display: grid;
   place-items: center;
-  font-style: normal;
-  font-size: 21px;
   box-shadow: 0 8px 22px rgba(37, 99, 235, .38);
 }
-.logo b { font-size: 1.25rem; display: block; line-height: 1.1; letter-spacing: -.025em; }
-.logo small { font-size: .64rem; letter-spacing: .18em; color: var(--muted); font-weight: 800; }
+.logo b { font-size: 1.25rem; display: flex; align-items: center; gap: 6px; line-height: 1.1; letter-spacing: -.025em; }
+.v-pill {
+  font-size: .62rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2563EB, #7C3AED);
+  color: #fff;
+  letter-spacing: .04em;
+}
+.logo small { font-size: .64rem; letter-spacing: .18em; color: var(--muted); font-weight: 800; display: block; margin-top: 2px; }
 
 .cmd-btn {
   margin-top: 18px;
@@ -192,7 +206,15 @@ h3 { margin: 0; font-weight: 700; }
   font-family: inherit;
 }
 
-.nav { margin-top: 16px; display: grid; gap: 5px; flex: 1; align-content: start; }
+.nav-label {
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 18px 10px 6px;
+}
+.nav { display: grid; gap: 4px; flex: 1; align-content: start; }
 .nav button {
   text-align: left;
   padding: 11px 14px;
@@ -202,7 +224,7 @@ h3 { margin: 0; font-weight: 700; }
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   transition: background .15s, color .15s, transform .15s;
 }
 .nav button:hover { background: color-mix(in srgb, var(--brand) 10%, transparent); color: var(--text); }
@@ -214,7 +236,7 @@ h3 { margin: 0; font-weight: 700; }
   font-weight: 700;
 }
 .nav .up {
-  margin-top: 8px;
+  margin-top: 10px;
   background: linear-gradient(135deg, #2563EB, #7C3AED);
   color: #fff !important;
   font-weight: 700;
@@ -226,37 +248,173 @@ h3 { margin: 0; font-weight: 700; }
 /* Sidebar User Profile Card */
 .u-card {
   margin-top: 14px;
-  padding: 14px;
+  padding: 13px;
   border-radius: 20px;
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
   display: grid;
   gap: 10px;
+  cursor: pointer;
+  transition: border-color .15s, transform .15s;
 }
+.u-card:hover { border-color: var(--brand); transform: translateY(-1px); }
 .u-top { display: flex; align-items: center; gap: 10px; }
 .u-av {
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3B82F6, #7C3AED);
   color: #fff;
   font-weight: 800;
   display: grid;
   place-items: center;
   font-size: .95rem;
+  overflow: hidden;
+  flex: none;
+  border: 2px solid var(--line);
 }
+.u-av img { width: 100%; height: 100%; object-fit: cover; }
 .u-info { min-width: 0; flex: 1; }
 .u-info b { display: block; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .u-info small { display: block; font-size: .73rem; color: var(--brand); font-weight: 700; }
 .u-meter { height: 6px; border-radius: 99px; background: var(--card); overflow: hidden; }
 .u-meter i { display: block; height: 100%; background: linear-gradient(90deg, #2563EB, #7C3AED); border-radius: 99px; }
 
+/* Main Content & Top Account Bar (Matching User's Screenshot) */
+.main-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  gap: 14px;
+}
+.tb-left { display: flex; align-items: center; gap: 10px; font-size: .88rem; color: var(--muted); font-weight: 600; }
+.tb-right { display: flex; align-items: center; gap: 12px; position: relative; }
+
+.lang-pill {
+  padding: 6px 11px;
+  border-radius: 99px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  font-size: .76rem;
+  font-weight: 800;
+  color: var(--brand);
+}
+
+/* Account Trigger Button (Exact style requested by user) */
+.acc-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 12px 5px 6px;
+  border-radius: 99px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: border-color .15s, box-shadow .15s;
+}
+.acc-btn:hover { border-color: var(--brand); box-shadow: 0 6px 18px rgba(37, 99, 235, .14); }
+.acc-label { font-size: .88rem; font-weight: 700; color: var(--text); padding-left: 4px; }
+.acc-av-wrap {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #111827;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.acc-av-wrap img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.acc-badge {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 99px;
+  background: #EF4444;
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--surface);
+  line-height: 1;
+}
+.acc-caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--muted);
+  transition: transform .2s;
+}
+.acc-btn[aria-expanded="true"] .acc-caret { transform: rotate(180deg); }
+
+/* Account Dropdown Menu */
+.acc-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  width: 280px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, .22);
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+  z-index: 35;
+  animation: pop .18s ease-out;
+}
+.acc-menu[hidden] { display: none; }
+.acc-menu-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.acc-menu-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: .88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  transition: background .15s, color .15s;
+}
+.acc-menu-item:hover { background: var(--card); color: var(--brand); }
+.acc-menu-item.danger { color: var(--danger); }
+.acc-menu-item.danger:hover { background: color-mix(in srgb, var(--danger) 12%, transparent); }
+
 main {
   flex: 1;
   min-width: 0;
-  padding: 28px 30px 72px;
+  padding: 26px 30px 80px;
   max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
 }
 main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
@@ -265,8 +423,37 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
 .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
 .eyebrow { margin: 0; font-size: .74rem; font-weight: 800; letter-spacing: .16em; color: var(--brand); text-transform: uppercase; }
 
-/* Dashboard Analytics & Grids */
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 22px; }
+/* Dashboard Hero Banner & Analytics */
+.hero-banner {
+  margin-top: 20px;
+  border-radius: 26px;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 55%, #7C3AED 100%);
+  color: #fff;
+  box-shadow: 0 18px 44px rgba(37, 99, 235, .28);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.22), transparent 70%);
+  pointer-events: none;
+}
+.hero-banner h2 { margin: 4px 0 6px; font-size: 1.45rem; color: #fff; }
+.hero-banner p { margin: 0; color: rgba(255,255,255,.88); font-size: .92rem; max-width: 580px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 20px; }
 .stat-card {
   background: var(--glass);
   backdrop-filter: blur(12px);
@@ -288,13 +475,12 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   color: var(--brand);
   display: grid;
   place-items: center;
-  font-size: 22px;
   flex: none;
 }
 .stat-card small { font-size: .78rem; color: var(--muted); font-weight: 600; display: block; }
 .stat-card b { font-size: 1.45rem; font-weight: 800; color: var(--text); display: block; margin-top: 2px; }
 
-.dash-mid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; margin-top: 22px; }
+.dash-mid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; margin-top: 20px; }
 .chart-bars {
   display: flex;
   align-items: flex-end;
@@ -312,7 +498,6 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   border-radius: 8px 8px 3px 3px;
   background: linear-gradient(180deg, #3B82F6, #2563EB);
   transition: height .4s ease, opacity .15s;
-  position: relative;
 }
 .c-bar:hover { opacity: .85; }
 .c-col small { font-size: .72rem; color: var(--muted); font-weight: 600; }
@@ -419,6 +604,10 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   font-weight: 700;
   box-shadow: 0 8px 22px rgba(37, 99, 235, .32);
   transition: transform .15s, box-shadow .15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 .pri:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(37, 99, 235, .42); }
 .sec {
@@ -428,6 +617,10 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   border-radius: 14px;
   font-weight: 700;
   transition: transform .15s, background .15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 .sec:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--brand) 18%, var(--pastel)); }
 .ghost {
@@ -438,6 +631,10 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   border-radius: 14px;
   font-weight: 600;
   transition: transform .15s, border-color .15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 .ghost:hover { transform: translateY(-1px); border-color: var(--brand); }
 .white {
@@ -476,8 +673,8 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   background: var(--surface);
 }
 .ib {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 12px;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -578,14 +775,14 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   background: #60A5FA;
   transition: height .15s;
 }
-.wave-bars.active i { background: #34D399; animation: wv .8s ease-in-out infinite alternate; }
+.wave-bars.active i { background: #34D399; animation: wv .6s ease-in-out infinite alternate; }
 .wave-bars.active i:nth-child(2) { animation-delay: .15s; }
 .wave-bars.active i:nth-child(3) { animation-delay: .3s; }
 .wave-bars.active i:nth-child(4) { animation-delay: .45s; }
 .wave-bars.active i:nth-child(5) { animation-delay: .2s; }
 @keyframes wv { 0% { height: 4px; } 100% { height: 18px; } }
 
-.tr { display: flex; flex-direction: column; min-height: 0; }
+.tr { display: flex; flex-direction: column; min-height: 0; position: relative; }
 .tr ul {
   list-style: none;
   margin: 0;
@@ -689,6 +886,15 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
 .opt.ok { background: color-mix(in srgb, var(--green) 18%, transparent); color: var(--green); border-color: var(--green); font-weight: 700; }
 .opt.bad { background: color-mix(in srgb, var(--danger) 16%, transparent); color: var(--danger); border-color: var(--danger); }
 .opt.dim { opacity: .55; }
+.quiz-exp {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface);
+  border-left: 3px solid var(--brand);
+  font-size: .84rem;
+  color: var(--muted);
+}
 
 label { display: grid; gap: 6px; font-weight: 600; font-size: .92rem; }
 input, select {
@@ -781,15 +987,15 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .cmp-table th:first-child { border-top-left-radius: 14px; }
 .cmp-table th:last-child { border-top-right-radius: 14px; }
 
-/* Modals, Command Palette & Toast */
-.mo { position: fixed; inset: 0; background: rgba(15, 23, 42, .6); backdrop-filter: blur(4px); display: grid; place-items: center; padding: 20px; z-index: 40; }
+/* Modals, Account Profile Editor & Command Palette */
+.mo { position: fixed; inset: 0; background: rgba(15, 23, 42, .6); backdrop-filter: blur(4px); display: grid; place-items: center; padding: 20px; z-index: 40; overflow-y: auto; }
 .mo[hidden] { display: none; }
 .md {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 28px;
   padding: 28px 24px;
-  max-width: 420px;
+  max-width: 440px;
   width: 100%;
   display: grid;
   gap: 14px;
@@ -797,6 +1003,48 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   box-shadow: 0 24px 60px rgba(0, 0, 0, .3);
   animation: pop .22s ease-out;
 }
+.md-profile { max-width: 500px; text-align: left; gap: 16px; }
+.av-Upload-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+.av-big {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563EB, #7C3AED);
+  color: #fff;
+  font-size: 1.7rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  flex: none;
+  border: 3px solid var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.av-big img { width: 100%; height: 100%; object-fit: cover; }
+.av-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.av-preset-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  overflow: hidden;
+  padding: 0;
+  transition: transform .15s, border-color .15s;
+}
+.av-preset-btn:hover { transform: scale(1.1); border-color: var(--brand); }
+.av-preset-btn img { width: 100%; height: 100%; object-fit: cover; }
+
+.pw-meter { height: 6px; border-radius: 99px; background: var(--card); overflow: hidden; margin-top: 4px; }
+.pw-meter i { display: block; height: 100%; width: 0; transition: width .25s, background .25s; }
+
 .cmd-box { max-width: 520px; padding: 16px; text-align: left; gap: 10px; }
 .cmd-list { max-height: 280px; overflow: auto; display: grid; gap: 4px; }
 .cmd-item {
@@ -809,21 +1057,33 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   align-items: center;
   font-weight: 600;
 }
-.cmd-item:hover, .cmd-item:focus { background: var(--card); color: var(--brand); outline: none; }
+.cmd-item:hover, .cmd-item.active, .cmd-item:focus { background: var(--card); color: var(--brand); outline: none; }
 
 .qr {
   display: grid;
   grid-template-columns: repeat(21, 1fr);
-  width: 200px;
+  width: 196px;
   aspect-ratio: 1;
   margin: 0 auto;
   background: #fff;
   padding: 10px;
   border-radius: 16px;
   border: 1px solid var(--line);
+  position: relative;
 }
 .qr i { background: #fff; }
 .qr i.b { background: #0F172A; }
+.qr-tag {
+  position: absolute;
+  inset: auto 10px 10px 10px;
+  background: rgba(15, 23, 42, .88);
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 8px;
+  letter-spacing: .06em;
+}
 
 #toast {
   position: fixed;
@@ -912,33 +1172,47 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 @keyframes fl { 50% { transform: translateY(-5px); } }
 
-/* Upgraded AI Copilot 2.0 (With Voice Recording & File Upload) */
+/* ============================================================
+   AI COPILOT v4.0 — MULTIMODAL STUDIO (VOICE + FILE + MODES)
+   ============================================================ */
 .fab {
   position: fixed;
   right: 20px;
   bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-  width: 60px;
-  height: 60px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   background: linear-gradient(135deg, #2563EB, #7C3AED);
   display: grid;
   place-items: center;
-  box-shadow: 0 12px 32px rgba(37, 99, 235, .48);
+  box-shadow: 0 12px 34px rgba(37, 99, 235, .52);
   z-index: 25;
   transition: transform .2s;
 }
-.fab:hover { transform: scale(1.06); }
+.fab:hover { transform: scale(1.07); }
+.fab-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #10B981;
+  color: #fff;
+  font-size: .6rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 99px;
+  border: 2px solid var(--surface);
+}
 
 .chat {
   position: fixed;
   right: 20px;
-  bottom: calc(90px + env(safe-area-inset-bottom, 0px));
-  width: min(420px, calc(100% - 32px));
-  height: min(600px, calc(100dvh - 120px));
+  bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  width: min(440px, calc(100% - 32px));
+  height: min(620px, calc(100dvh - 116px));
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 26px;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, .32);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .35);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -946,81 +1220,115 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   transition: width .25s ease, height .25s ease;
 }
 .chat.wide {
-  width: min(680px, calc(100% - 32px));
-  height: min(720px, calc(100dvh - 110px));
+  width: min(700px, calc(100% - 32px));
+  height: min(740px, calc(100dvh - 108px));
 }
 .chat[hidden] { display: none; }
 .chat header {
-  background: linear-gradient(135deg, #12192C, #1E3A8A, #3B82F6);
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 55%, #4F46E5 100%);
   color: #fff;
   padding: 14px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  flex: none;
 }
 .chat-h-left { display: flex; align-items: center; gap: 10px; }
-.chat-h-left b { display: block; font-size: 1rem; }
-.chat-h-left small { display: block; color: rgba(255, 255, 255, .8); font-size: .73rem; }
+.chat-h-left b { display: flex; align-items: center; gap: 6px; font-size: .98rem; }
+.chat-h-left small { display: block; color: rgba(255, 255, 255, .82); font-size: .72rem; margin-top: 2px; }
 .chat header .ib {
   width: 32px;
   height: 32px;
   background: rgba(255, 255, 255, .15);
-  border-color: rgba(255, 255, 255, .22);
+  border-color: rgba(255, 255, 255, .25);
   color: #fff;
   font-size: 14px;
 }
+
 .chat-modes {
   display: flex;
   gap: 6px;
-  padding: 8px 14px;
+  padding: 8px 12px;
   background: var(--card);
   border-bottom: 1px solid var(--line);
-  overflow-x: auto;
+  flex: none;
 }
 .chat-modes button {
-  padding: 4px 10px;
-  border-radius: 99px;
-  font-size: .74rem;
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 10px;
+  font-size: .75rem;
   font-weight: 700;
   color: var(--muted);
-  white-space: nowrap;
+  text-align: center;
+  transition: all .15s;
 }
-.chat-modes button.on { background: var(--brand); color: #fff; }
+.chat-modes button.on {
+  background: var(--brand);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, .25);
+}
 
-#cm { flex: 1; overflow: auto; padding: 16px; display: grid; gap: 12px; align-content: start; }
-.cbb { max-width: 90%; padding: 12px 15px; border-radius: 18px; font-size: .92rem; white-space: pre-line; line-height: 1.5; }
+#cm {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 14px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.cbb {
+  max-width: 90%;
+  padding: 12px 15px;
+  border-radius: 18px;
+  font-size: .9rem;
+  white-space: pre-line;
+  line-height: 1.5;
+}
 .cbb.b { background: var(--card); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
 .cbb.u { background: linear-gradient(135deg, #3B82F6, #2563EB); color: #fff; justify-self: end; border-bottom-right-radius: 4px; }
+
 .chat-att-card {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   padding: 8px 12px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, .16);
-  border: 1px solid rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .18);
+  border: 1px solid rgba(255, 255, 255, .3);
   margin-bottom: 6px;
-  font-size: .82rem;
-  font-weight: 600;
+  font-size: .8rem;
+  font-weight: 700;
 }
 .cbb.b .chat-att-card { background: var(--surface); border-color: var(--line); color: var(--brand); }
 
-.qc { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px 14px 8px; border-top: 1px solid color-mix(in srgb, var(--line) 50%, transparent); }
+.qc {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 8px 12px;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  flex: none;
+}
 .qc button {
   padding: 5px 11px;
   border-radius: 99px;
   background: var(--pastel);
   color: var(--brand);
-  font-size: .76rem;
+  font-size: .75rem;
   font-weight: 700;
+  white-space: nowrap;
+  flex: none;
   transition: background .15s;
 }
 .qc button:hover { background: color-mix(in srgb, var(--brand) 18%, var(--pastel)); }
 
-/* Chat Attachment & Voice Bar */
+/* Chat Attachment & Voice Recording Bars */
 .chat-tray {
-  padding: 6px 14px;
+  padding: 8px 12px;
   background: var(--card);
   border-top: 1px solid var(--line);
   display: flex;
@@ -1028,39 +1336,58 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   justify-content: space-between;
   gap: 8px;
   font-size: .8rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--brand);
+  flex: none;
 }
 .chat-tray[hidden] { display: none; }
+
 .chat-rec-bar {
-  padding: 8px 14px;
+  padding: 9px 12px;
   background: color-mix(in srgb, var(--danger) 12%, var(--surface));
-  border-top: 1px solid color-mix(in srgb, var(--danger) 30%, var(--line));
+  border-top: 1px solid color-mix(in srgb, var(--danger) 35%, var(--line));
   color: var(--danger);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  font-size: .82rem;
+  gap: 8px;
+  font-size: .8rem;
   font-weight: 700;
+  flex: none;
 }
 .chat-rec-bar[hidden] { display: none; }
 
-#cf { display: flex; gap: 6px; align-items: center; padding: 10px 12px; border-top: 1px solid var(--line); background: var(--surface); }
-#cf input[type="text"] { flex: 1; padding: 9px 12px; border-radius: 12px; }
+#cf {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  flex: none;
+}
+#cf input[type="text"] {
+  flex: 1;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: .88rem;
+}
 .c-tool {
-  width: 38px;
   height: 38px;
+  padding: 0 10px;
   border-radius: 12px;
   background: var(--card);
   border: 1px solid var(--line);
   color: var(--brand);
-  display: grid;
-  place-items: center;
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: .78rem;
+  font-weight: 700;
   flex: none;
-  transition: background .15s, transform .15s;
+  transition: background .15s, transform .15s, border-color .15s;
 }
-.c-tool:hover { background: var(--pastel); transform: translateY(-1px); }
+.c-tool:hover { background: var(--pastel); border-color: var(--brand); transform: translateY(-1px); }
 .c-tool.rec-on { background: var(--danger); color: #fff; border-color: var(--danger); animation: pulse 1.4s infinite; }
 
 /* Settings */
@@ -1111,18 +1438,18 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .acard {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  width: min(880px, 100%);
-  min-height: 540px;
+  width: min(900px, 100%);
+  min-height: 550px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(37, 99, 235, .22);
 }
-.al { padding: 36px 40px; display: grid; align-content: start; gap: 16px; }
-.al .k { font-size: 1.35rem; font-weight: 400; color: var(--muted); }
-.big { margin: 0; font-size: 3.4rem; line-height: .95; font-weight: 800; letter-spacing: -.03em; color: #3B82F6; }
-.big span { display: block; color: var(--line); font-size: 3.6rem; }
+.al { padding: 34px 38px; display: grid; align-content: start; gap: 14px; }
+.al .k { font-size: 1.25rem; font-weight: 500; color: var(--muted); }
+.big { margin: 0; font-size: 3.2rem; line-height: .95; font-weight: 800; letter-spacing: -.03em; color: #3B82F6; }
+.big span { display: block; color: var(--line); font-size: 3.4rem; }
 .f { display: grid; gap: 2px; }
 .f label { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 .f input {
@@ -1143,18 +1470,34 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   background: linear-gradient(90deg, #60A5FA, #2563EB);
   color: #fff;
   border-radius: 99px;
-  padding: 14px 26px;
+  padding: 13px 24px;
   font-weight: 700;
   font-size: 1rem;
   box-shadow: 0 10px 26px rgba(37, 99, 235, .35);
 }
+.try-demo-btn {
+  width: 100%;
+  padding: 11px 18px;
+  border-radius: 99px;
+  background: var(--pastel);
+  color: var(--brand);
+  font-weight: 800;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px dashed var(--brand);
+  transition: transform .15s, background .15s;
+}
+.try-demo-btn:hover { transform: translateY(-1px); background: color-mix(in srgb, var(--brand) 18%, var(--pastel)); }
 .socs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .soc {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px;
+  padding: 10px;
   border-radius: 99px;
   border: 1px solid var(--line);
   font-weight: 600;
@@ -1210,7 +1553,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 12px 16px;
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 10px;
     background: var(--sidebg);
     color: var(--sidetx);
     backdrop-filter: blur(14px);
@@ -1219,6 +1562,9 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
     top: 0;
     z-index: 15;
   }
+  .topbar { padding: 10px 16px; }
+  .tb-left { display: none; }
+  .tb-right { width: 100%; justify-content: flex-end; }
   .side {
     position: fixed;
     inset: 0 auto 0 0;
@@ -1240,9 +1586,9 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 @media (max-width: 760px) {
   .acard { grid-template-columns: 1fr; }
   .ar { order: -1; min-height: 220px; }
-  .big { font-size: 2.75rem; }
-  .big span { font-size: 3rem; }
-  .al { padding: 28px 24px; }
+  .big { font-size: 2.6rem; }
+  .big span { font-size: 2.8rem; }
+  .al { padding: 24px 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ey, .spin, .score, .bt, #bub .mas, .mic-btn.on, .wave-bars.active i { animation: none; }
@@ -1254,36 +1600,131 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 <div class="app">
   <header class="mbar">
     <div class="row">
-      <button class="ib" id="mb" data-a="menu" aria-label="Mở menu" aria-expanded="false">☰</button>
-      <b>EaseStudy</b>
+      <button class="ib" id="mb" style="width:42px;height:42px" data-a="menu" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <b>EaseStudy <span class="v-pill">v4.0</span></b>
     </div>
     <div class="row">
-      <button class="ib" data-a="cmd" aria-label="Tìm kiếm nhanh">🔍</button>
-      <button class="ghost" style="padding:6px 12px;font-size:.8rem" data-a="newlive">+ Tạo bài học</button>
+      <button class="ib" style="width:42px;height:42px" data-a="cmd" aria-label="Tìm kiếm nhanh">🔍</button>
+      <button class="pri" style="padding:8px 14px;font-size:.82rem" data-a="newlive">+ Tạo bài học</button>
     </div>
   </header>
   <div id="ov" class="ov" data-a="menu"></div>
+
   <aside class="side">
-    <div class="logo">
-      <i>🎓</i>
-      <div><b>EaseStudy</b><small>LEARN WITH CLARITY</small></div>
+    <div class="logo" data-a="home">
+      <i>
+        <svg class="ico" style="width:24px;height:24px" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </i>
+      <div>
+        <b>EaseStudy <span class="v-pill">v4.0</span></b>
+        <small>LEARN WITH CLARITY</small>
+      </div>
     </div>
-    <button class="cmd-btn" data-a="cmd" title="Tìm kiếm nhanh (Ctrl + K)">
-      <span>🔍 Tìm kiếm nhanh…</span>
-      <kbd>Ctrl K</kbd>
+
+    <button class="cmd-btn" data-a="cmd" title="Tìm kiếm nhanh">
+      <span class="row" style="gap:8px">
+        <svg class="ico" style="width:15px;height:15px" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <span data-i18n="search">Tìm kiếm nhanh…</span>
+      </span>
+      <kbd id="cmd_kbd">Ctrl K</kbd>
     </button>
+
+    <div class="nav-label" data-i18n="menu_main">Không gian học tập</div>
     <nav class="nav" aria-label="Điều hướng chính">
-      <button class="on" data-a="home">🏠 Dashboard</button>
-      <button data-a="lectures">📚 My lectures</button>
-      <button data-a="materials">🧠 Study materials</button>
-      <button data-a="pricing">💎 Pricing &amp; Upgrade</button>
-      <button data-a="settings">⚙️ Settings</button>
+      <button class="on" data-a="home">
+        <svg class="ico" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+        <span data-i18n="nav_home">Tổng quan</span>
+      </button>
+      <button data-a="lectures">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        <span data-i18n="nav_lec">Bài giảng của tôi</span>
+      </button>
+      <button data-a="materials">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 3.5 2.5 6.5 6 7.5V21h4v-3.5c3.5-1 6-4 6-7.5a8 8 0 0 0-8-8z"/><path d="M10 22h4"/></svg>
+        <span data-i18n="nav_mat">Kho học liệu</span>
+      </button>
+      <button data-a="pricing">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+        <span data-i18n="nav_pri">Nâng cấp gói</span>
+      </button>
+      <button data-a="settings">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span data-i18n="nav_set">Cài đặt</span>
+      </button>
+
       <button class="up" id="plan" data-a="pricing"></button>
-      <button data-a="tour">🧭 Khám phá nhanh</button>
+
+      <div class="nav-label" style="margin-top:14px">Trợ giúp</div>
+      <button data-a="tour">
+        <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        <span data-i18n="nav_tour">Hướng dẫn tương tác</span>
+      </button>
     </nav>
-    <div class="u-card" id="ucard"></div>
+    <div class="u-card" id="ucard" data-a="profilemodal" title="Nhấn để chỉnh sửa ảnh đại diện & mật khẩu"></div>
   </aside>
-  <main id="main"></main>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <div class="tb-left" id="tb_bread">
+        <span>EaseStudy Workspace</span> · <b style="color:var(--text)" id="tb_cur">Tổng quan</b>
+      </div>
+      <div class="tb-right">
+        <button class="lang-pill" data-a="uilang" id="uilang_btn" title="Đổi ngôn ngữ giao diện">🌐 VI</button>
+        <button class="ghost" style="padding:7px 13px;font-size:.82rem" data-a="sample10s" title="Mở ngay bài giảng mẫu có sẵn Slide + Phụ đề + Quiz">⚡ Bài mẫu</button>
+
+        <!-- Cụm Tài khoản & Avatar có chấm đỏ thông báo và mũi tên thả xuống theo đúng mẫu ảnh -->
+        <button class="acc-btn" id="acc_btn" data-a="accmenu" aria-expanded="false" title="Quản lý Tài khoản, đổi Avatar & Mật khẩu">
+          <span class="acc-label" id="top_uname">Tài khoản</span>
+          <div class="acc-av-wrap" id="top_uav">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg>
+            <span class="acc-badge" id="top_ubadge">1</span>
+          </div>
+          <span class="acc-caret"></span>
+        </button>
+
+        <!-- Menu thả xuống khi bấm vào Avatar -->
+        <div class="acc-menu" id="acc_menu" hidden>
+          <div class="acc-menu-head">
+            <div class="u-av" id="dd_uav" style="width:46px;height:46px"></div>
+            <div style="min-width:0;flex:1">
+              <b id="dd_uname" style="display:block;font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></b>
+              <small id="dd_uemail" class="muted" style="display:block;font-size:.76rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></small>
+              <span class="chip blue" id="dd_uplan" style="margin-top:4px;padding:2px 8px;font-size:.68rem"></span>
+            </div>
+          </div>
+          <button class="acc-menu-item" data-a="profilemodal">
+            <span>🖼️</span>
+            <div>
+              <div>Đổi Avatar &amp; Tên hiển thị</div>
+              <small class="muted" style="font-size:.73rem;font-weight:500">Tải ảnh cá nhân hoặc chọn mẫu</small>
+            </div>
+          </button>
+          <button class="acc-menu-item" data-a="pwmodal">
+            <span>🔐</span>
+            <div>
+              <div>Đổi mật khẩu bảo mật</div>
+              <small class="muted" style="font-size:.73rem;font-weight:500">Cập nhật mật khẩu cũ sang mới</small>
+            </div>
+          </button>
+          <button class="acc-menu-item" data-a="pricing">
+            <span>💎</span>
+            <div>Quản lý gói cước &amp; Hạn mức</div>
+          </button>
+          <button class="acc-menu-item" data-a="settings">
+            <span>⚙️</span>
+            <div>Cài đặt hệ thống</div>
+          </button>
+          <hr style="border:0;border-top:1px solid var(--line);margin:4px 0">
+          <button class="acc-menu-item danger" data-a="logout">
+            <span>🚪</span>
+            <div>Đăng xuất tài khoản</div>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main"></main>
+  </div>
 </div>
 
 <div id="toast" role="status" aria-live="polite"></div>
@@ -1291,6 +1732,38 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 <div id="auth" class="auth" hidden role="dialog" aria-modal="true" aria-label="Đăng nhập EaseStudy"></div>
 
 <script>
+/* Bộ Avatar Preset chất lượng cao (SVG Data URI) */
+const AV_PRESETS = [
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect width='80' height='80' fill='%232563EB'/><circle cx='40' cy='30' r='16' fill='%23FDE68A'/><path d='M14 76c4-18 16-26 26-26s22 8 26 26' fill='%2393C5FD'/></svg>",
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect width='80' height='80' fill='%237C3AED'/><circle cx='40' cy='30' r='16' fill='%23FED7AA'/><path d='M14 76c4-18 16-26 26-26s22 8 26 26' fill='%23DDD6FE'/></svg>",
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect width='80' height='80' fill='%23059669'/><circle cx='40' cy='30' r='16' fill='%23FEF08A'/><path d='M14 76c4-18 16-26 26-26s22 8 26 26' fill='%23A7F3D0'/></svg>",
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect width='80' height='80' fill='%23EA580C'/><circle cx='40' cy='30' r='16' fill='%23FFEDD5'/><path d='M14 76c4-18 16-26 26-26s22 8 26 26' fill='%23FDBA74'/></svg>",
+  "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><rect width='80' height='80' fill='%230F172A'/><circle cx='40' cy='30' r='16' fill='%2338BDF8'/><path d='M14 76c4-18 16-26 26-26s22 8 26 26' fill='%236366F1'/></svg>"
+];
+
+const I18N = {
+  vi: {
+    search: 'Tìm kiếm nhanh…',
+    menu_main: 'Không gian học tập',
+    nav_home: 'Tổng quan',
+    nav_lec: 'Bài giảng của tôi',
+    nav_mat: 'Kho học liệu',
+    nav_pri: 'Nâng cấp gói',
+    nav_set: 'Cài đặt',
+    nav_tour: 'Hướng dẫn tương tác'
+  },
+  en: {
+    search: 'Quick search…',
+    menu_main: 'Workspace',
+    nav_home: 'Dashboard',
+    nav_lec: 'My Lectures',
+    nav_mat: 'Study Materials',
+    nav_pri: 'Pricing & Upgrade',
+    nav_set: 'Settings',
+    nav_tour: 'Interactive Tour'
+  }
+};
+
 const DEMO = {
   title: 'Kinh tế vi mô',
   slides: [
@@ -1337,12 +1810,12 @@ const EXT = [
 
 const SUBJ = ['Kinh tế vi mô', 'Triết học', 'Kinh tế vĩ mô', 'Toán cao cấp', 'Khác'];
 const LG = [
-  ['vi-VN', 'Tiếng Việt'], ['en-US', 'English'], ['zh-CN', '中文'], ['ja-JP', '日本語'],
+  ['vi-VN', 'Tiếng Việt (Việt - Anh)'], ['en-US', 'English'], ['zh-CN', '中文'], ['ja-JP', '日本語'],
   ['ko-KR', '한국어'], ['fr-FR', 'Français'], ['es-ES', 'Español'], ['de-DE', 'Deutsch']
 ];
 const FS = [['Nhỏ', .9], ['Vừa', 1], ['Lớn', 1.12], ['Rất lớn', 1.25]];
 
-/* CHỈ GÓI SINH VIÊN CÓ TRIAL: TRUE (ĐĂNG KÝ FREE 1 THÁNG), CÁC GÓI KHÁC GIỮ NGUYÊN GIÁ */
+/* CHỈ DUY NHẤT GÓI SINH VIÊN CÓ TRIAL: TRUE (0Đ THÁNG ĐẦU), PRO & HỌC KỲ GIỮ NGUYÊN GIÁ */
 const PL = [
   {
     n: 'Free',
@@ -1351,7 +1824,7 @@ const PL = [
     c: 4,
     trial: false,
     desc: 'Miễn phí trọn đời, không cần thẻ',
-    f: ['4 bài giảng / tháng', 'Tính năng cơ bản', 'Đồng bộ slide & phụ đề']
+    f: ['4 bài giảng / tháng (tối đa 60 phút/bài)', 'Tính năng cơ bản', 'Đồng bộ slide & phụ đề']
   },
   {
     n: 'Sinh viên',
@@ -1361,7 +1834,7 @@ const PL = [
     trial: true,
     rec: 'ĐỀ XUẤT TỐI ƯU',
     desc: 'Sau đó 39.000đ / tháng. Hủy bất cứ lúc nào.',
-    f: ['12 bài giảng / tháng', 'Tạo học liệu chuyên sâu', 'Xuất ghi chú Markdown']
+    f: ['12 bài giảng / tháng (tối đa 120 phút/bài)', 'Tạo học liệu chuyên sâu', 'Xuất ghi chú Markdown']
   },
   {
     n: 'Pro',
@@ -1370,16 +1843,16 @@ const PL = [
     c: 30,
     trial: false,
     desc: 'Thanh toán định kỳ 79.000đ / tháng. Hủy bất cứ lúc nào.',
-    f: ['30 bài giảng / tháng', 'Dịch thuật song ngữ nâng cao', 'Lưu trữ không giới hạn']
+    f: ['30 bài giảng / tháng (tối đa 180 phút/bài)', 'Dịch thuật song ngữ nâng cao', 'Lưu trữ không giới hạn']
   },
   {
     n: 'Học kỳ',
     p: '159.000đ',
     u: '/ học kỳ',
-    c: 30,
+    c: 40,
     trial: false,
-    desc: 'Trọn gói 5 tháng tiết kiệm 60%. Không phát sinh chi phí.',
-    f: ['Quyền lợi tương đương Pro', 'Áp dụng trọn một học kỳ', 'Hỗ trợ ưu tiên 24/7']
+    desc: 'Áp dụng trọn 1 học kỳ (5 tháng). Hết hạn tự về gói Free.',
+    f: ['40 bài giảng / học kỳ + Quyền lợi Pro', 'Áp dụng trọn một học kỳ (5 tháng)', 'Hỗ trợ AI ưu tiên 24/7']
   }
 ];
 
@@ -1396,6 +1869,10 @@ const DEFAULT_P = {
   cap: 4,
   used: 1,
   name: 'Learner',
+  avatar: '',
+  pw: '123456',
+  uiLang: 'vi',
+  notif: 1,
   lang: 'vi-VN',
   model: 'Claude Sonnet',
   theme: 'system',
@@ -1427,6 +1904,7 @@ try {
   Object.assign(P, saved);
   if (!Array.isArray(P.lec) || !P.lec.length) P.lec = structuredClone(DEFAULT_P.lec);
   if (!Array.isArray(P.customTerms)) P.customTerms = [];
+  if (!P.pw) P.pw = '123456';
 } catch {}
 
 const allTerms = () => [...DEMO.terms, ...(P.customTerms || [])];
@@ -1444,6 +1922,7 @@ const S = {
   interim: '',
   demo: null,
   timer: null,
+  wakeLock: null,
   tab: 'notes',
   picked: {},
   quiz: [],
@@ -1460,13 +1939,28 @@ const S = {
   chatFile: null,
   chatRec: false,
   chatRecSec: 0,
-  chatRecTimer: null
+  chatRecTimer: null,
+  cmdIdx: 0
 };
 
 let rec = null;
 let chatSpeechRec = null;
 let D = null;
 let ti = 0;
+
+// Detect Mac for Command Palette shortcut label
+if (/Mac|iPod|iPhone|iPad/.test(navigator.platform)) {
+  const kbd = $('#cmd_kbd');
+  if (kbd) kbd.textContent = '⌘K';
+}
+
+// Warn before closing tab if live recording is active
+window.addEventListener('beforeunload', e => {
+  if (S.live && S.segs.length) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
 
 function toast(m) {
   const t = $('#toast');
@@ -1477,8 +1971,21 @@ function toast(m) {
   toast.h = setTimeout(() => t.classList.remove('on'), 3600);
 }
 
+async function requestWakeLock(enable) {
+  if (!('wakeLock' in navigator)) return;
+  try {
+    if (enable && !S.wakeLock) {
+      S.wakeLock = await navigator.wakeLock.request('screen');
+    } else if (!enable && S.wakeLock) {
+      await S.wakeLock.release();
+      S.wakeLock = null;
+    }
+  } catch {}
+}
+
 function stopAll() {
   S.live = false;
+  requestWakeLock(false);
   if (rec) {
     rec.onend = null;
     try { rec.stop(); } catch {}
@@ -1491,7 +1998,8 @@ function stopAll() {
 
 const greet = () => {
   const h = new Date().getHours();
-  return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
+  if (P.uiLang === 'en') return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
+  return h < 12 ? 'Chào buổi sáng' : h < 18 ? 'Chào buổi chiều' : 'Chào buổi tối';
 };
 
 function applyPrefs(o) {
@@ -1500,29 +2008,68 @@ function applyPrefs(o) {
   if (t === 'system') r.removeAttribute('data-theme');
   else r.setAttribute('data-theme', t);
   r.style.setProperty('--zm', o.fs || 1);
+  applyI18n();
+}
+
+function applyI18n() {
+  const dict = I18N[P.uiLang || 'vi'] || I18N.vi;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (dict[k]) el.textContent = dict[k];
+  });
+  const lb = $('#uilang_btn');
+  if (lb) lb.textContent = '🌐 ' + (P.uiLang === 'en' ? 'EN' : 'VI');
+}
+
+function renderAvatarVisual(size = 38) {
+  if (P.avatar) {
+    return `<img src="${P.avatar}" alt="${esc(P.name)}">`;
+  }
+  return `<svg viewBox="0 0 24 24" width="${Math.round(size * .6)}" height="${Math.round(size * .6)}" fill="currentColor"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z"/></svg>`;
 }
 
 function updPlan() {
   const rem = Math.max(0, P.cap - P.used);
   const b = $('#plan');
   if (b) b.textContent = '⭐ ' + (P.plan === 'Free' ? 'Nâng cấp Pro' : 'Gói ' + P.plan) + ' · còn ' + rem + ' bài';
+
+  // Update Sidebar User Card
   const uc = $('#ucard');
   if (uc) {
     const pct = Math.min(100, Math.round((P.used / Math.max(1, P.cap)) * 100));
     uc.innerHTML = `
       <div class="u-top">
-        <div class="u-av">${esc((P.name || 'L')[0].toUpperCase())}</div>
+        <div class="u-av">${P.avatar ? `<img src="${P.avatar}" alt="Avatar">` : esc((P.name || 'L')[0].toUpperCase())}</div>
         <div class="u-info">
           <b>${esc(P.name)}</b>
           <small>Gói ${esc(P.plan)} · 🔥 ${P.streak || 5} ngày</small>
         </div>
+        <span class="muted" style="font-size:.8rem">✎</span>
       </div>
-      <div class="between" style="font-size:.74rem">
+      <div class="between" style="font-size:.73rem">
         <span class="muted">Đã dùng ${P.used}/${P.cap} bài</span>
-        <b>${100 - pct}% còn lại</b>
+        <b>Còn ${rem} bài</b>
       </div>
       <div class="u-meter"><i style="width:${pct}%"></i></div>`;
   }
+
+  // Update Topbar Account Trigger & Dropdown
+  const topName = $('#top_uname');
+  if (topName) topName.textContent = P.name || 'Tài khoản';
+  const topAv = $('#top_uav');
+  if (topAv) {
+    topAv.innerHTML = `
+      ${renderAvatarVisual(38)}
+      ${P.notif ? `<span class="acc-badge" id="top_ubadge">${P.notif}</span>` : ''}`;
+  }
+  const ddAv = $('#dd_uav');
+  if (ddAv) ddAv.innerHTML = P.avatar ? `<img src="${P.avatar}" alt="Avatar">` : esc((P.name || 'L')[0].toUpperCase());
+  const ddName = $('#dd_uname');
+  if (ddName) ddName.textContent = P.name || 'Learner';
+  const ddEmail = $('#dd_uemail');
+  if (ddEmail) ddEmail.textContent = (P.user && P.user.email) ? P.user.email : 'hocvien@easestudy.edu.vn';
+  const ddPlan = $('#dd_uplan');
+  if (ddPlan) ddPlan.textContent = 'Gói ' + P.plan + ' (' + rem + ' bài còn lại)';
 }
 
 function save() {
@@ -1532,12 +2079,19 @@ function save() {
 
 function navOn(k) {
   document.querySelectorAll('.nav [data-a]').forEach(b => b.classList.toggle('on', b.dataset.a === k && !b.id));
+  const titles = { home: 'Tổng quan', lectures: 'Bài giảng của tôi', materials: 'Kho học liệu', pricing: 'Nâng cấp gói', settings: 'Cài đặt', create: 'Tạo buổi học', live: 'Phòng thu Live', review: 'Chi tiết học liệu' };
+  const tbCur = $('#tb_cur');
+  if (tbCur) tbCur.textContent = titles[S.view] || 'Tổng quan';
 }
 
 function closeMenu() {
   $('.side').classList.remove('open');
   $('#ov').classList.remove('on');
   $('#mb').setAttribute('aria-expanded', 'false');
+  const am = $('#acc_menu');
+  if (am) am.hidden = true;
+  const ab = $('#acc_btn');
+  if (ab) ab.setAttribute('aria-expanded', 'false');
 }
 
 function beforeNavigate(targetView) {
@@ -1550,6 +2104,145 @@ function beforeNavigate(targetView) {
     D = null;
   }
   stopAll();
+}
+
+/* =========================================================================
+   ACCOUNT PROFILE, AVATAR UPLOAD & PASSWORD CHANGE MODALS
+   ========================================================================= */
+function openProfileModal() {
+  closeMenu();
+  P.notif = 0;
+  save();
+  modal(`
+    <div class="md-profile">
+      <div class="between">
+        <h3 style="font-size:1.2rem">Hồ sơ cá nhân &amp; Ảnh đại diện</h3>
+        <button class="ib" style="width:32px;height:32px" data-a="close" aria-label="Đóng">✕</button>
+      </div>
+
+      <div class="av-Upload-box">
+        <div class="av-big" id="prof_av_prev">
+          ${P.avatar ? `<img src="${P.avatar}" alt="Avatar">` : esc((P.name || 'L')[0].toUpperCase())}
+        </div>
+        <div style="flex:1">
+          <b style="display:block;font-size:.95rem">Ảnh đại diện tài khoản</b>
+          <small class="muted" style="display:block;margin:2px 0 8px">Hỗ trợ JPG, PNG, WebP hoặc chọn bộ mẫu bên dưới</small>
+          <div class="row">
+            <button type="button" class="sec" style="padding:7px 12px;font-size:.8rem" data-a="pickavfile">📷 Tải ảnh từ máy</button>
+            ${P.avatar ? `<button type="button" class="ghost" style="padding:7px 12px;font-size:.8rem" data-a="clearav">Gỡ ảnh</button>` : ''}
+            <input id="av_file_in" type="file" accept="image/*" hidden>
+          </div>
+          <div class="av-presets">
+            ${AV_PRESETS.map((src, idx) => `<button type="button" class="av-preset-btn" data-a="presetav" data-idx="${idx}" title="Chọn Avatar mẫu ${idx + 1}"><img src="${src}" alt="Preset ${idx + 1}"></button>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <label>Tên hiển thị của bạn
+        <input id="prof_name_in" value="${esc(P.name)}" placeholder="Nhập họ tên hoặc biệt danh">
+      </label>
+
+      <label>Email liên kết
+        <input id="prof_email_in" type="email" value="${esc((P.user && P.user.email) || 'hocvien@easestudy.edu.vn')}" placeholder="ban@truong.edu.vn">
+      </label>
+
+      <div class="between" style="padding-top:8px;border-top:1px solid var(--line)">
+        <button type="button" class="ghost" style="font-size:.84rem" data-a="pwmodal">🔐 Đổi mật khẩu…</button>
+        <div class="row">
+          <button type="button" class="ghost" data-a="close">Huỷ</button>
+          <button type="button" class="pri" data-a="saveprofile">Lưu hồ sơ</button>
+        </div>
+      </div>
+    </div>`);
+
+  const fIn = $('#av_file_in');
+  if (fIn) {
+    fIn.onchange = e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = 160;
+          canvas.height = 160;
+          const ctx = canvas.getContext('2d');
+          const minSide = Math.min(img.width, img.height);
+          const sx = (img.width - minSide) / 2;
+          const sy = (img.height - minSide) / 2;
+          ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, 160, 160);
+          const dataUrl = canvas.toDataURL('image/jpeg', 0.86);
+          P.avatar = dataUrl;
+          const prev = $('#prof_av_prev');
+          if (prev) prev.innerHTML = `<img src="${dataUrl}" alt="Avatar">`;
+          updPlan();
+          toast('✓ Đã cập nhật ảnh đại diện mới!');
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(f);
+    };
+  }
+}
+
+function openPasswordModal() {
+  closeMenu();
+  modal(`
+    <div class="md-profile">
+      <div class="between">
+        <h3 style="font-size:1.2rem">🔐 Đổi mật khẩu bảo mật</h3>
+        <button class="ib" style="width:32px;height:32px" data-a="close" aria-label="Đóng">✕</button>
+      </div>
+      <p class="muted" style="margin:0;font-size:.86rem">Mật khẩu mặc định lần đầu là <code>123456</code> (hoặc mật khẩu bạn vừa dùng khi đăng nhập).</p>
+
+      <label>Mật khẩu hiện tại (Mật khẩu cũ)
+        <div class="row" style="position:relative">
+          <input id="pw_old" type="password" style="flex:1" placeholder="Nhập mật khẩu cũ">
+          <button type="button" class="ghost" style="padding:8px 10px" data-a="togpw" data-t="pw_old">👁</button>
+        </div>
+      </label>
+
+      <label>Mật khẩu mới (Tối thiểu 6 ký tự)
+        <div class="row">
+          <input id="pw_new" type="password" style="flex:1" placeholder="Nhập mật khẩu mới">
+          <button type="button" class="ghost" style="padding:8px 10px" data-a="togpw" data-t="pw_new">👁</button>
+        </div>
+        <div class="pw-meter"><i id="pw_bar"></i></div>
+        <small id="pw_hint" class="muted" style="font-size:.76rem">Độ mạnh mật khẩu: Chưa nhập</small>
+      </label>
+
+      <label>Xác nhận lại mật khẩu mới
+        <input id="pw_cfm" type="password" placeholder="Nhập lại mật khẩu mới">
+      </label>
+
+      <div id="pw_err" style="color:var(--danger);font-size:.84rem;font-weight:700;min-height:18px"></div>
+
+      <div class="between" style="padding-top:8px;border-top:1px solid var(--line)">
+        <button type="button" class="ghost" data-a="profilemodal">← Quay lại Hồ sơ</button>
+        <div class="row">
+          <button type="button" class="ghost" data-a="close">Huỷ</button>
+          <button type="button" class="pri" data-a="savepw">Cập nhật mật khẩu</button>
+        </div>
+      </div>
+    </div>`);
+
+  const pwNew = $('#pw_new');
+  if (pwNew) {
+    pwNew.oninput = () => {
+      const v = pwNew.value;
+      const bar = $('#pw_bar');
+      const hint = $('#pw_hint');
+      let score = 0;
+      if (v.length >= 6) score += 35;
+      if (v.length >= 10) score += 25;
+      if (/[A-Z]/.test(v) && /[0-9]/.test(v)) score += 25;
+      if (/[^A-Za-z0-9]/.test(v)) score += 15;
+      bar.style.width = score + '%';
+      bar.style.background = score < 40 ? 'var(--danger)' : score < 75 ? 'var(--amber)' : 'var(--green)';
+      hint.textContent = 'Độ mạnh mật khẩu: ' + (score < 40 ? 'Yếu (Cần ít nhất 6 ký tự)' : score < 75 ? 'Khá tốt' : 'Rất mạnh & An toàn');
+    };
+  }
 }
 
 /* Slide Viewer */
@@ -1605,7 +2298,7 @@ function drawTerms() {
     : '<p class="muted" style="margin:0">Chưa có thuật ngữ riêng cho slide này.</p>';
 }
 
-/* Home View (Upgraded Enterprise Dashboard) */
+/* Home View (Enterprise Dashboard) */
 function home() {
   beforeNavigate('home');
   const recent = P.lec.slice(0, 4);
@@ -1616,27 +2309,45 @@ function home() {
   $('#main').innerHTML = `
   <header class="head">
     <div>
-      <p class="eyebrow">WORKSPACE HỌC TẬP THÔNG MINH</p>
+      <p class="eyebrow">EASEWORKSPACE PRO v4.0</p>
       <h1>${greet()}, ${esc(P.name)} 👋</h1>
     </div>
     <div class="row">
-      <button class="ghost" data-a="cmd">🔍 Tìm nhanh (Ctrl+K)</button>
-      <button class="ghost" data-a="lectures">📚 Thư viện</button>
-      <button class="pri" data-a="newlive">🎙 + Bắt đầu buổi học</button>
+      <button class="ghost" data-a="profilemodal">🖼️ Đổi Avatar &amp; Hồ sơ</button>
+      <button class="ghost" data-a="chat">🤖 Mở AI Copilot</button>
+      <button class="pri" data-a="newlive">🎙 + Tạo buổi học mới</button>
     </div>
   </header>
 
+  <section class="hero-banner">
+    <div>
+      <span class="v-pill" style="background:rgba(255,255,255,.2)">✨ TRẢI NGHIỆM TRONG 10 GIÂY</span>
+      <h2>Học thông minh hơn với Trợ lý Giọng nói &amp; Đồng bộ Slide AI</h2>
+      <p>Ghi âm trực tiếp trên giảng đường, tải file âm thanh (.mp3, .m4a, .wav, .webm) để bóc băng tự động, hoặc mở ngay bài giảng mẫu có sẵn Slide + Phụ đề + Quiz.</p>
+    </div>
+    <div class="row">
+      <button class="white" data-a="sample10s">⚡ Mở ngay Bài giảng mẫu</button>
+      <button class="white" style="background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.35)" data-a="pricing">💎 Ưu đãi Sinh viên ₫0</button>
+    </div>
+  </section>
+
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-ic">📚</div>
+      <div class="stat-ic">
+        <svg class="ico" style="width:22px;height:22px" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+      </div>
       <div><small>Tổng số bài giảng</small><b>${P.lec.length} bài</b></div>
     </div>
     <div class="stat-card">
-      <div class="stat-ic" style="color:var(--violet)">🧠</div>
+      <div class="stat-ic" style="color:var(--violet)">
+        <svg class="ico" style="width:22px;height:22px" viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 3.5 2.5 6.5 6 7.5V21h4v-3.5c3.5-1 6-4 6-7.5a8 8 0 0 0-8-8z"/></svg>
+      </div>
       <div><small>Bộ học liệu AI</small><b>${readyCount} bộ sẵn sàng</b></div>
     </div>
     <div class="stat-card">
-      <div class="stat-ic" style="color:var(--green)">📘</div>
+      <div class="stat-ic" style="color:var(--green)">
+        <svg class="ico" style="width:22px;height:22px" viewBox="0 0 24 24"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
       <div><small>Sổ tay thuật ngữ</small><b>${allTerms().length} khái niệm</b></div>
     </div>
     <div class="stat-card">
@@ -1652,7 +2363,7 @@ function home() {
           <h3 style="font-size:1.05rem">Hiệu suất học tập trong tuần</h3>
           <small class="muted">Thời lượng ghi âm &amp; ôn tập Flashcard (phút/ngày)</small>
         </div>
-        <span class="chip green">+24% so với tuần trước</span>
+        <span class="chip green">+24% tuần này</span>
       </div>
       <div class="chart-bars">
         ${weekData.map(([d, h]) => `
@@ -1718,11 +2429,11 @@ function home() {
     </div>
     <div class="row" style="margin-top:18px">
       <button class="pri" data-a="newlive">🎙 + Vào phòng Live thu âm</button>
-      <button class="sec" data-a="audio">⬆ + Tải file ghi âm (.mp3, .wav, .m4a)</button>
-      <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a" hidden>
-      <span class="badge">AI SPEECH-TO-TEXT</span>
+      <button class="sec" data-a="audio">⬆ + Tải file ghi âm (.mp3, .m4a, .wav, .aac, .webm)</button>
+      <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.webm,.mp4" hidden>
+      <span class="badge">WAKE-LOCK + AUTO-SAVE</span>
     </div>
-    <p class="fine">Hệ thống tự động đồng bộ từng câu giảng với trang Slide tương ứng và biên soạn Smart Notes, Flashcard, Quiz.</p>
+    <p class="fine">Nhắc nhở quyền riêng tư: Hãy xin phép giảng viên trước khi ghi âm bài giảng trên lớp. Bạn có thể xóa vĩnh viễn bản ghi bất cứ lúc nào.</p>
   </div>`;
 
   bindDropzone();
@@ -1759,6 +2470,7 @@ function takeSlide(f) {
         toast('✓ Đã nạp và lưu bền vững slide: ' + f.name);
         (S.view === 'create' ? create : home)();
       };
+      reader.onerror = () => toast('✕ File PDF bị hỏng hoặc không thể đọc.');
       reader.readAsDataURL(f);
       return;
     }
@@ -1766,7 +2478,7 @@ function takeSlide(f) {
     S.pdf = URL.createObjectURL(f);
     toast('✓ Đã nạp slide: ' + f.name);
   } else if (x === 'pptx') {
-    toast('Hãy xuất file PPTX sang PDF để xem trực tiếp trên khung trình chiếu.');
+    toast('Lưu ý: Để giữ nguyên 100% font chữ và công thức, khuyến nghị xuất PPTX sang PDF rồi tải lên.');
   } else {
     toast('Vui lòng chọn file định dạng PDF hoặc PPTX.');
   }
@@ -1774,13 +2486,17 @@ function takeSlide(f) {
 }
 
 function handleAudioUpload(file) {
+  if (P.used >= P.cap) {
+    toast('Bạn đã dùng hết ' + P.used + '/' + P.cap + ' bài giảng trong tháng. Hãy nâng cấp gói để tiếp tục!');
+    return pricing();
+  }
   const title = file.name.replace(/\.[^.]+$/, '');
   const audioUrl = URL.createObjectURL(file);
   S.audioUrl = audioUrl;
   S.name = title;
   S.subj = 'Kinh tế vi mô';
   S.segs = dsegs();
-  toast('🎙 Đang bóc băng âm thanh từ file “' + file.name + '”…');
+  toast('🎙 Đang cắt đoạn & bóc băng âm thanh từ “' + file.name + '”…');
   process('Audio Uploaded', audioUrl);
 }
 
@@ -1797,12 +2513,15 @@ function create() {
       <p class="eyebrow">BƯỚC 1 · THIẾT LẬP PHÒNG HỌC</p>
       <h1>Tạo buổi học mới</h1>
     </div>
-    <button class="ghost" data-a="home">← Quay lại Dashboard</button>
+    <button class="ghost" data-a="home">← Quay lại Tổng quan</button>
   </header>
   <div class="split" style="margin-top:20px">
     <section class="panel" style="display:grid;gap:16px">
       <label>Chuyên ngành / Môn học
         <select id="cs">${SUBJ.map(s => `<option ${s === S.subj ? 'selected' : ''}>${s}</option>`).join('')}</select>
+      </label>
+      <label>Ngôn ngữ giảng dạy (Hỗ trợ giảng viên xen thuật ngữ Anh - Việt)
+        <select id="clg">${LG.map(l => `<option value="${l[0]}" ${l[0] === P.lang ? 'selected' : ''}>${l[1]}</option>`).join('')}</select>
       </label>
       <div id="drop" class="drop" data-a="file">
         <div style="font-size:28px">📑</div>
@@ -1812,23 +2531,25 @@ function create() {
         <input id="fs" type="file" accept=".pdf,.pptx" hidden>
       </div>
       ${S.pdf ? `<button class="ghost" data-a="clearpdf" style="justify-self:start;font-size:.82rem">✕ Gỡ file PDF, dùng lại slide mẫu</button>` : ''}
-      <label>Từ khóa trọng tâm / Prompt định hướng AI Research
-        <input id="ck" value="${esc(S.kw)}" placeholder="VD: thỏa dụng biên, đường bàng quan, thặng dư tiêu dùng">
+      <label>Từ khóa trọng tâm / Từ điển hiệu chỉnh thuật ngữ
+        <input id="ck" value="${esc(S.kw)}" placeholder="VD: thỏa dụng biên, đường bàng quan, MRS, thặng dư">
       </label>
       <div class="row" style="margin-top:4px">
         <button class="pri" style="flex:1" data-a="begin">🎙 Bắt đầu vào phòng Live</button>
-        <button class="sec" data-a="audio">⬆ Tải file ghi âm có sẵn</button>
-        <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a" hidden>
+        <button class="sec" data-a="audio">⬆ Tải file ghi âm (.mp3/.m4a)</button>
+        <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.webm,.mp4" hidden>
       </div>
     </section>
     <section class="terms">
-      <h2>Thuật ngữ nhận diện trước từ Slide</h2>
+      <h2>Từ điển thuật ngữ nhận diện từ Slide</h2>
       ${S.pdf
-        ? '<p class="muted">File PDF cá nhân đã được nạp. Bạn có thể nhập các từ khóa trọng tâm ở ô bên trái để AI tập trung bắt ý khi giảng viên giảng bài.</p>'
+        ? '<p class="muted">File PDF cá nhân đã được nạp. Hệ thống sẽ dùng các từ khóa bạn nhập bên trái để tự động hiệu chỉnh chính tả khi thu âm.</p>'
         : allTerms().map(t => `<dl><dt>${esc(t.term)} <small class="muted">(Slide ${t.slide})</small></dt><dd>${esc(t.def)}</dd></dl>`).join('') + '<p class="muted" style="font-size:.8rem;margin-top:10px">Trích xuất tự động từ bộ slide mẫu Kinh tế vi mô.</p>'}
     </section>
   </div>`;
   bindDropzone();
+  const clg = $('#clg');
+  if (clg) clg.onchange = e => { P.lang = e.target.value; save(); };
   const fa = $('#fa');
   if (fa) fa.onchange = e => {
     const file = e.target.files[0];
@@ -1840,7 +2561,13 @@ function create() {
 function live(reset) {
   beforeNavigate('live');
   if (reset) {
-    S.segs = [];
+    // Check if there is an unsaved draft
+    const draft = localStorage.getItem('es_draft');
+    if (draft && !S.segs.length) {
+      try { S.segs = JSON.parse(draft); } catch { S.segs = []; }
+    } else {
+      S.segs = [];
+    }
     S.t0 = null;
     S.interim = '';
   }
@@ -1851,7 +2578,10 @@ function live(reset) {
       <p class="eyebrow">BƯỚC 2 · PHÒNG GHI ÂM &amp; ĐỒNG BỘ TRỰC TIẾP</p>
       <h1>${esc(S.name ? S.name.replace(/\.pdf$/i, '') : S.subj)}</h1>
     </div>
-    <button class="ghost" data-a="create">← Cấu hình buổi học</button>
+    <div class="row">
+      ${S.segs.length ? `<button class="ghost" data-a="cleardraft" style="font-size:.82rem">🗑️ Xóa bản nháp</button>` : ''}
+      <button class="ghost" data-a="create">← Cấu hình buổi học</button>
+    </div>
   </header>
   <div class="split">
     ${viewer()}
@@ -1863,7 +2593,7 @@ function live(reset) {
             <b id="mst">Micro đang tắt</b>
             <span id="wvb" class="wave-bars"><i></i><i></i><i></i><i></i><i></i></span>
           </div>
-          <small id="mtm">Phụ đề tự gắn với slide đang chiếu</small>
+          <small id="mtm">Tự động lưu nháp mỗi câu · Giữ sáng màn hình</small>
         </div>
         <select id="lg" aria-label="Ngôn ngữ phụ đề">${LG.map(l => `<option value="${l[0]}">${l[1]}</option>`).join('')}</select>
         <button class="white" data-a="finish">Kết thúc &amp; tạo học liệu</button>
@@ -1874,7 +2604,7 @@ function live(reset) {
       <section class="panel tr" aria-live="polite">
         <div class="between" style="margin-bottom:10px">
           <h2 style="margin:0;font-size:1.05rem">Live transcript</h2>
-          <small class="muted" id="segc">${S.segs.length} câu đã ghi</small>
+          <small class="muted" id="segc">${S.segs.length} câu đã lưu nháp</small>
         </div>
         <ul id="tr"></ul>
         <form id="addf" class="addf">
@@ -1884,7 +2614,7 @@ function live(reset) {
         <div class="row">
           <button id="demob" class="ghost" style="flex:1" data-a="demo">▶ Phát bài giảng mẫu (Tự chạy slide)</button>
           <button class="ghost" data-a="audio" title="Tải file âm thanh lên">⬆ Audio</button>
-          <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a" hidden>
+          <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.webm,.mp4" hidden>
         </div>
       </section>
       <section class="terms">
@@ -1922,6 +2652,8 @@ function addSeg(text, slide, en) {
   if (!text) return;
   S.t0 = S.t0 || Date.now();
   S.segs.push({ text, slide: slide || S.slide, ms: Date.now() - S.t0, en });
+  // Auto-save draft to prevent data loss on accidental refresh
+  try { localStorage.setItem('es_draft', JSON.stringify(S.segs)); } catch {}
   drawTr();
   const r0 = $('#rs');
   if (r0) r0.innerHTML = '<span class="spin"></span> AI đang phân tích ngữ cảnh học thuật…';
@@ -1932,16 +2664,17 @@ function addSeg(text, slide, en) {
     if (x) {
       r.innerHTML = `<p style="margin:0 0 4px;color:var(--text);font-weight:500">${esc(x.x)}</p><small class="muted">Nguồn: Cơ sở tri thức Kinh tế học EaseStudy</small>`;
     } else {
-      r.innerHTML = '<span class="muted">✓ Đã đồng bộ câu giảng vào Slide ' + (slide || S.slide) + '.</span>';
+      r.innerHTML = '<span class="muted">✓ Đã lưu tự động câu giảng vào Slide ' + (slide || S.slide) + '.</span>';
     }
-  }, 480);
+  }, 450);
 }
 
 function drawTr() {
   const u = $('#tr');
   if (!u) return;
   const sc = $('#segc');
-  if (sc) sc.textContent = S.segs.length + ' câu đã ghi';
+  if (sc) sc.textContent = S.segs.length + ' câu đã lưu nháp';
+  const isNearBottom = u.scrollHeight - u.scrollTop - u.clientHeight < 60;
   u.innerHTML = S.segs.length || S.interim
     ? S.segs.map((s, idx) => `
       <li class="tr-item">
@@ -1949,12 +2682,12 @@ function drawTr() {
           <span class="ts">${fmt(s.ms)} · Slide ${s.slide}</span>${esc(s.text)}
         </button>
         <div class="tr-actions">
-          <button data-a="editseg" data-i="${idx}" title="Sửa câu này">✎</button>
+          <button data-a="editseg" data-i="${idx}" title="Sửa câu hoặc đổi Slide">✎</button>
           <button data-a="delseg" data-i="${idx}" title="Xóa câu này">✕</button>
         </div>
       </li>`).join('') + (S.interim ? `<li class="interim">${esc(S.interim)}</li>` : '')
     : '<li class="muted" style="padding:8px 0">Bật micro, gõ tay hoặc bấm “Phát bài giảng mẫu” để bắt đầu thu thập lời giảng.</li>';
-  u.scrollTop = u.scrollHeight;
+  if (isNearBottom) u.scrollTop = u.scrollHeight;
 }
 
 function micUI() {
@@ -1963,15 +2696,16 @@ function micUI() {
   b.classList.toggle('on', S.live);
   b.textContent = S.live ? '■' : '🎙';
   b.setAttribute('aria-pressed', S.live);
-  $('#mst').textContent = S.live ? 'Đang thu âm trực tiếp…' : 'Micro đang tắt';
+  $('#mst').textContent = S.live ? 'Đang nghe & lưu nháp tự động…' : 'Micro đang tắt';
   const wvb = $('#wvb');
   if (wvb) wvb.classList.toggle('active', S.live || !!S.demo);
   const mtm = $('#mtm');
-  if (mtm && !S.live) mtm.textContent = 'Phụ đề tự gắn với slide đang chiếu';
+  if (mtm && !S.live) mtm.textContent = 'Tự động lưu nháp mỗi câu · Giữ sáng màn hình';
 }
 
 const warn = () => {
   S.live = false;
+  requestWakeLock(false);
   if (S.timer) { clearInterval(S.timer); S.timer = null; }
   try { rec && rec.stop(); } catch {}
   micUI();
@@ -2012,6 +2746,7 @@ function mic() {
   };
   S.live = true;
   S.t0 = S.t0 || Date.now();
+  requestWakeLock(true);
   try { rec.start(); } catch {}
   micUI();
   S.timer = setInterval(() => {
@@ -2059,26 +2794,33 @@ function playDemo() {
     const x = EXT.find(e => tx.toLowerCase().includes(e.k));
     const r = $('#rs');
     if (r && x) r.innerHTML = `<p style="margin:0 0 4px;color:var(--text);font-weight:500">${esc(x.x)}</p><small class="muted">Nguồn: Cơ sở tri thức Kinh tế học EaseStudy</small>`;
-  }, 1650);
+  }, 1600);
 }
 
 /* Process View */
 function process(customStatus, audioUrl) {
   beforeNavigate('process');
+  try { localStorage.removeItem('es_draft'); } catch {}
   const n = new Set(S.segs.map(s => s.slide)).size;
   const k = new Set(S.segs.flatMap(s => s.text.toLowerCase().split(/\s+/).filter(w => w.length > 4))).size;
-  const T = ['Đang đồng bộ lời giảng với từng slide…', 'Đang trích xuất thuật ngữ & khái niệm cốt lõi…', 'Đang biên soạn Smart Notes, Flashcard & Quiz…', 'Hoàn tất bộ học liệu!'];
+  const T = [
+    'Bước 1/4: Đang tải & chuẩn hóa âm thanh…',
+    'Bước 2/4: Chuyển giọng nói thành văn bản & đồng bộ Slide…',
+    'Bước 3/4: Tổng hợp Smart Notes & thuật ngữ học thuật…',
+    'Bước 4/4: Khởi tạo Flashcard & Quiz kiểm tra…'
+  ];
   let p = 0;
   $('#main').innerHTML = `
   <header class="head">
     <div>
-      <p class="eyebrow">BƯỚC 3 · AI SYNTHESIS ENGINE</p>
+      <p class="eyebrow">BƯỚC 3 · AI SYNTHESIS PIPELINE</p>
       <h1>Đang tổng hợp bộ học liệu…</h1>
     </div>
+    <button class="ghost" data-a="home">Huỷ tiến trình</button>
   </header>
   <div class="panel" style="margin-top:20px;max-width:680px">
     <div class="prog" role="progressbar" aria-label="Tiến trình xử lý"><i id="pb"></i></div>
-    <p id="ps" class="muted" style="font-weight:600"></p>
+    <p id="ps" class="muted" style="font-weight:700;color:var(--text)"></p>
     <div class="row" style="margin-top:12px">
       <span class="chip blue">${n} slide đã đồng bộ</span>
       <span class="chip purple" id="pc">0 từ khóa trọng tâm</span>
@@ -2166,6 +2908,7 @@ function mk(sh) {
         q: 'Khái niệm nào được mô tả: “' + t.def + '”?',
         opts,
         a: t.term,
+        exp: `Giải thích: “${t.term}” xuất hiện tại Slide ${t.slide} (${t.def})`,
         slide: t.slide,
         ms: fm(t.slide)
       };
@@ -2190,6 +2933,7 @@ function mk(sh) {
         q: 'Điền từ còn thiếu vào câu giảng: “' + maskWord(s.text, target) + '”',
         opts: sh([target, ...others]),
         a: target,
+        exp: `Câu gốc tại Slide ${s.slide} (${fmt(s.ms)}): “${s.text}”`,
         slide: s.slide,
         ms: s.ms
       };
@@ -2236,7 +2980,7 @@ function drawPack() {
     return;
   }
 
-  // Quiz tab
+  // Quiz tab (with Explanation & Report Question button as Claude suggested)
   if (S.quiz.length) {
     const N = S.quiz.length;
     const n = Object.keys(S.picked).length;
@@ -2253,17 +2997,23 @@ function drawPack() {
     p.innerHTML = `
       <div class="score" role="status">
         <span>${msg}</span>
-        ${n > 0 ? `<button class="jump" style="margin:0" data-a="retryquiz">🔄 Làm lại</button>` : ''}
+        ${n > 0 ? `<button class="jump" style="margin:0" data-a="retryquiz">🔄 Làm lại &amp; Xáo đáp án</button>` : ''}
       </div>` +
       S.quiz.map((q, i) => {
         const s = S.picked[i];
         return `<article class="note">
           <b>Câu ${i + 1}. ${esc(q.q)}</b>
           ${q.opts.map((o, j) => {
+            const label = ['A', 'B', 'C', 'D'][j] || (j + 1);
             const c = s === undefined ? '' : o === q.a ? 'ok' : j === s ? 'bad' : 'dim';
-            return `<button class="opt ${c}" ${s !== undefined ? 'disabled' : ''} data-a="pick" data-q="${i}" data-o="${j}">${esc(o)}</button>`;
+            return `<button class="opt ${c}" ${s !== undefined ? 'disabled' : ''} data-a="pick" data-q="${i}" data-o="${j}"><b>${label}.</b> ${esc(o)}</button>`;
           }).join('')}
-          ${s !== undefined ? `<button class="jump" data-a="src" data-s="${q.slide}" data-m="${q.ms}">▶ Xem slide &amp; nghe đoạn gốc</button>` : ''}
+          ${s !== undefined ? `
+            <div class="quiz-exp">${esc(q.exp || '')}</div>
+            <div class="between" style="margin-top:8px">
+              <button class="jump" style="margin:0" data-a="src" data-s="${q.slide}" data-m="${q.ms}">📍 Nguồn: Slide ${q.slide} (${fmt(q.ms)})</button>
+              <button class="jump" style="margin:0;color:var(--muted)" data-a="reportq">🚩 Báo câu hỏi chưa chuẩn</button>
+            </div>` : ''}
         </article>`;
       }).join('');
   } else {
@@ -2276,7 +3026,7 @@ function dMap(p) {
     p.innerHTML = '<div class="note"><p class="muted">Bài học này chưa có bản ghi transcript.</p><button class="pri" style="margin-top:8px" data-a="newlive">🎙 Bắt đầu ghi âm bài giảng</button></div>';
     return;
   }
-  p.innerHTML = '<p class="muted" style="font-size:.85rem;margin-top:0">Bấm vào bất kỳ mốc thời gian nào để đồng bộ tới đúng Slide và nghe đọc lại câu giảng đó.</p>' +
+  p.innerHTML = '<p class="muted" style="font-size:.85rem;margin-top:0">Bấm vào bất kỳ mốc thời gian nào để đồng bộ tới đúng Slide, nghe đọc lại hoặc gán lại mốc Slide.</p>' +
     S.segs.map((s, i) => `
       <div class="ln ${S.sel === i ? 'sel' : ''}">
         <button data-a="line" data-i="${i}">
@@ -2285,7 +3035,7 @@ function dMap(p) {
         ${S.sel === i ? `
           <div class="row" style="margin-top:6px">
             <button class="jump" style="margin:0" data-a="src" data-s="${s.slide}" data-m="${s.ms}">🔊 Nghe đọc lại</button>
-            <button class="jump" style="margin:0" data-a="editseg" data-i="${i}">✎ Sửa nội dung</button>
+            <button class="jump" style="margin:0" data-a="editseg" data-i="${i}">✎ Sửa câu &amp; Đổi Slide</button>
           </div>` : ''}
       </div>`).join('');
 }
@@ -2310,7 +3060,7 @@ function dFlash(p) {
         <button class="ib" data-a="fp" aria-label="Thẻ trước">‹</button>
         <button class="ib" data-a="fn" aria-label="Thẻ sau">›</button>
       </div>
-      <button class="jump" style="margin:0" data-a="src" data-s="${c.slide}" data-m="${c.ms}">📍 Xem ở Slide ${c.slide}</button>
+      <button class="jump" style="margin:0" data-a="src" data-s="${c.slide}" data-m="${c.ms}">📍 Nguồn: Slide ${c.slide} (${fmt(c.ms)})</button>
     </div>`;
 }
 
@@ -2322,7 +3072,7 @@ function exportNotes() {
   S.segs.forEach(s => (by[s.slide] ??= []).push(s));
   const ks = Object.keys(by).map(Number).sort((a, b) => a - b);
 
-  let md = `# ${title} — EaseStudy Smart Notes\nNgày xuất: ${new Date().toLocaleDateString('vi-VN')}\n\n`;
+  let md = `\uFEFF# ${title} — EaseStudy Smart Notes\nNgày xuất: ${new Date().toLocaleDateString('vi-VN')}\n\n`;
   ks.forEach(n => {
     const sl = !S.pdf && S.deck.slides[n - 1];
     const tm = !S.pdf && allTerms().find(x => x.slide === n);
@@ -2340,7 +3090,7 @@ function exportNotes() {
   a.download = `${title.toLowerCase().replace(/\s+/g, '-')}-notes.md`;
   a.click();
   URL.revokeObjectURL(a.href);
-  toast('✓ Đã tải xuống file ghi chú (.md)');
+  toast('✓ Đã tải xuống file ghi chú (.md chuẩn UTF-8 tiếng Việt)');
 }
 
 /* My Lectures View */
@@ -2350,12 +3100,12 @@ function lectures() {
   <header class="head">
     <div>
       <p class="eyebrow">THƯ VIỆN CÁ NHÂN</p>
-      <h1>My lectures</h1>
+      <h1>Bài giảng của tôi</h1>
     </div>
     <div class="row">
       <button class="sec" data-a="audio">⬆ Tải file âm thanh</button>
-      <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a" hidden>
-      <button class="pri" data-a="newlive">+ New live lecture</button>
+      <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.webm,.mp4" hidden>
+      <button class="pri" data-a="newlive">+ Tạo buổi học Live</button>
     </div>
   </header>
   <div class="row" style="margin:20px 0">
@@ -2414,7 +3164,7 @@ function materials() {
   <header class="head">
     <div>
       <p class="eyebrow">TỔNG HỢP ÔN THI</p>
-      <h1>Study materials</h1>
+      <h1>Kho học liệu</h1>
     </div>
     <button class="pri" data-a="addterm">+ Thêm thuật ngữ</button>
   </header>
@@ -2460,15 +3210,20 @@ function addTermModal() {
     <button class="ghost" data-a="close">Huỷ</button>`);
 }
 
-/* Pricing & Upgrade View (FIXED: ONLY SINH VIEN HAS ₫0 1-MONTH TRIAL, OTHERS KEEP ORIGINAL PRICE) */
+/* Pricing & Upgrade View (CHỈ GÓI SINH VIÊN CÓ 0Đ THÁNG ĐẦU, PRO & HỌC KỲ GIỮ NGUYÊN GIÁ) */
 function pricing() {
   beforeNavigate('pricing');
+  const nextReset = new Date();
+  nextReset.setMonth(nextReset.getMonth() + 1);
+  nextReset.setDate(1);
+  const resetStr = nextReset.toLocaleDateString('vi-VN');
+
   $('#main').innerHTML = `
   <header class="head">
     <div>
       <p class="eyebrow">GÓI HIỆN TẠI: ${esc(P.plan.toUpperCase())}</p>
-      <h1>Pricing &amp; Upgrade</h1>
-      <p class="muted" style="margin:6px 0 0">Bạn còn <b>${Math.max(0, P.cap - P.used)}/${P.cap}</b> bài giảng khả dụng trong chu kỳ này.</p>
+      <h1>Nâng cấp gói cước</h1>
+      <p class="muted" style="margin:6px 0 0">Đã dùng <b>${P.used}/${P.cap}</b> bài giảng trong chu kỳ này · Làm mới hạn mức vào <b>${resetStr}</b>.</p>
     </div>
   </header>
 
@@ -2479,15 +3234,15 @@ function pricing() {
       if (p.c === 4) {
         priceBlock = `<div class="pr">0đ</div><small class="muted">${esc(p.desc)}</small>`;
       } else if (p.trial) {
-        // Chỉ gói Sinh viên có ưu đãi 0đ tháng đầu
+        // Duy nhất gói Sinh viên được miễn phí tháng đầu
         priceBlock = `
           <div class="old">${p.p} ${p.u}</div>
-          <div class="pr">₫0 <small>/ tháng đầu</small></div>
+          <div class="pr" style="color:var(--brand)">₫0 <small>/ tháng đầu</small></div>
           <small class="muted">${esc(p.desc)}</small>`;
       } else {
-        // Các gói Pro & Học kỳ giữ nguyên giá gốc
+        // Gói Pro và Học kỳ giữ nguyên giá gốc
         priceBlock = `
-          <div class="pr" style="margin-top:6px">${p.p} <small>${p.u}</small></div>
+          <div class="pr" style="margin-top:8px">${p.p} <small>${p.u}</small></div>
           <small class="muted">${esc(p.desc)}</small>`;
       }
 
@@ -2496,7 +3251,7 @@ function pricing() {
         : p.c === 4
           ? 'Chuyển về Free'
           : p.trial
-            ? 'Kích hoạt ưu đãi ₫0'
+            ? 'Đăng ký ₫0 tháng đầu'
             : 'Mua gói ' + p.n;
 
       return `
@@ -2513,23 +3268,22 @@ function pricing() {
   </div>
 
   <div class="panel cmp-wrap">
-    <h3 style="margin-bottom:14px">So sánh chi tiết quyền lợi các gói</h3>
+    <h3 style="margin-bottom:14px">Bảng đối chiếu quyền lợi &amp; giới hạn thời lượng</h3>
     <table class="cmp-table">
       <thead>
         <tr>
           <th>Tính năng</th>
-          <th>Free</th>
-          <th>Sinh viên (Ưu đãi ₫0)</th>
-          <th>Pro</th>
-          <th>Học kỳ</th>
+          <th>Free (0đ)</th>
+          <th>Sinh viên (39.000đ/tháng)</th>
+          <th>Pro (79.000đ/tháng)</th>
+          <th>Học kỳ (159.000đ / 5 tháng)</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Số bài giảng / chu kỳ</td><td>4 bài / tháng</td><td><b>12 bài / tháng</b></td><td>30 bài / tháng</td><td>30 bài / tháng</td></tr>
-        <tr><td>Ưu đãi dùng thử tháng đầu</td><td>—</td><td><b style="color:var(--green)">Miễn phí ₫0 tháng đầu</b></td><td>Không áp dụng</td><td>Không áp dụng</td></tr>
-        <tr><td>Đồng bộ Slide &amp; Live Transcript</td><td>✓ Cơ bản</td><td>✓ Chuẩn xác cao</td><td>✓ Đa ngôn ngữ</td><td>✓ Đa ngôn ngữ</td></tr>
-        <tr><td>AI Copilot (Đính kèm File &amp; Voice)</td><td>Giới hạn</td><td>✓ Đầy đủ</td><td>✓ Không giới hạn</td><td>✓ Không giới hạn</td></tr>
-        <tr><td>Xuất học liệu Markdown &amp; Flashcard</td><td>—</td><td>✓ Có</td><td>✓ Có</td><td>✓ Có + Ưu tiên 24/7</td></tr>
+        <tr><td>Hạn mức bài giảng</td><td>4 bài / tháng</td><td><b>12 bài / tháng</b></td><td>30 bài / tháng</td><td><b>40 bài / học kỳ (5 tháng)</b></td></tr>
+        <tr><td>Thời lượng tối đa mỗi bài</td><td>60 phút / bài</td><td>120 phút / bài</td><td>180 phút / bài</td><td>180 phút / bài</td></tr>
+        <tr><td>Ưu đãi dùng thử</td><td>—</td><td><b style="color:var(--green)">Miễn phí ₫0 trong 1 tháng đầu</b></td><td>Giữ nguyên giá gốc</td><td>Giữ nguyên giá gốc</td></tr>
+        <tr><td>AI Copilot v4.0 (Gửi File &amp; Voice)</td><td>Giới hạn</td><td>✓ Đầy đủ</td><td>✓ Không giới hạn</td><td>✓ Không giới hạn + Ưu tiên 24/7</td></tr>
       </tbody>
     </table>
   </div>`;
@@ -2547,23 +3301,27 @@ function buy(i) {
   }
   const isTrial = !!p.trial;
   modal(`
-    <h3>${isTrial ? 'Kích hoạt ưu đãi gói ' + esc(p.n) : 'Thanh toán gói ' + esc(p.n)}</h3>
+    <h3>${isTrial ? 'Đăng ký gói ' + esc(p.n) + ' (Ưu đãi 1 tháng Free)' : 'Thanh toán gói ' + esc(p.n)}</h3>
     <b style="color:var(--brand);font-size:1.15rem">
-      ${isTrial ? 'Hôm nay thanh toán: ₫0 (Miễn phí tháng đầu)' : 'Tổng thanh toán: ' + p.p + ' ' + p.u}
+      ${isTrial ? 'Hôm nay thanh toán: ₫0 (Miễn phí tháng đầu)' : 'Số tiền thanh toán: ' + p.p + ' ' + p.u}
     </b>
-    <div class="qr">${Array.from({ length: 441 }, (_, idx) => `<i class="${(idx * 17 + i * 31) % 3 === 0 ? 'b' : ''}"></i>`).join('')}</div>
+    <div class="qr">
+      ${Array.from({ length: 441 }, (_, idx) => `<i class="${(idx * 17 + i * 31) % 3 === 0 ? 'b' : ''}"></i>`).join('')}
+      <span class="qr-tag">DEMO — KHÔNG THU TIỀN THẬT</span>
+    </div>
     <p class="muted" style="margin:0;font-size:.82rem">
       ${isTrial
-        ? `Quét mã xác thực sinh viên. Tháng đầu tiên hoàn toàn miễn phí (₫0), từ tháng thứ 2 mới tính phí ${p.p} ${p.u}.`
-        : `Quét mã QR để thanh toán trực tiếp gói ${esc(p.n)} (${p.p} ${p.u}). Không áp dụng dùng thử 0đ.`}
+        ? `Mã QR mô phỏng. Chỉ gói Sinh viên được miễn phí ₫0 trong 1 tháng đầu, từ tháng thứ 2 tính phí ${p.p} ${p.u}.`
+        : `Mã QR mô phỏng (không chuyển tiền thật). Gói ${esc(p.n)} áp dụng mức giá cố định ${p.p} ${p.u}.`}
     </p>
-    <button class="pri" data-a="paid" data-i="${i}">${isTrial ? 'Xác nhận kích hoạt ₫0' : 'Tôi đã thanh toán ' + p.p}</button>
+    <button class="pri" id="pay_confirm_btn" data-a="paid" data-i="${i}">${isTrial ? 'Kích hoạt 1 tháng Free' : 'Xác nhận thanh toán mẫu'}</button>
     <button class="ghost" data-a="close">Huỷ</button>`);
 }
 
-function pay(i) {
+function pay(i, btnEl) {
   const p = PL[i];
   if (!p) return;
+  if (btnEl) btnEl.disabled = true;
   modal('<div style="padding:20px 0"><span class="spin" style="width:28px;height:28px;border-width:3px"></span><h3 style="margin-top:14px">Đang xác nhận giao dịch…</h3></div>');
   setTimeout(() => {
     P.plan = p.n;
@@ -2576,7 +3334,7 @@ function pay(i) {
       <p class="muted" style="margin:0">Tài khoản của bạn đã có <b>${p.c} bài giảng</b> trong chu kỳ này.</p>
       <button class="pri" data-a="close">Bắt đầu học ngay</button>`);
     if (S.view === 'pricing') pricing();
-  }, 800);
+  }, 750);
 }
 
 /* Settings View */
@@ -2601,22 +3359,30 @@ function drawSet() {
   $('#main').innerHTML = `
   <header class="head">
     <div>
-      <p class="eyebrow">CÁ NHÂN HÓA HỆ THỐNG</p>
-      <h1>Settings</h1>
+      <p class="eyebrow">CÁ NHÂN HÓA &amp; BẢO MẬT</p>
+      <h1>Cài đặt hệ thống</h1>
     </div>
   </header>
   <div class="setg">
     <section class="panel">
-      <h3>Hồ sơ Tài khoản</h3>
-      <p class="muted" style="margin:6px 0 14px;font-size:.9rem">
-        ${u ? 'Đăng nhập qua ' + ({ email: 'Email', google: 'Google', apple: 'Apple' }[u.via] || 'Email') + (u.email ? ' · ' + esc(u.email) : '') : 'Chế độ khách'}
-      </p>
-      <label>Tên hiển thị
+      <h3>Hồ sơ &amp; Bảo mật tài khoản</h3>
+      <div class="row" style="margin:12px 0">
+        <div class="u-av" style="width:52px;height:52px">${P.avatar ? `<img src="${P.avatar}" alt="Avatar">` : esc((D.name || 'L')[0].toUpperCase())}</div>
+        <div>
+          <b>${esc(D.name)}</b>
+          <small class="muted" style="display:block">${u && u.email ? esc(u.email) : 'hocvien@easestudy.edu.vn'}</small>
+        </div>
+      </div>
+      <div class="row" style="margin-bottom:12px">
+        <button class="sec" style="padding:8px 12px;font-size:.82rem" data-a="profilemodal">🖼️ Đổi ảnh Avatar</button>
+        <button class="ghost" style="padding:8px 12px;font-size:.82rem" data-a="pwmodal">🔐 Đổi mật khẩu</button>
+      </div>
+      <label>Tên hiển thị nhanh
         <input id="sn2" value="${esc(D.name)}" placeholder="Nhập tên của bạn">
       </label>
-      <div class="row" style="margin-top:16px">
-        <button class="ghost" data-a="logout">Đăng xuất</button>
-        <button class="ghost" style="color:var(--danger)" data-a="reset">Đặt lại dữ liệu gốc</button>
+      <div class="row" style="margin-top:14px">
+        <button class="ghost" data-a="exportall">📦 Xuất toàn bộ dữ liệu (.json)</button>
+        <button class="ghost" style="color:var(--danger)" data-a="resetconfirm">🗑️ Xóa dữ liệu gốc</button>
       </div>
     </section>
 
@@ -2660,34 +3426,64 @@ function drawSet() {
   cbUpd();
 }
 
-/* Command Palette (Ctrl + K) */
+/* Command Palette (Ctrl + K with Keyboard Arrow Navigation ↑↓/Enter) */
 function openCmdPalette() {
   const m = $('#modal');
   m.innerHTML = `
     <div class="md cmd-box" data-a="x">
-      <input id="cmd_in" placeholder="🔍 Nhập tên bài giảng, thuật ngữ hoặc lệnh…" autocomplete="off">
+      <input id="cmd_in" placeholder="🔍 Tìm bài giảng, nội dung ghi chú, flashcard hoặc lệnh…" autocomplete="off">
       <div class="cmd-list" id="cmd_res"></div>
+      <div class="between" style="font-size:.73rem;color:var(--muted);padding-top:4px;border-top:1px solid var(--line)">
+        <span>Dùng phím <code>↑</code> <code>↓</code> để di chuyển, <code>Enter</code> để chọn</span>
+        <span><code>Esc</code> để đóng</span>
+      </div>
     </div>`;
   m.hidden = false;
   const input = $('#cmd_in');
   const res = $('#cmd_res');
+  let filteredItems = [];
+
   const render = () => {
     const q = (input.value || '').toLowerCase();
-    const items = [
+    const all = [
       ...P.lec.map(l => ({ label: '📚 Bài giảng: ' + l.title, sub: l.sub, act: () => { modal(); openLec(l.id); } })),
-      ...allTerms().map(t => ({ label: '📘 Thuật ngữ: ' + t.term, sub: 'Slide ' + t.slide, act: () => { modal(); openLec(1, 'notes'); go(t.slide); } })),
+      ...allTerms().map(t => ({ label: '📘 Thuật ngữ: ' + t.term, sub: t.def.slice(0, 35) + '…', act: () => { modal(); openLec(1, 'notes'); go(t.slide); } })),
+      ...DEMO.script.map(([sl, tx]) => ({ label: '📝 Ghi chú Slide ' + sl + ': ' + tx.slice(0, 42) + '…', sub: 'Transcript', act: () => { modal(); openLec(1, 'map'); go(sl); } })),
+      { label: '🖼️ Đổi ảnh đại diện (Avatar) & Hồ sơ', sub: 'Tài khoản', act: () => openProfileModal() },
+      { label: '🔐 Đổi mật khẩu bảo mật', sub: 'Bảo mật', act: () => openPasswordModal() },
       { label: '🎙 Tạo buổi học Live mới', sub: 'Shortcut', act: () => { modal(); create(); } },
-      { label: '💎 Xem bảng giá & Nâng cấp gói', sub: 'Pricing', act: () => { modal(); pricing(); } },
-      { label: '🌓 Đổi giao diện Sáng / Tối', sub: 'Theme', act: () => { modal(); P.theme = P.theme === 'dark' ? 'light' : 'dark'; save(); applyPrefs(P); } }
-    ].filter(x => x.label.toLowerCase().includes(q) || x.sub.toLowerCase().includes(q));
+      { label: '💎 Xem bảng giá & Ưu đãi Sinh viên ₫0', sub: 'Pricing', act: () => { modal(); pricing(); } }
+    ];
+    filteredItems = all.filter(x => x.label.toLowerCase().includes(q) || x.sub.toLowerCase().includes(q));
+    S.cmdIdx = 0;
+    drawCmdItems();
+  };
 
-    res.innerHTML = items.length
-      ? items.map((it, idx) => `<button class="cmd-item" data-cidx="${idx}"><span>${esc(it.label)}</span><small class="muted">${esc(it.sub)}</small></button>`).join('')
+  const drawCmdItems = () => {
+    res.innerHTML = filteredItems.length
+      ? filteredItems.map((it, idx) => `<button class="cmd-item ${idx === S.cmdIdx ? 'active' : ''}" data-cidx="${idx}"><span>${esc(it.label)}</span><small class="muted">${esc(it.sub)}</small></button>`).join('')
       : '<p class="muted" style="padding:10px">Không tìm thấy kết quả phù hợp.</p>';
     res.querySelectorAll('.cmd-item').forEach((btn, idx) => {
-      btn.onclick = () => items[idx].act();
+      btn.onclick = () => filteredItems[idx].act();
     });
   };
+
+  input.onkeydown = ev => {
+    if (!filteredItems.length) return;
+    if (ev.key === 'ArrowDown') {
+      ev.preventDefault();
+      S.cmdIdx = (S.cmdIdx + 1) % filteredItems.length;
+      drawCmdItems();
+    } else if (ev.key === 'ArrowUp') {
+      ev.preventDefault();
+      S.cmdIdx = (S.cmdIdx + filteredItems.length - 1) % filteredItems.length;
+      drawCmdItems();
+    } else if (ev.key === 'Enter') {
+      ev.preventDefault();
+      filteredItems[S.cmdIdx]?.act();
+    }
+  };
+
   input.oninput = render;
   render();
   input.focus();
@@ -2750,49 +3546,49 @@ function openLec(id, tab) {
 
 function help() {
   modal(`
-    <h3>Cẩm nang sử dụng EaseStudy</h3>
+    <h3>Cẩm nang sử dụng EaseStudy v4.0</h3>
     <div style="text-align:left;display:grid;gap:8px;font-size:.92rem;color:var(--muted)">
-      <div><b>1. Chuẩn bị:</b> Chọn môn học, tải slide PDF hoặc tải file ghi âm có sẵn.</div>
-      <div><b>2. Trong giờ học:</b> Bật Micro thu âm trực tiếp hoặc chạy bài mẫu. Nhấn ✎ để sửa nhanh bất kỳ câu phụ đề nào.</div>
-      <div><b>3. AI Copilot 2.0:</b> Nhấn biểu tượng 🤖 góc phải để hỏi bài, đính kèm file (📎) hoặc ghi âm giọng nói (🎙) gửi trực tiếp cho AI.</div>
-      <div><b>4. Phím tắt Pro:</b> Nhấn <code>Ctrl + K</code> để mở thanh tìm kiếm nhanh; dùng <code>←</code> <code>→</code> để chuyển Slide.</div>
+      <div><b>1. Hồ sơ &amp; Bảo mật:</b> Bấm vào Avatar góc trên bên phải để đổi ảnh đại diện, đổi tên và đổi mật khẩu.</div>
+      <div><b>2. Trong giờ học:</b> Bật Micro thu âm trực tiếp (tự động lưu nháp và giữ sáng màn hình). Nhấn ✎ để sửa câu hoặc gán lại trang Slide.</div>
+      <div><b>3. AI Copilot v4.0:</b> Nhấn biểu tượng 🤖 góc phải dưới để hỏi bài, bấm <code>📎 File</code> gửi tài liệu hoặc bấm <code>🎙 Voice</code> thu âm câu hỏi.</div>
+      <div><b>4. Phím tắt Pro:</b> Nhấn <code>Ctrl + K</code> (hoặc <code>⌘K</code>) để mở thanh tìm kiếm nhanh; dùng <code>←</code> <code>→</code> để chuyển Slide.</div>
     </div>
     <button class="pri" data-a="close">Đã hiểu</button>`);
 }
 
 /* =========================================================================
-   UPGRADED EASE AI COPILOT 2.0 (WITH VOICE RECORDING & FILE UPLOAD)
+   EASE AI COPILOT v4.0 — MULTIMODAL (VOICE RECORDING + FILE UPLOAD + MODES)
    ========================================================================= */
-const MS = '<svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><line x1="24" y1="3" x2="24" y2="11" stroke="#fff" stroke-width="2"/><circle cx="24" cy="4" r="3" fill="#FBBF24"/><rect x="6" y="11" width="36" height="28" rx="12" fill="#fff"/><rect x="10" y="16" width="28" height="18" rx="9" fill="#2563EB"/><circle class="ey" cx="19" cy="25" r="3" fill="#fff"/><circle class="ey" cx="29" cy="25" r="3" fill="#fff"/><path d="M20 30q4 3 8 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
-const QC = ['📌 Tóm tắt sâu slide này', '📐 Giải thích kèm công thức', '📝 Ra 3 câu trắc nghiệm', '🎯 Phân tích ví dụ thực tế'];
+const MS = '<svg viewBox="0 0 48 48" width="38" height="38" aria-hidden="true"><line x1="24" y1="3" x2="24" y2="11" stroke="#fff" stroke-width="2"/><circle cx="24" cy="4" r="3" fill="#FBBF24"/><rect x="6" y="11" width="36" height="28" rx="12" fill="#fff"/><rect x="10" y="16" width="28" height="18" rx="9" fill="#2563EB"/><circle class="ey" cx="19" cy="25" r="3" fill="#fff"/><circle class="ey" cx="29" cy="25" r="3" fill="#fff"/><path d="M20 30q4 3 8 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
+const QC = ['📌 Tóm tắt sâu slide này', '📐 Giải thích kèm công thức', '📝 Ra 3 câu trắc nghiệm', '🎯 Ví dụ thực tế'];
 
 function chit(q) {
   const l = q.toLowerCase().trim();
   const R = a => a[Math.floor(Math.random() * a.length)];
-  if (/^(xin )?chào|^hello|^hi$|^hey|^alo/.test(l)) return R(['Chào ' + P.name + '! Mình là Ease Copilot 2.0. Bạn có thể gõ câu hỏi, đính kèm tài liệu (📎) hoặc bấm nút Micro (🎙) để nói chuyện trực tiếp với mình nhé!', 'Hey ' + P.name + '! Hôm nay chúng ta cùng chinh phục môn học nào đây?']);
-  if (/khỏe không|khoẻ không|how are you|dạo này (sao|thế nào)/.test(l)) return 'Hệ thống Neural Engine của mình đang hoạt động ở mức 100% công suất! Còn bạn thì sao, sẵn sàng ôn tập chưa?';
-  if (/bạn là ai|tên gì|who are you/.test(l)) return 'Mình là Ease Copilot 2.0 🤖 — trợ lý học thuật đa phương thức của EaseStudy. Mình nhận diện được cả văn bản, file tài liệu đính kèm và bản ghi âm giọng nói của bạn!';
+  if (/^(xin )?chào|^hello|^hi$|^hey|^alo/.test(l)) return R(['Chào ' + P.name + '! Mình là Ease Copilot v4.0. Bạn có thể gõ câu hỏi, bấm 📎 File để đính kèm bài tập, hoặc bấm 🎙 Voice để nói chuyện trực tiếp với mình nhé!', 'Hey ' + P.name + '! Hôm nay chúng ta cùng chinh phục môn học nào đây?']);
+  if (/khỏe không|khoẻ không|how are you|dạo này (sao|thế nào)/.test(l)) return 'Hệ thống Neural Engine v4.0 của mình đang chạy 100% công suất! Còn bạn thì sao, sẵn sàng ôn tập chưa?';
+  if (/bạn là ai|tên gì|who are you/.test(l)) return 'Mình là Ease Copilot v4.0 🤖 — trợ lý học thuật đa phương thức của EaseStudy. Mình xử lý được văn bản, file tài liệu đính kèm (PDF/Ảnh/Docx) và cả giọng nói của bạn!';
   if (/cảm ơn|cám ơn|thanks|thank you/.test(l)) return R(['Rất sẵn lòng! Chúc bạn bứt phá điểm A+ học kỳ này nhé 😊', 'Không có chi! Cần phân tích thêm slide hay file nào cứ gửi cho mình.']);
-  if (/chán|buồn|mệt|stress|áp lực|nản/.test(l)) return 'Áp lực thi cử là điều ai cũng trải qua. Bạn hãy áp dụng quy tắc Pomodoro: nghỉ ngơi 5 phút, uống chút nước ấm, sau đó gửi slide khó nhất vào đây để mình tóm tắt ngắn gọn cho bạn nhé!';
+  if (/chán|buồn|mệt|stress|áp lực|nản/.test(l)) return 'Áp lực thi cử là điều ai cũng trải qua. Bạn hãy áp dụng quy tắc Pomodoro: nghỉ ngơi 5 phút, uống chút nước ấm, sau đó bấm 📎 gửi slide khó nhất vào đây để mình tóm tắt ngắn gọn cho bạn nhé!';
   return '';
 }
 
 function bot(q, attachedFile, isVoice) {
   const modePrefix = {
     tutor: '🎓 [Chế độ Học thuật chuyên sâu]',
-    exam: '✅ [Chế độ Luyện thi & Giải bài tập]',
-    socratic: '💡 [Chế độ Gợi mở Socratic]'
+    exam: '✍️ [Chế độ Giải bài tập & Luyện thi]',
+    socratic: '🧠 [Chế độ Gợi mở Socratic]'
   }[S.aiMode] || '🎓 [Ease AI Copilot]';
 
   if (attachedFile) {
     const ext = attachedFile.name.split('.').pop().toLowerCase();
-    const isAudio = ['mp3', 'wav', 'm4a', 'ogg'].includes(ext);
+    const isAudio = ['mp3', 'wav', 'm4a', 'ogg', 'aac', 'webm'].includes(ext);
     const isDoc = ['pdf', 'docx', 'doc', 'txt', 'pptx'].includes(ext);
     return `${modePrefix}\nĐã phân tích xong file đính kèm: “${attachedFile.name}” (${(attachedFile.size / 1024).toFixed(1)} KB).\n\n` +
       (isAudio
         ? `🎙 Kết quả bóc băng AI:\n• Nội dung trọng tâm: Phân tích mối quan hệ giữa Thỏa dụng biên (MU), Đường bàng quan và cân bằng tiêu dùng.\n• Gợi ý: Bạn có thể bấm nút “+ Tải file ghi âm” ở màn hình chính để tạo trọn bộ Flashcard từ file âm thanh này!`
         : isDoc
-          ? `📑 Tóm tắt cấu trúc tài liệu:\n1. Luận điểm cốt lõi: Tối đa hóa lợi ích dưới ràng buộc ngân sách hữu hạn (Px·X + Py·Y = I).\n2. Công thức cần nhớ: MUx / Px = MUy / Py.\n3. Câu hỏi trọng tâm: ${q || 'Tài liệu đã được đối chiếu khớp với Slide ' + S.slide + '.'}`
+          ? `📑 Tóm tắt cấu trúc tài liệu:\n1. Luận điểm cốt lõi: Tối đa hóa lợi ích dưới ràng buộc ngân sách hữu hạn (Px·X + Py·Y = I).\n2. Công thức cần nhớ: MUx / Px = MUy / Py.\n3. Phản hồi yêu cầu: ${q || 'Tài liệu đã được đối chiếu khớp với Slide ' + S.slide + '.'}`
           : `🖼 Đã quét hình ảnh/tài liệu đính kèm và trích xuất các khái niệm liên quan tới Slide ${S.slide}. ${q ? 'Trả lời cho câu hỏi của bạn: Các đường bàng quan lồi về gốc tọa độ do tỷ lệ thay thế biên MRS giảm dần.' : ''}`);
   }
 
@@ -2831,7 +3627,7 @@ function bot(q, attachedFile, isVoice) {
     const e = EXT.find(x => hit.term.toLowerCase().includes(x.k));
     return `${modePrefix}\n📘 ${hit.term} (Slide ${hit.slide}):\n${hit.def}${e ? '\n\n✨ ' + e.x : ''}`;
   }
-  return `${modePrefix}\nVề vấn đề “${q}” ở Slide ${S.slide}:\nTrong kinh tế học vi mô, mọi quyết định tối ưu đều dựa trên việc so sánh Lợi ích cận biên (Marginal Benefit) và Chi phí cận biên (Marginal Cost). Bạn có thể đính kèm thêm file bài tập (nút 📎) hoặc bấm ghi âm (🎙) để mình giải chi tiết từng bước nhé!`;
+  return `${modePrefix}\nVề câu hỏi “${q}” tại Slide ${S.slide}:\nTrong kinh tế học vi mô, mọi quyết định tối ưu đều dựa trên việc so sánh Lợi ích cận biên (MB) và Chi phí cận biên (MC). Bạn có thể đính kèm thêm file bài tập (nút 📎 File) hoặc bấm ghi âm (🎙 Voice) để mình giải chi tiết từng bước nhé!`;
 }
 
 function cmsg(r, htmlContent) {
@@ -2851,78 +3647,88 @@ function sendChatPayload(textInput, isVoiceNote = false) {
     userHtml += `<div class="chat-att-card">📎 <span>${esc(file.name)} (${(file.size / 1024).toFixed(1)} KB)</span></div>`;
   }
   if (isVoiceNote) {
-    userHtml += `<div class="chat-att-card">🎙 <span>Bản ghi âm giọng nói (${fmt(S.chatRecSec * 1000)})</span></div>`;
+    userHtml += `<div class="chat-att-card">🎙 <span>Bản ghi âm giọng nói (${fmt(Math.max(1, S.chatRecSec) * 1000)})</span></div>`;
   }
   if (q) userHtml += `<div>${esc(q)}</div>`;
 
   cmsg('u', userHtml);
 
-  // Clear tray
+  // Clear attachment tray
   S.chatFile = null;
   const tray = $('#ctray');
   if (tray) tray.hidden = true;
   const cfile = $('#cfile');
   if (cfile) cfile.value = '';
 
-  cmsg('b', '<span class="spin"></span> Ease AI Copilot đang phân tích dữ liệu…');
+  cmsg('b', '<span class="spin"></span> Ease Copilot v4.0 đang phân tích dữ liệu…');
   const m = $('#cm');
   const w = m.lastElementChild;
   setTimeout(() => {
     w.innerHTML = esc(bot(q, file, isVoiceNote));
     m.scrollTop = m.scrollHeight;
-  }, 550);
+  }, 500);
 }
 
 document.body.insertAdjacentHTML('beforeend', `
-  <button id="cbtn" class="fab" data-a="chat" aria-label="Mở trợ lý AI" aria-expanded="false">${MS}</button>
-  <section id="chat" class="chat" hidden aria-label="EaseStudy AI Copilot 2.0">
+  <button id="cbtn" class="fab" data-a="chat" aria-label="Mở trợ lý AI" aria-expanded="false">
+    ${MS}
+    <span class="fab-badge">v4.0</span>
+  </button>
+  <section id="chat" class="chat" hidden aria-label="EaseStudy AI Copilot v4.0">
     <header>
       <div class="chat-h-left">
         ${MS}
         <div>
-          <b>EaseStudy AI Copilot 2.0</b>
-          <small>Hỗ trợ Văn bản · Ghi âm giọng nói · Phân tích File</small>
+          <b>Ease AI Copilot <span class="v-pill">PRO v4.0</span></b>
+          <small>Hỗ trợ Văn bản · Ghi âm giọng nói · Đính kèm File</small>
         </div>
       </div>
       <div class="row">
+        <button class="ib" data-a="chatclear" title="Làm mới cuộc trò chuyện">🗑️</button>
         <button class="ib" data-a="chatwide" title="Mở rộng / Thu nhỏ cửa sổ">⤢</button>
         <button class="ib" data-a="chat" aria-label="Đóng chat">✕</button>
       </div>
     </header>
     <div class="chat-modes">
       <button class="on" data-a="aimode" data-m="tutor">🎓 Học thuật</button>
-      <button data-a="aimode" data-m="exam">✅ Giải bài tập</button>
-      <button data-a="aimode" data-m="socratic">💡 Phản biện Socratic</button>
+      <button data-a="aimode" data-m="exam">✍️ Giải bài</button>
+      <button data-a="aimode" data-m="socratic">🧠 Socratic</button>
     </div>
     <div id="cm" aria-live="polite"></div>
-    <div class="qc">${QC.map(q => `<button data-a="chip" data-q="${q}">${q}</button>`).join('')}</div>
+    <div class="qc">${QC.map(q => `<button type="button" data-a="chip" data-q="${q}">${q}</button>`).join('')}</div>
 
     <div id="ctray" class="chat-tray" hidden>
       <span id="ctray_name" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
-      <button class="ghost" style="padding:2px 8px;font-size:.75rem" data-a="rmchatfile">✕ Gỡ</button>
+      <button type="button" class="ghost" style="padding:2px 8px;font-size:.74rem" data-a="rmchatfile">✕ Gỡ file</button>
     </div>
 
     <div id="crecbar" class="chat-rec-bar" hidden>
       <div class="row">
         <span class="wave-bars active"><i></i><i></i><i></i><i></i><i></i></span>
-        <span id="crectm">Đang ghi âm: 00:00</span>
+        <span id="crectm">Đang thu âm: 00:00</span>
       </div>
       <div class="row">
-        <button class="ghost" style="padding:4px 10px;font-size:.76rem;color:var(--text)" data-a="cancelchatrec">Huỷ</button>
-        <button class="pri" style="padding:4px 12px;font-size:.76rem" data-a="sendchatrec">Gửi Voice ➜</button>
+        <button type="button" class="ghost" style="padding:4px 10px;font-size:.75rem;color:var(--text)" data-a="cancelchatrec">Huỷ</button>
+        <button type="button" class="pri" style="padding:4px 12px;font-size:.75rem" data-a="sendchatrec">Gửi Voice ➜</button>
       </div>
     </div>
 
     <form id="cf">
-      <button type="button" class="c-tool" data-a="chatattach" title="Đính kèm file (PDF, Ảnh, Audio, Docx)">📎</button>
+      <button type="button" class="c-tool" data-a="chatattach" title="Đính kèm file (PDF, Ảnh, Audio, Docx)">📎 File</button>
       <input id="cfile" type="file" accept=".pdf,.png,.jpg,.jpeg,.mp3,.wav,.m4a,.txt,.docx" hidden>
-      <button type="button" id="cmicbtn" class="c-tool" data-a="chatmic" title="Ghi âm giọng nói trực tiếp">🎙</button>
-      <input id="ci" type="text" placeholder="Hỏi AI, gửi file hoặc bấm 🎙 để nói…" aria-label="Câu hỏi" autocomplete="off">
-      <button class="pri" style="padding:9px 15px;border-radius:12px" type="submit">Gửi</button>
+      <button type="button" id="cmicbtn" class="c-tool" data-a="chatmic" title="Ghi âm giọng nói trực tiếp">🎙 Voice</button>
+      <input id="ci" type="text" placeholder="Hỏi bài, gửi file hoặc thu âm…" aria-label="Câu hỏi" autocomplete="off">
+      <button class="pri" style="padding:9px 14px;border-radius:12px" type="submit">Gửi</button>
     </form>
   </section>`);
 
-cmsg('b', 'Chào bạn! Mình là Ease Copilot 2.0 🤖.\nBạn có thể:\n• Gõ câu hỏi học thuật hoặc chọn gợi ý bên dưới.\n• Nhấn 📎 để gửi file PDF, hình ảnh bài tập hoặc file ghi âm.\n• Nhấn 🎙 để ghi âm giọng nói hỏi bài trực tiếp!');
+function initWelcomeChat() {
+  const m = $('#cm');
+  if (!m) return;
+  m.innerHTML = '';
+  cmsg('b', 'Chào bạn! Mình là Ease Copilot v4.0 🤖.\nBạn có thể tương tác đa phương thức:\n• Chọn chế độ (Học thuật / Giải bài / Socratic) ở thanh trên.\n• Nhấn nút [📎 File] để gửi tài liệu PDF, ảnh chụp bài tập hoặc file âm thanh.\n• Nhấn nút [🎙 Voice] để ghi âm câu hỏi bằng giọng nói trực tiếp!');
+}
+initWelcomeChat();
 
 $('#cfile').onchange = e => {
   const f = e.target.files[0];
@@ -2951,7 +3757,7 @@ function toggleChatVoiceRec() {
   S.chatRecSec = 0;
   bar.hidden = false;
   btn.classList.add('rec-on');
-  $('#crectm').textContent = 'Đang ghi âm: 00:00';
+  $('#crectm').textContent = 'Đang thu âm: 00:00';
 
   const R = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (R) {
@@ -2972,7 +3778,7 @@ function toggleChatVoiceRec() {
   clearInterval(S.chatRecTimer);
   S.chatRecTimer = setInterval(() => {
     S.chatRecSec++;
-    $('#crectm').textContent = 'Đang ghi âm: ' + fmt(S.chatRecSec * 1000);
+    $('#crectm').textContent = 'Đang thu âm: ' + fmt(S.chatRecSec * 1000);
   }, 1000);
 }
 
@@ -2994,11 +3800,11 @@ function stopChatVoiceRec(shouldSend) {
 
 /* Guided Spotlight Tour */
 const TS = [
-  { s: '.create', pre: () => home(), t: 'Chào mừng bạn đến với EaseStudy! Đây là khu vực khởi tạo nhanh buổi học mới: tải trước Slide hoặc tải file ghi âm để AI bóc băng tự động.' },
-  { s: '#main .panel', pre: () => create(), t: 'Tại đây bạn chọn môn học, nạp file PDF và giới hạn từ khóa để AI tập trung bắt ý chuẩn xác nhất.' },
-  { s: '.col', pre: () => { live(true); go(2); S.segs = [{ text: DEMO.script[2][1], slide: 2, ms: 45000, en: EN[2] }]; drawTr(); }, t: 'Phòng học Live! Phụ đề tự động neo vào đúng trang Slide đang chiếu kèm biểu đồ sóng âm trực quan.' },
-  { s: '.pack', pre: () => { openLec(1, 'map'); S.sel = 1; dMap($('#pk')); go(2); }, t: 'Bản đồ bài giảng: Nhấn vào bất kỳ câu giảng nào để tua lại đúng trang Slide, nghe đọc lại hoặc chỉnh sửa phụ đề.' },
-  { s: '.pack', pre: () => openLec(1, 'flash'), t: 'Cuối cùng là hệ thống Smart Notes, Flashcard và Quiz tự động chấm điểm giúp bạn ôn thi đạt hiệu quả tối đa!' }
+  { s: '#acc_btn', pre: () => home(), t: 'Mới! Nhấn vào cụm Tài khoản & Avatar ở góc trên bên phải để đổi ảnh đại diện, đổi tên hiển thị và cập nhật mật khẩu bảo mật.' },
+  { s: '.create', pre: () => home(), t: 'Khu vực khởi tạo buổi học mới: tải trước Slide PDF hoặc tải file ghi âm (.mp3, .m4a, .wav) để AI bóc băng tự động.' },
+  { s: '#main .panel', pre: () => create(), t: 'Tại đây bạn chọn môn học, ngôn ngữ bài giảng (Việt/Anh) và từ khóa để AI tự động hiệu chỉnh thuật ngữ.' },
+  { s: '.col', pre: () => { live(true); go(2); S.segs = [{ text: DEMO.script[2][1], slide: 2, ms: 45000, en: EN[2] }]; drawTr(); }, t: 'Phòng học Live! Phụ đề tự động lưu nháp mỗi câu, giữ màn hình luôn sáng và đồng bộ chuẩn xác với trang Slide.' },
+  { s: '.pack', pre: () => openLec(1, 'quiz'), t: 'Học liệu thông minh: Smart Notes song ngữ, Flashcard và Quiz có giải thích chi tiết kèm dẫn nguồn Slide!' }
 ];
 
 function positionTourSpotlight() {
@@ -3066,7 +3872,7 @@ function endTour() {
 window.addEventListener('resize', () => { if ($('#sp')) positionTourSpotlight(); });
 window.addEventListener('scroll', () => { if ($('#sp')) positionTourSpotlight(); }, { passive: true });
 
-/* Authentication UI */
+/* Authentication UI (Added "Dùng thử ngay bài mẫu 10 giây" button) */
 const SCENE = '<svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="sg"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="400" height="540" fill="#CFE8FA"/><circle cx="290" cy="200" r="170" fill="url(#sg)"/><g fill="#fff"><rect x="30" y="50" width="160" height="26" rx="13"/><rect x="215" y="95" width="140" height="24" rx="12"/><rect x="70" y="135" width="120" height="22" rx="11" opacity=".8"/><rect x="250" y="20" width="110" height="20" rx="10" opacity=".7"/></g><path d="M0 320q50-18 100 0t100 0 100 0 100 0V540H0z" fill="#5AA9E6"/><path d="M0 385q50-14 100 0t100 0 100 0 100 0V540H0z" fill="#3B8FD6" opacity=".75"/><g fill="#2F7FC9" opacity=".8"><ellipse cx="80" cy="430" rx="20" ry="8"/><path d="M98 430l13-8v16z"/><ellipse cx="250" cy="470" rx="24" ry="9"/><path d="M272 470l14-9v18z"/><ellipse cx="160" cy="500" rx="16" ry="6"/><path d="M174 500l10-6v12z"/></g><g class="bt"><path d="M95 305h190l-24 36H119z" fill="#8B6B52"/><rect x="172" y="252" width="48" height="54" rx="18" fill="#2563EB"/><circle cx="196" cy="238" r="18" fill="#FFD6B0"/><path d="M174 230l22-11 22 11-22 11z" fill="#12192C"/><rect x="186" y="231" width="20" height="10" fill="#12192C"/><path d="M212 262L340 170" stroke="#6B4F3A" stroke-width="3" fill="none"/><path d="M340 170q6 55 0 110" stroke="#fff" stroke-width="1.5" fill="none"/><text x="327" y="305" font-size="24">💡</text></g></svg>';
 const APPLE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/></svg>';
 
@@ -3087,12 +3893,12 @@ function authUI(m) {
       </div>
       <div id="ae" role="alert"></div>
       <button class="reg" type="submit"><span>${g ? 'Đăng ký tài khoản' : 'Đăng nhập'}</span><span>➜</span></button>
+      <button type="button" class="try-demo-btn" data-a="guestdemo">⚡ Dùng thử ngay bài mẫu (Không cần đăng ký)</button>
       <div class="or">hoặc tiếp tục nhanh với</div>
       <div class="socs">
         <button type="button" class="soc" data-a="soc" data-v="google"><span class="gg">G</span> Google</button>
         <button type="button" class="soc" data-a="soc" data-v="apple">${APPLE} Apple</button>
       </div>
-      <small class="muted">Chế độ trình diễn: thông tin đăng nhập lưu cục bộ trên trình duyệt của bạn.</small>
     </form>
     <div class="ar">
       ${SCENE}
@@ -3110,6 +3916,7 @@ function authUI(m) {
     const er = $('#ae');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) return er.textContent = 'Vui lòng nhập địa chỉ email hợp lệ.';
     if (pw.length < 6) return er.textContent = 'Mật khẩu cần có ít nhất 6 ký tự.';
+    P.pw = pw;
     login({ name: em.split('@')[0], email: em, via: 'email' });
   };
 }
@@ -3119,13 +3926,13 @@ function showAuth() {
   authUI('reg');
 }
 
-function login(u) {
+function login(u, skipTour = false) {
   P.user = u;
   P.name = u.name || 'Learner';
   save();
   $('#auth').hidden = true;
   home();
-  if (!P.tour) setTimeout(() => tour(0), 600);
+  if (!P.tour && !skipTour) setTimeout(() => tour(0), 600);
 }
 
 /* Unified Action Dispatcher */
@@ -3138,6 +3945,97 @@ const ACTIONS = {
   settings,
   help,
   cmd: openCmdPalette,
+  uilang: () => {
+    P.uiLang = P.uiLang === 'en' ? 'vi' : 'en';
+    save();
+    applyI18n();
+    toast(P.uiLang === 'en' ? 'Switched interface language to English' : 'Đã chuyển ngôn ngữ giao diện sang Tiếng Việt');
+  },
+  sample10s: () => {
+    openLec(1, 'notes');
+    toast('⚡ Đã mở bài giảng mẫu “Kinh tế vi mô” (kèm Slide + Transcript + Flashcard + Quiz)!');
+  },
+  guestdemo: () => {
+    P.tour = 1;
+    login({ name: 'Khách trải nghiệm', email: 'guest@easestudy.edu.vn', via: 'guest' }, true);
+    openLec(1, 'notes');
+    toast('⚡ Chào mừng! Bạn đang xem bài mẫu Kinh tế vi mô.');
+  },
+  accmenu: () => {
+    const m = $('#acc_menu');
+    const b = $('#acc_btn');
+    if (!m || !b) return;
+    const show = m.hidden;
+    m.hidden = !show;
+    b.setAttribute('aria-expanded', show);
+    if (show && P.notif) {
+      P.notif = 0;
+      save();
+    }
+  },
+  profilemodal: openProfileModal,
+  pickavfile: () => $('#av_file_in')?.click(),
+  presetav: el => {
+    const idx = +el.dataset.idx;
+    if (AV_PRESETS[idx]) {
+      P.avatar = AV_PRESETS[idx];
+      const prev = $('#prof_av_prev');
+      if (prev) prev.innerHTML = `<img src="${P.avatar}" alt="Avatar">`;
+      updPlan();
+      toast('✓ Đã chọn Avatar mẫu!');
+    }
+  },
+  clearav: () => {
+    P.avatar = '';
+    const prev = $('#prof_av_prev');
+    if (prev) prev.textContent = (P.name || 'L')[0].toUpperCase();
+    updPlan();
+  },
+  saveprofile: () => {
+    const newName = ($('#prof_name_in')?.value || '').trim();
+    const newEmail = ($('#prof_email_in')?.value || '').trim();
+    if (!newName) return toast('Tên hiển thị không được để trống.');
+    P.name = newName;
+    if (!P.user) P.user = { via: 'email' };
+    P.user.name = newName;
+    if (newEmail) P.user.email = newEmail;
+    save();
+    modal();
+    if (S.view === 'home') home();
+    else if (S.view === 'settings') settings();
+    toast('✓ Đã lưu hồ sơ & ảnh đại diện mới!');
+  },
+  pwmodal: openPasswordModal,
+  togpw: el => {
+    const inp = $('#' + el.dataset.t);
+    if (inp) inp.type = inp.type === 'password' ? 'text' : 'password';
+  },
+  savepw: () => {
+    const oldVal = $('#pw_old')?.value || '';
+    const newVal = $('#pw_new')?.value || '';
+    const cfmVal = $('#pw_cfm')?.value || '';
+    const err = $('#pw_err');
+    if (oldVal !== P.pw) {
+      if (err) err.textContent = '✕ Mật khẩu cũ không chính xác (Mặc định: 123456).';
+      return;
+    }
+    if (newVal.length < 6) {
+      if (err) err.textContent = '✕ Mật khẩu mới phải có ít nhất 6 ký tự.';
+      return;
+    }
+    if (newVal === oldVal) {
+      if (err) err.textContent = '✕ Mật khẩu mới phải khác mật khẩu cũ.';
+      return;
+    }
+    if (newVal !== cfmVal) {
+      if (err) err.textContent = '✕ Xác nhận mật khẩu mới không khớp.';
+      return;
+    }
+    P.pw = newVal;
+    save();
+    modal();
+    toast('🔐 Đã đổi mật khẩu thành công!');
+  },
   addterm: addTermModal,
   saveterm: () => {
     const term = ($('#nt_term')?.value || '').trim();
@@ -3151,6 +4049,24 @@ const ACTIONS = {
     if (S.view === 'materials') materials();
   },
   export: exportNotes,
+  exportall: () => {
+    const blob = new Blob([JSON.stringify(P, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'easestudy-backup.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast('📦 Đã tải xuống bản sao lưu dữ liệu (.json)');
+  },
+  resetconfirm: () => {
+    modal(`
+      <h3>Xác nhận xóa toàn bộ dữ liệu?</h3>
+      <p class="muted" style="margin:0;font-size:.9rem">Hành động này sẽ xóa vĩnh viễn mọi bài giảng, ghi chú và cài đặt cá nhân trên trình duyệt này.</p>
+      <div class="row" style="justify-content:center;margin-top:8px">
+        <button class="ghost" data-a="close">Huỷ</button>
+        <button class="pri" style="background:var(--danger)" data-a="reset">Xóa vĩnh viễn</button>
+      </div>`);
+  },
   close: () => modal(),
   prev: () => go(S.slide - 1),
   next: () => go(S.slide + 1),
@@ -3170,6 +4086,12 @@ const ACTIONS = {
     toast('Đã chuyển về bộ slide mẫu.');
     create();
   },
+  cleardraft: () => {
+    S.segs = [];
+    try { localStorage.removeItem('es_draft'); } catch {}
+    drawTr();
+    toast('Đã xóa bản nháp phụ đề.');
+  },
   audio: () => $('#fa')?.click(),
   newlive: create,
   mic,
@@ -3187,26 +4109,42 @@ const ACTIONS = {
   open: el => openLec(el.dataset.id, el.dataset.t),
   dellec: el => {
     const id = el.dataset.id;
-    P.lec = P.lec.filter(x => String(x.id) !== String(id));
-    save();
-    toast('Đã xóa bài giảng.');
-    lectures();
+    const target = P.lec.find(x => String(x.id) === String(id));
+    modal(`
+      <h3>Xóa bài giảng “${esc(target ? target.title : '')}”?</h3>
+      <p class="muted" style="margin:0;font-size:.88rem">Bản ghi và học liệu của bài giảng này sẽ bị xóa khỏi thư viện.</p>
+      <div class="row" style="justify-content:center;margin-top:8px">
+        <button class="ghost" data-a="close">Huỷ</button>
+        <button class="pri" style="background:var(--danger)" id="cfm_del_lec">Xóa bài giảng</button>
+      </div>`);
+    $('#cfm_del_lec').onclick = () => {
+      P.lec = P.lec.filter(x => String(x.id) !== String(id));
+      save();
+      modal();
+      toast('Đã xóa bài giảng.');
+      lectures();
+    };
   },
   editseg: el => {
     const idx = +el.dataset.i;
     const seg = S.segs[idx];
     if (!seg) return;
     modal(`
-      <h3>Chỉnh sửa câu giảng (Slide ${seg.slide})</h3>
-      <input id="ed_seg_in" value="${esc(seg.text)}">
+      <h3>Chỉnh sửa câu giảng &amp; Mốc Slide</h3>
+      <div style="text-align:left;display:grid;gap:10px">
+        <label>Nội dung câu phụ đề<input id="ed_seg_in" value="${esc(seg.text)}"></label>
+        <label>Gắn với trang Slide số<input id="ed_seg_sl" type="number" min="1" max="999" value="${seg.slide}"></label>
+      </div>
       <div class="row" style="justify-content:center;margin-top:6px">
         <button class="ghost" data-a="close">Huỷ</button>
         <button class="pri" id="ed_seg_sv">Lưu thay đổi</button>
       </div>`);
     $('#ed_seg_sv').onclick = () => {
       const val = ($('#ed_seg_in')?.value || '').trim();
+      const newSl = Math.max(1, parseInt($('#ed_seg_sl')?.value || seg.slide, 10));
       if (val) {
         seg.text = val;
+        seg.slide = newSl;
         const curLec = P.lec.find(x => x.id == S.curLecId);
         if (curLec && curLec.segs) save();
         modal();
@@ -3216,7 +4154,7 @@ const ACTIONS = {
           mk(sh);
           drawPack();
         }
-        toast('✓ Đã cập nhật câu phụ đề.');
+        toast('✓ Đã cập nhật câu phụ đề & mốc Slide.');
       }
     };
   },
@@ -3228,7 +4166,13 @@ const ACTIONS = {
   jump: el => go(+el.dataset.n),
   tab: el => { S.tab = el.dataset.v; drawPack(); },
   pick: el => { S.picked[el.dataset.q] = +el.dataset.o; drawPack(); },
-  retryquiz: () => { S.picked = {}; drawPack(); },
+  retryquiz: () => {
+    S.picked = {};
+    const sh = a => a.map(x => [Math.random(), x]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+    mk(sh);
+    drawPack();
+  },
+  reportq: () => toast('🚩 Đã ghi nhận phản hồi câu hỏi để AI hiệu chỉnh.'),
   line: el => { S.sel = +el.dataset.i; go(S.segs[S.sel].slide); dMap($('#pk')); },
   src: el => src(el.dataset.s, el.dataset.m),
   tts: el => say(S.segs.filter(s => s.slide === +el.dataset.n).map(s => S.sl === 'en' && s.en ? s.en : s.text).join('. '), S.sl === 'en' ? 'en-US' : 'vi-VN'),
@@ -3237,9 +4181,9 @@ const ACTIONS = {
   fp: () => { S.fi = (S.fi + S.cards.length - 1) % S.cards.length; S.flip = 0; drawPack(); },
   fn: () => { S.fi = (S.fi + 1) % S.cards.length; S.flip = 0; drawPack(); },
   buy: el => buy(+el.dataset.i),
-  paid: el => pay(+el.dataset.i),
+  paid: el => pay(+el.dataset.i, el),
   reset: () => {
-    try { localStorage.removeItem('es'); } catch {}
+    try { localStorage.removeItem('es'); localStorage.removeItem('es_draft'); } catch {}
     location.reload();
   },
   mictest: async () => {
@@ -3273,6 +4217,10 @@ const ACTIONS = {
     if (o) $('#ci')?.focus();
   },
   chatwide: () => $('#chat')?.classList.toggle('wide'),
+  chatclear: () => {
+    initWelcomeChat();
+    toast('Đã làm mới lịch sử trò chuyện.');
+  },
   aimode: el => {
     S.aiMode = el.dataset.m;
     document.querySelectorAll('.chat-modes button').forEach(b => b.classList.toggle('on', b.dataset.m === S.aiMode));
@@ -3301,17 +4249,24 @@ const ACTIONS = {
     toast('✓ Đã lưu cài đặt thành công.');
     settings();
   },
-  logout: () => { P.user = null; save(); showAuth(); },
+  logout: () => { closeMenu(); P.user = null; save(); showAuth(); },
   amode: el => authUI(el.dataset.m),
   soc: el => {
     const v = el.dataset.v;
     el.disabled = true;
     el.innerHTML = '<span class="spin"></span> Đang kết nối…';
-    setTimeout(() => login({ name: 'Learner', email: '', via: v }), 650);
+    setTimeout(() => login({ name: 'Learner', email: 'learner@easestudy.edu.vn', via: v }), 650);
   }
 };
 
 document.addEventListener('click', e => {
+  // Close account dropdown if clicked outside
+  const accMenu = $('#acc_menu');
+  if (accMenu && !accMenu.hidden && !e.target.closest('#acc_menu') && !e.target.closest('#acc_btn')) {
+    accMenu.hidden = true;
+    $('#acc_btn')?.setAttribute('aria-expanded', 'false');
+  }
+
   const el = e.target.closest('[data-a]');
   if (!el) return;
   const a = el.dataset.a;
@@ -3326,6 +4281,7 @@ document.addEventListener('keydown', e => {
   }
   if (e.key === 'Escape') {
     modal();
+    closeMenu();
     if (!$('#chat').hidden) ACTIONS.chat();
   }
   const tag = (e.target.tagName || '').toLowerCase();
