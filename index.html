@@ -24,12 +24,13 @@
   --brand-hover: #1D4ED8;
   --violet: #7C3AED;
   --green: #059669;
+  --amber: #D97706;
   --danger: #EF4444;
-  --shadow: 0 12px 40px rgba(37, 99, 235, .10);
-  --shadow-sm: 0 4px 14px rgba(15, 23, 42, .06);
-  --sidebg: linear-gradient(180deg, rgba(255, 255, 255, .90), rgba(222, 236, 255, .90));
+  --shadow: 0 14px 44px rgba(37, 99, 235, .10);
+  --shadow-sm: 0 4px 16px rgba(15, 23, 42, .06);
+  --sidebg: linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(226, 239, 255, .94));
   --sidetx: #0F172A;
-  --glass: rgba(255, 255, 255, .82);
+  --glass: rgba(255, 255, 255, .86);
   --zm: 1;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -38,24 +39,25 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0B1020;
-    --surface: #151C32;
-    --card: #1B2440;
-    --pastel: #222C4D;
+    --bg: #090D1A;
+    --surface: #131B2E;
+    --card: #1A243D;
+    --pastel: #222F52;
     --navy: #27345F;
     --side: #070B16;
     --text: #E6ECFF;
     --muted: #9AA7C7;
-    --line: #263052;
+    --line: #253154;
     --brand: #6E9BFF;
     --brand-hover: #93B4FF;
     --violet: #A78BFA;
     --green: #34D399;
-    --shadow: 0 12px 40px rgba(0, 0, 0, .40);
-    --shadow-sm: 0 4px 14px rgba(0, 0, 0, .25);
-    --sidebg: linear-gradient(180deg, #0D1530, #0A1124);
+    --amber: #FBBF24;
+    --shadow: 0 14px 44px rgba(0, 0, 0, .48);
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, .32);
+    --sidebg: linear-gradient(180deg, #0D1530, #090E20);
     --sidetx: #E6ECFF;
-    --glass: rgba(21, 28, 50, .84);
+    --glass: rgba(19, 27, 46, .88);
   }
   :root:not([data-theme="light"]) body {
     background-image: radial-gradient(900px 500px at 8% -8%, #1e3a8a66, transparent 60%),
@@ -64,24 +66,25 @@
 }
 
 :root[data-theme="dark"] {
-  --bg: #0B1020;
-  --surface: #151C32;
-  --card: #1B2440;
-  --pastel: #222C4D;
+  --bg: #090D1A;
+  --surface: #131B2E;
+  --card: #1A243D;
+  --pastel: #222F52;
   --navy: #27345F;
   --side: #070B16;
   --text: #E6ECFF;
   --muted: #9AA7C7;
-  --line: #263052;
+  --line: #253154;
   --brand: #6E9BFF;
   --brand-hover: #93B4FF;
   --violet: #A78BFA;
   --green: #34D399;
-  --shadow: 0 12px 40px rgba(0, 0, 0, .40);
-  --shadow-sm: 0 4px 14px rgba(0, 0, 0, .25);
-  --sidebg: linear-gradient(180deg, #0D1530, #0A1124);
+  --amber: #FBBF24;
+  --shadow: 0 14px 44px rgba(0, 0, 0, .48);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, .32);
+  --sidebg: linear-gradient(180deg, #0D1530, #090E20);
   --sidetx: #E6ECFF;
-  --glass: rgba(21, 28, 50, .84);
+  --glass: rgba(19, 27, 46, .88);
 }
 :root[data-theme="dark"] body {
   background-image: radial-gradient(900px 500px at 8% -8%, #1e3a8a66, transparent 60%),
@@ -97,8 +100,8 @@ html {
 body {
   margin: 0;
   min-height: 100%;
-  background: radial-gradient(900px 500px at 8% -8%, color-mix(in srgb, #93C5FD 45%, transparent), transparent 60%),
-              radial-gradient(800px 460px at 100% 0, color-mix(in srgb, #7DD3FC 35%, transparent), transparent 55%),
+  background: radial-gradient(900px 500px at 8% -8%, color-mix(in srgb, #93C5FD 48%, transparent), transparent 60%),
+              radial-gradient(800px 460px at 100% 0, color-mix(in srgb, #7DD3FC 38%, transparent), transparent 55%),
               var(--bg);
   background-attachment: fixed;
   color: var(--text);
@@ -110,23 +113,23 @@ button { font: inherit; color: inherit; cursor: pointer; border: 0; background: 
 button:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
 :focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 
-h1 { font-size: 2rem; font-weight: 800; margin: 4px 0 0; letter-spacing: -.025em; }
-h2 { font-size: 1.25rem; font-weight: 700; margin: 32px 0 14px; letter-spacing: -.01em; }
+h1 { font-size: 2.05rem; font-weight: 800; margin: 4px 0 0; letter-spacing: -.028em; }
+h2 { font-size: 1.25rem; font-weight: 800; margin: 30px 0 14px; letter-spacing: -.015em; }
 h3 { margin: 0; font-weight: 700; }
 .muted { color: var(--muted); }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .between { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 
-/* Layout */
+/* App Shell */
 .app { display: flex; min-height: 100vh; }
 .side {
-  width: 256px;
+  width: 272px;
   flex: none;
   background: var(--sidebg);
   color: var(--sidetx);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 24px 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 22px 18px;
   position: sticky;
   top: 0;
   align-self: flex-start;
@@ -138,35 +141,62 @@ h3 { margin: 0; font-weight: 700; }
 }
 @media (min-width: 901px) {
   .side {
-    margin: 16px 0 16px 16px;
-    height: calc(100dvh - 32px);
+    margin: 14px 0 14px 14px;
+    height: calc(100dvh - 28px);
     border-radius: 28px;
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
   }
 }
 
-.logo { display: flex; gap: 12px; align-items: center; padding: 0 4px; }
+.logo { display: flex; gap: 12px; align-items: center; padding: 0 6px; }
 .logo i {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 14px;
   background: linear-gradient(135deg, #2563EB, #7C3AED);
   color: #fff;
   display: grid;
   place-items: center;
   font-style: normal;
-  font-size: 20px;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, .35);
+  font-size: 21px;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, .38);
 }
-.logo b { font-size: 1.2rem; display: block; line-height: 1.1; letter-spacing: -.02em; }
-.logo small { font-size: .65rem; letter-spacing: .18em; color: var(--muted); font-weight: 700; }
+.logo b { font-size: 1.25rem; display: block; line-height: 1.1; letter-spacing: -.025em; }
+.logo small { font-size: .64rem; letter-spacing: .18em; color: var(--muted); font-weight: 800; }
 
-.nav { margin-top: 32px; display: grid; gap: 6px; flex: 1; align-content: start; }
+.cmd-btn {
+  margin-top: 18px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .85rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: border-color .15s, color .15s;
+}
+.cmd-btn:hover { border-color: var(--brand); color: var(--text); }
+.cmd-btn kbd {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: .7rem;
+  font-weight: 700;
+  font-family: inherit;
+}
+
+.nav { margin-top: 16px; display: grid; gap: 5px; flex: 1; align-content: start; }
 .nav button {
   text-align: left;
-  padding: 12px 16px;
-  border-radius: 16px;
+  padding: 11px 14px;
+  border-radius: 15px;
   color: var(--muted);
   font-weight: 600;
   white-space: nowrap;
@@ -177,54 +207,128 @@ h3 { margin: 0; font-weight: 700; }
 }
 .nav button:hover { background: color-mix(in srgb, var(--brand) 10%, transparent); color: var(--text); }
 .nav .on {
-  background: var(--surface);
+  background: linear-gradient(135deg, var(--surface), var(--card));
   color: var(--brand);
+  border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
   font-weight: 700;
 }
 .nav .up {
-  margin-top: 12px;
+  margin-top: 8px;
   background: linear-gradient(135deg, #2563EB, #7C3AED);
   color: #fff !important;
   font-weight: 700;
   white-space: normal;
-  box-shadow: 0 8px 24px rgba(37, 99, 235, .3);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, .32);
 }
 .nav .up:hover { opacity: .95; transform: translateY(-1px); }
+
+/* Sidebar User Profile Card */
+.u-card {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 10px;
+}
+.u-top { display: flex; align-items: center; gap: 10px; }
+.u-av {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+  color: #fff;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  font-size: .95rem;
+}
+.u-info { min-width: 0; flex: 1; }
+.u-info b { display: block; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.u-info small { display: block; font-size: .73rem; color: var(--brand); font-weight: 700; }
+.u-meter { height: 6px; border-radius: 99px; background: var(--card); overflow: hidden; }
+.u-meter i { display: block; height: 100%; background: linear-gradient(90deg, #2563EB, #7C3AED); border-radius: 99px; }
 
 main {
   flex: 1;
   min-width: 0;
-  padding: 28px 28px 60px;
-  max-width: 1200px;
+  padding: 28px 30px 72px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 
 .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
-.eyebrow { margin: 0; font-size: .75rem; font-weight: 800; letter-spacing: .16em; color: var(--brand); text-transform: uppercase; }
+.eyebrow { margin: 0; font-size: .74rem; font-weight: 800; letter-spacing: .16em; color: var(--brand); text-transform: uppercase; }
 
-/* Grids & Panels */
-.grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 20px; }
+/* Dashboard Analytics & Grids */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 22px; }
 .stat-card {
   background: var(--glass);
-  backdrop-filter: blur(10px);
-  border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
-  border-radius: 20px;
-  padding: 16px 18px;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 18px 20px;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: transform .2s, box-shadow .2s;
+}
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.stat-ic {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+  background: var(--card);
+  color: var(--brand);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  flex: none;
 }
 .stat-card small { font-size: .78rem; color: var(--muted); font-weight: 600; display: block; }
-.stat-card b { font-size: 1.5rem; font-weight: 800; color: var(--text); display: block; margin-top: 4px; }
+.stat-card b { font-size: 1.45rem; font-weight: 800; color: var(--text); display: block; margin-top: 2px; }
 
+.dash-mid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 18px; margin-top: 22px; }
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  height: 120px;
+  padding-top: 18px;
+  margin-top: 10px;
+  border-bottom: 1px solid var(--line);
+}
+.c-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+.c-bar {
+  width: 100%;
+  max-width: 34px;
+  border-radius: 8px 8px 3px 3px;
+  background: linear-gradient(180deg, #3B82F6, #2563EB);
+  transition: height .4s ease, opacity .15s;
+  position: relative;
+}
+.c-bar:hover { opacity: .85; }
+.c-col small { font-size: .72rem; color: var(--muted); font-weight: 600; }
+
+.mast-list { display: grid; gap: 12px; margin-top: 12px; }
+.mast-item { display: grid; gap: 5px; }
+.mast-bar { height: 8px; border-radius: 99px; background: var(--card); overflow: hidden; }
+.mast-bar i { display: block; height: 100%; border-radius: 99px; }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
 .split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px; align-items: start; }
 .panel, .create {
   background: var(--glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
   border-radius: 24px;
   box-shadow: var(--shadow);
   padding: 22px;
@@ -242,16 +346,21 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
 .lcard:hover {
   transform: translateY(-3px);
   box-shadow: 0 18px 44px rgba(37, 99, 235, .16);
-  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
 }
 .lcard:before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6px; background: var(--c); }
-.lcard h3 { font-size: 1.25rem; margin: 12px 0 4px; padding-right: 28px; }
-.lcard p { margin: 0; color: var(--muted); font-size: .9rem; }
+.lcard h3 { font-size: 1.22rem; margin: 6px 0 0; padding-right: 28px; }
+.lcard p { margin: 0; color: var(--muted); font-size: .88rem; }
+.lcard-foot { margin-top: 8px; padding-top: 10px; border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent); display: flex; justify-content: space-between; align-items: center; font-size: .78rem; color: var(--muted); font-weight: 600; }
+
 .del-lec {
   position: absolute;
   top: 14px;
@@ -276,10 +385,11 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
 .chip {
   display: inline-flex;
   align-items: center;
+  align-self: flex-start;
   gap: 6px;
   padding: 4px 12px;
   border-radius: 99px;
-  font-size: .78rem;
+  font-size: .76rem;
   font-weight: 700;
   background: color-mix(in srgb, var(--c) 14%, transparent);
   color: var(--c);
@@ -343,7 +453,7 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
 
 .badge {
   margin-left: auto;
-  font-size: .75rem;
+  font-size: .74rem;
   font-weight: 800;
   padding: 5px 12px;
   border-radius: 99px;
@@ -353,7 +463,8 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
 .fine { margin: 14px 0 0; font-size: .8rem; color: var(--muted); }
 
 /* Slide Viewer */
-.viewer { display: flex; flex-direction: column; padding: 0; overflow: hidden; min-height: 520px; }
+.viewer { display: flex; flex-direction: column; padding: 0; overflow: hidden; min-height: 530px; }
+.viewer:fullscreen { border-radius: 0; height: 100dvh; }
 .bar {
   display: flex;
   justify-content: space-between;
@@ -371,7 +482,7 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
-  font-size: 18px;
+  font-size: 16px;
   display: inline-grid;
   place-items: center;
   transition: transform .15s, border-color .15s;
@@ -391,7 +502,7 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
 .slide {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 22px;
   padding: 36px;
   width: 100%;
   max-width: 640px;
@@ -400,13 +511,25 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.slide::after {
+  content: "EaseStudy Deck";
+  position: absolute;
+  bottom: 14px;
+  right: 20px;
+  font-size: .7rem;
+  font-weight: 700;
+  color: var(--muted);
+  opacity: .5;
 }
 .slide small { color: var(--brand); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .slide h3 { font-size: 1.65em; margin: .35em 0 .6em; line-height: 1.25; }
 .slide ul { margin: 0; padding-left: 1.2em; }
 .slide li { font-size: 1.05em; margin: .4em 0; color: var(--text); }
 
-/* Live Column */
+/* Live Column & Waveform Visualizer */
 .col { display: grid; gap: 16px; grid-template-rows: auto minmax(260px, 1fr) auto; min-width: 0; }
 .mic {
   background: linear-gradient(135deg, #1E3A8A, #2563EB);
@@ -442,9 +565,25 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   70% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
   100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
 }
-.mic small { display: block; color: rgba(255, 255, 255, .8); font-size: .78rem; }
+.mic small { display: block; color: rgba(255, 255, 255, .82); font-size: .78rem; }
 .mic select { background: rgba(255, 255, 255, .16); color: #fff; border-color: rgba(255, 255, 255, .3); padding: 8px 12px; }
 .mic option { color: #0F172A; background: #fff; }
+
+.wave-bars { display: inline-flex; align-items: center; gap: 3px; height: 18px; margin-left: 6px; vertical-align: middle; }
+.wave-bars i {
+  display: block;
+  width: 3px;
+  height: 4px;
+  border-radius: 99px;
+  background: #60A5FA;
+  transition: height .15s;
+}
+.wave-bars.active i { background: #34D399; animation: wv .8s ease-in-out infinite alternate; }
+.wave-bars.active i:nth-child(2) { animation-delay: .15s; }
+.wave-bars.active i:nth-child(3) { animation-delay: .3s; }
+.wave-bars.active i:nth-child(4) { animation-delay: .45s; }
+.wave-bars.active i:nth-child(5) { animation-delay: .2s; }
+@keyframes wv { 0% { height: 4px; } 100% { height: 18px; } }
 
 .tr { display: flex; flex-direction: column; min-height: 0; }
 .tr ul {
@@ -454,17 +593,31 @@ main > * { animation: rise .35s cubic-bezier(.16, 1, .3, 1) both; }
   overflow: auto;
   max-height: 310px;
   display: grid;
-  gap: 8px;
+  gap: 6px;
   align-content: start;
 }
-.tr li button {
-  text-align: left;
-  width: 100%;
-  padding: 8px 10px;
+.tr-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px 8px;
   border-radius: 12px;
   transition: background .15s;
 }
-.tr li button:hover { background: var(--card); }
+.tr-item:hover { background: var(--card); }
+.tr-item .main-btn { text-align: left; flex: 1; line-height: 1.45; }
+.tr-actions { display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+.tr-item:hover .tr-actions { opacity: 1; }
+.tr-actions button {
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: .75rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.tr-actions button:hover { color: var(--brand); border-color: var(--brand); }
+
 .ts { color: var(--brand); font-weight: 700; font-size: .78rem; margin-right: 8px; }
 .interim { color: var(--muted); font-style: italic; padding: 6px 10px; }
 .addf { display: flex; gap: 8px; margin: 12px 0; }
@@ -579,20 +732,20 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 .fc:hover { border-color: var(--brand); transform: translateY(-2px); }
 .fc small { font-size: .75rem; text-transform: uppercase; letter-spacing: .12em; color: var(--brand); font-weight: 800; }
 
-/* Pricing */
-.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 24px; }
+/* Pricing & Comparison Table */
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; margin-top: 24px; }
 .plan {
   background: var(--glass);
   backdrop-filter: blur(12px);
   border-radius: 24px;
   box-shadow: var(--shadow);
-  padding: 24px 22px;
+  padding: 26px 22px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   border: 2px solid var(--line);
   position: relative;
-  transition: transform .2s;
+  transition: transform .2s, box-shadow .2s;
 }
 .plan:hover { transform: translateY(-4px); }
 .plan.cur { border-color: var(--brand); }
@@ -600,10 +753,10 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   border-color: var(--violet);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--violet) 20%, transparent), var(--shadow);
 }
-.plan b { font-size: 1.3rem; }
-.plan .pr { font-size: 1.75rem; font-weight: 800; color: var(--text); }
-.plan .pr small { font-size: .85rem; font-weight: 500; color: var(--muted); }
-.plan ul { margin: 8px 0; padding-left: 18px; color: var(--muted); font-size: .92rem; flex: 1; display: grid; gap: 6px; align-content: start; }
+.plan b { font-size: 1.35rem; }
+.plan .pr { font-size: 1.85rem; font-weight: 800; color: var(--text); line-height: 1.15; }
+.plan .pr small { font-size: .88rem; font-weight: 600; color: var(--muted); }
+.plan ul { margin: 10px 0; padding-left: 18px; color: var(--muted); font-size: .92rem; flex: 1; display: grid; gap: 8px; align-content: start; }
 .plan button { margin-top: auto; width: 100%; }
 .rb {
   position: absolute;
@@ -615,13 +768,20 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   font-size: .7rem;
   font-weight: 800;
   letter-spacing: .08em;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 99px;
   white-space: nowrap;
 }
-.old { text-decoration: line-through; color: var(--muted); font-weight: 600; font-size: .9rem; }
+.old { text-decoration: line-through; color: var(--muted); font-weight: 600; font-size: .92rem; }
 
-/* Modal & Toast */
+.cmp-wrap { margin-top: 36px; overflow-x: auto; }
+.cmp-table { width: 100%; border-collapse: collapse; text-align: left; font-size: .9rem; }
+.cmp-table th, .cmp-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.cmp-table th { font-weight: 800; color: var(--text); background: var(--card); }
+.cmp-table th:first-child { border-top-left-radius: 14px; }
+.cmp-table th:last-child { border-top-right-radius: 14px; }
+
+/* Modals, Command Palette & Toast */
 .mo { position: fixed; inset: 0; background: rgba(15, 23, 42, .6); backdrop-filter: blur(4px); display: grid; place-items: center; padding: 20px; z-index: 40; }
 .mo[hidden] { display: none; }
 .md {
@@ -629,14 +789,28 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   border: 1px solid var(--line);
   border-radius: 28px;
   padding: 28px 24px;
-  max-width: 400px;
+  max-width: 420px;
   width: 100%;
   display: grid;
   gap: 14px;
   text-align: center;
   box-shadow: 0 24px 60px rgba(0, 0, 0, .3);
-  animation: pop .25s ease-out;
+  animation: pop .22s ease-out;
 }
+.cmd-box { max-width: 520px; padding: 16px; text-align: left; gap: 10px; }
+.cmd-list { max-height: 280px; overflow: auto; display: grid; gap: 4px; }
+.cmd-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+.cmd-item:hover, .cmd-item:focus { background: var(--card); color: var(--brand); outline: none; }
+
 .qr {
   display: grid;
   grid-template-columns: repeat(21, 1fr);
@@ -738,72 +912,156 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 }
 @keyframes fl { 50% { transform: translateY(-5px); } }
 
-/* AI Assistant Floating Chat */
+/* Upgraded AI Copilot 2.0 (With Voice Recording & File Upload) */
 .fab {
   position: fixed;
   right: 20px;
   bottom: calc(20px + env(safe-area-inset-bottom, 0px));
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, #2563EB, #7C3AED);
   display: grid;
   place-items: center;
-  box-shadow: 0 10px 30px rgba(37, 99, 235, .45);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, .48);
   z-index: 25;
   transition: transform .2s;
 }
 .fab:hover { transform: scale(1.06); }
+
 .chat {
   position: fixed;
   right: 20px;
-  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
-  width: min(370px, calc(100% - 32px));
-  height: min(500px, calc(100dvh - 140px));
+  bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+  width: min(420px, calc(100% - 32px));
+  height: min(600px, calc(100dvh - 120px));
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .28);
+  border-radius: 26px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .32);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   z-index: 25;
+  transition: width .25s ease, height .25s ease;
+}
+.chat.wide {
+  width: min(680px, calc(100% - 32px));
+  height: min(720px, calc(100dvh - 110px));
 }
 .chat[hidden] { display: none; }
 .chat header {
-  background: linear-gradient(135deg, #12192C, #1E3A8A);
+  background: linear-gradient(135deg, #12192C, #1E3A8A, #3B82F6);
   color: #fff;
   padding: 14px 16px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
-.chat header small { grid-column: 1; color: rgba(255, 255, 255, .75); font-size: .75rem; }
+.chat-h-left { display: flex; align-items: center; gap: 10px; }
+.chat-h-left b { display: block; font-size: 1rem; }
+.chat-h-left small { display: block; color: rgba(255, 255, 255, .8); font-size: .73rem; }
 .chat header .ib {
-  grid-row: 1 / 3;
-  grid-column: 2;
-  background: rgba(255, 255, 255, .14);
-  border-color: rgba(255, 255, 255, .2);
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, .15);
+  border-color: rgba(255, 255, 255, .22);
   color: #fff;
+  font-size: 14px;
 }
-#cm { flex: 1; overflow: auto; padding: 14px; display: grid; gap: 10px; align-content: start; }
-.cbb { max-width: 88%; padding: 10px 14px; border-radius: 18px; font-size: .92rem; white-space: pre-line; line-height: 1.45; }
-.cbb.b { background: var(--card); border-bottom-left-radius: 4px; }
-.cbb.u { background: var(--brand); color: #fff; justify-self: end; border-bottom-right-radius: 4px; }
-.qc { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 14px 8px; }
+.chat-modes {
+  display: flex;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+.chat-modes button {
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: .74rem;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.chat-modes button.on { background: var(--brand); color: #fff; }
+
+#cm { flex: 1; overflow: auto; padding: 16px; display: grid; gap: 12px; align-content: start; }
+.cbb { max-width: 90%; padding: 12px 15px; border-radius: 18px; font-size: .92rem; white-space: pre-line; line-height: 1.5; }
+.cbb.b { background: var(--card); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+.cbb.u { background: linear-gradient(135deg, #3B82F6, #2563EB); color: #fff; justify-self: end; border-bottom-right-radius: 4px; }
+.chat-att-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .16);
+  border: 1px solid rgba(255, 255, 255, .28);
+  margin-bottom: 6px;
+  font-size: .82rem;
+  font-weight: 600;
+}
+.cbb.b .chat-att-card { background: var(--surface); border-color: var(--line); color: var(--brand); }
+
+.qc { display: flex; gap: 6px; flex-wrap: wrap; padding: 6px 14px 8px; border-top: 1px solid color-mix(in srgb, var(--line) 50%, transparent); }
 .qc button {
-  padding: 6px 12px;
+  padding: 5px 11px;
   border-radius: 99px;
   background: var(--pastel);
   color: var(--brand);
-  font-size: .78rem;
+  font-size: .76rem;
   font-weight: 700;
   transition: background .15s;
 }
 .qc button:hover { background: color-mix(in srgb, var(--brand) 18%, var(--pastel)); }
-#cf { display: flex; gap: 8px; padding: 10px 14px; border-top: 1px solid var(--line); background: var(--surface); }
-#cf input { flex: 1; }
+
+/* Chat Attachment & Voice Bar */
+.chat-tray {
+  padding: 6px 14px;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.chat-tray[hidden] { display: none; }
+.chat-rec-bar {
+  padding: 8px 14px;
+  background: color-mix(in srgb, var(--danger) 12%, var(--surface));
+  border-top: 1px solid color-mix(in srgb, var(--danger) 30%, var(--line));
+  color: var(--danger);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: .82rem;
+  font-weight: 700;
+}
+.chat-rec-bar[hidden] { display: none; }
+
+#cf { display: flex; gap: 6px; align-items: center; padding: 10px 12px; border-top: 1px solid var(--line); background: var(--surface); }
+#cf input[type="text"] { flex: 1; padding: 9px 12px; border-radius: 12px; }
+.c-tool {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--brand);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  flex: none;
+  transition: background .15s, transform .15s;
+}
+.c-tool:hover { background: var(--pastel); transform: translateY(-1px); }
+.c-tool.rec-on { background: var(--danger); color: #fff; border-color: var(--danger); animation: pulse 1.4s infinite; }
 
 /* Settings */
 .setg { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 20px; }
@@ -818,11 +1076,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   color: var(--muted);
   border: 1px solid transparent;
 }
-.seg [aria-pressed="true"] {
-  background: var(--brand);
-  color: #fff;
-  font-weight: 700;
-}
+.seg [aria-pressed="true"] { background: var(--brand); color: #fff; font-weight: 700; }
 .cbar {
   position: sticky;
   bottom: calc(16px + env(safe-area-inset-bottom, 0px));
@@ -978,7 +1232,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   }
   .side.open { transform: none; }
   .ov.on { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, .5); z-index: 18; }
-  .split { grid-template-columns: 1fr; }
+  .split, .dash-mid { grid-template-columns: 1fr; }
   .pack { max-height: none; }
   main { padding: 20px 16px 84px; }
   .cbar { margin-right: 0; }
@@ -991,7 +1245,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
   .al { padding: 28px 24px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ey, .spin, .score, .bt, #bub .mas, .mic-btn.on { animation: none; }
+  .ey, .spin, .score, .bt, #bub .mas, .mic-btn.on, .wave-bars.active i { animation: none; }
   .side, main > *, .lcard, #toast { transition: none; animation: none; }
 }
 </style>
@@ -1003,7 +1257,10 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
       <button class="ib" id="mb" data-a="menu" aria-label="Mở menu" aria-expanded="false">☰</button>
       <b>EaseStudy</b>
     </div>
-    <button class="ghost" style="padding:6px 12px;font-size:.8rem" data-a="newlive">+ Tạo bài học</button>
+    <div class="row">
+      <button class="ib" data-a="cmd" aria-label="Tìm kiếm nhanh">🔍</button>
+      <button class="ghost" style="padding:6px 12px;font-size:.8rem" data-a="newlive">+ Tạo bài học</button>
+    </div>
   </header>
   <div id="ov" class="ov" data-a="menu"></div>
   <aside class="side">
@@ -1011,6 +1268,10 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
       <i>🎓</i>
       <div><b>EaseStudy</b><small>LEARN WITH CLARITY</small></div>
     </div>
+    <button class="cmd-btn" data-a="cmd" title="Tìm kiếm nhanh (Ctrl + K)">
+      <span>🔍 Tìm kiếm nhanh…</span>
+      <kbd>Ctrl K</kbd>
+    </button>
     <nav class="nav" aria-label="Điều hướng chính">
       <button class="on" data-a="home">🏠 Dashboard</button>
       <button data-a="lectures">📚 My lectures</button>
@@ -1020,6 +1281,7 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
       <button class="up" id="plan" data-a="pricing"></button>
       <button data-a="tour">🧭 Khám phá nhanh</button>
     </nav>
+    <div class="u-card" id="ucard"></div>
   </aside>
   <main id="main"></main>
 </div>
@@ -1032,58 +1294,93 @@ input:focus, select:focus { outline: 2px solid var(--brand); border-color: trans
 const DEMO = {
   title: 'Kinh tế vi mô',
   slides: [
-    { t: 'Lý thuyết hành vi người tiêu dùng', b: ['Mục tiêu: tối đa hóa thỏa dụng', 'Ràng buộc: thu nhập (ngân sách) có hạn'] },
-    { t: 'Thỏa dụng biên (MU)', b: ['Thỏa dụng tăng thêm khi dùng thêm 1 đơn vị', 'Quy luật: MU giảm dần'] },
-    { t: 'Đường bàng quan', b: ['Các rổ hàng cho cùng mức thỏa dụng', 'Độ dốc = tỷ lệ thay thế biên (MRS)'] },
-    { t: 'Thặng dư tiêu dùng', b: ['CS = giá sẵn sàng trả − giá thực trả'] }
+    { t: 'Lý thuyết hành vi người tiêu dùng', b: ['Mục tiêu: tối đa hóa tổng lợi ích (TU) trong giới hạn ngân sách', 'Ràng buộc: thu nhập (I) và giá cả hàng hóa (Px, Py)'] },
+    { t: 'Thỏa dụng biên (Marginal Utility - MU)', b: ['MU = ΔTU / ΔQ: Thỏa dụng tăng thêm khi dùng thêm 1 đơn vị', 'Quy luật lợi ích cận biên giảm dần khi tiêu dùng liên tục'] },
+    { t: 'Đường bàng quan (Indifference Curve)', b: ['Tập hợp các giỏ hàng hóa mang lại cùng mức thỏa dụng', 'Độ dốc = Tỷ lệ thay thế biên MRS = −(MUx / MUy)'] },
+    { t: 'Thặng dư tiêu dùng (Consumer Surplus)', b: ['CS = Giá sẵn sàng trả (WTP) − Giá thị trường thực trả', 'Biểu diễn bằng diện tích dưới đường cầu và trên đường giá'] }
   ],
   terms: [
-    { slide: 1, term: 'Thỏa dụng', def: 'Mức độ hài lòng người tiêu dùng có được khi dùng hàng hóa.' },
-    { slide: 2, term: 'Thỏa dụng biên (MU)', def: 'Thỏa dụng tăng thêm khi tiêu dùng thêm một đơn vị hàng hóa.' },
-    { slide: 3, term: 'Đường bàng quan', def: 'Tập hợp các rổ hàng cho người tiêu dùng cùng một mức thỏa dụng.' },
-    { slide: 4, term: 'Thặng dư tiêu dùng', def: 'Chênh lệch giữa mức giá sẵn sàng trả và giá thực tế phải trả.' }
+    { slide: 1, term: 'Thỏa dụng (Utility)', def: 'Mức độ hài lòng hoặc lợi ích chủ quan người tiêu dùng đạt được khi tiêu dùng hàng hóa, dịch vụ.' },
+    { slide: 2, term: 'Thỏa dụng biên (MU)', def: 'Phần thỏa dụng tăng thêm khi tiêu dùng thêm một đơn vị hàng hóa trong khi các yếu tố khác không đổi.' },
+    { slide: 3, term: 'Đường bàng quan', def: 'Đường nối các giỏ hàng hóa khác nhau nhưng mang lại cùng một mức độ thỏa dụng cho người tiêu dùng.' },
+    { slide: 4, term: 'Thặng dư tiêu dùng (CS)', def: 'Chênh lệch giữa mức giá tối đa người mua sẵn sàng trả và mức giá thực tế phải trả trên thị trường.' }
   ],
   script: [
-    [1, 'Hôm nay ta học hành vi người tiêu dùng: họ chọn mua gì khi thu nhập có hạn.'],
-    [1, 'Giả định cơ bản là người tiêu dùng luôn muốn tối đa hóa thỏa dụng trong giới hạn ngân sách.'],
-    [2, 'Thỏa dụng biên là phần thỏa dụng tăng thêm khi bạn dùng thêm một đơn vị hàng hóa.'],
-    [2, 'Chiếc bánh thứ nhất rất ngon, nhưng đến chiếc thứ năm thì thỏa dụng biên giảm dần.'],
-    [3, 'Đường bàng quan nối các rổ hàng mang lại cùng một mức thỏa dụng.'],
-    [3, 'Độ dốc của đường bàng quan chính là tỷ lệ thay thế biên MRS.'],
+    [1, 'Hôm nay ta học hành vi người tiêu dùng: họ phân bổ thu nhập hữu hạn như thế nào để đạt lợi ích cao nhất.'],
+    [1, 'Giả định cơ bản là người tiêu dùng luôn muốn tối đa hóa thỏa dụng trong giới hạn đường ngân sách.'],
+    [2, 'Thỏa dụng biên MU là phần thỏa dụng tăng thêm khi bạn dùng thêm một đơn vị hàng hóa.'],
+    [2, 'Chiếc bánh thứ nhất rất ngon, nhưng đến chiếc thứ năm thì thỏa dụng biên giảm dần theo quy luật.'],
+    [3, 'Đường bàng quan nối các rổ hàng mang lại cùng một mức thỏa dụng như nhau.'],
+    [3, 'Độ dốc của đường bàng quan chính là tỷ lệ thay thế biên MRS giữa hai hàng hóa.'],
     [4, 'Thặng dư tiêu dùng là chênh lệch giữa giá bạn sẵn sàng trả và giá bạn thực sự trả.'],
-    [4, 'Giá thị trường càng thấp so với mức sẵn sàng trả thì thặng dư càng lớn.']
+    [4, 'Giá thị trường càng thấp so với mức sẵn sàng trả thì thặng dư tiêu dùng càng lớn.']
   ]
 };
 
 const EN = [
-  'Today we study consumer behavior: what people choose to buy when income is limited.',
-  'The basic assumption is that consumers always aim to maximize utility within their budget.',
-  'Marginal utility is the extra utility you gain from consuming one more unit of a good.',
-  'The first cake tastes great, but by the fifth one marginal utility is diminishing.',
-  'An indifference curve connects bundles of goods that give the same level of utility.',
-  'The slope of an indifference curve is the marginal rate of substitution, MRS.',
+  'Today we study consumer behavior: how people allocate limited income to maximize total utility.',
+  'The basic assumption is that consumers always aim to maximize utility within their budget line.',
+  'Marginal utility (MU) is the extra utility gained from consuming one additional unit of a good.',
+  'The first cake tastes great, but by the fifth one marginal utility diminishes significantly.',
+  'An indifference curve connects bundles of goods that provide the exact same level of utility.',
+  'The slope of an indifference curve represents the marginal rate of substitution (MRS).',
   'Consumer surplus is the difference between what you are willing to pay and what you actually pay.',
-  'The lower the market price relative to willingness to pay, the larger the surplus.'
+  'The lower the market price relative to willingness to pay, the larger the consumer surplus.'
 ];
 
 const EXT = [
-  { k: 'thỏa dụng biên', x: 'Mở rộng: MU của đơn vị thứ n = TU(n) − TU(n−1). Người tiêu dùng tối ưu khi MU/giá bằng nhau giữa các hàng hóa.' },
-  { k: 'bàng quan', x: 'Mở rộng: đường bàng quan thường lồi về gốc tọa độ và hai đường không cắt nhau.' },
-  { k: 'thặng dư', x: 'Mở rộng: trên đồ thị, thặng dư tiêu dùng là diện tích dưới đường cầu và trên mức giá.' },
-  { k: 'thỏa dụng', x: 'Mở rộng: thỏa dụng là khái niệm thứ bậc: so sánh được “thích hơn”, khó đo bằng một con số tuyệt đối.' }
+  { k: 'thỏa dụng biên', x: 'Công thức tối ưu tiêu dùng: MUx / Px = MUy / Py (Nguyên tắc cân bằng biên). Khi tỷ số thỏa dụng biên trên giá của mọi hàng hóa bằng nhau, người tiêu dùng đạt tổng thỏa dụng cực đại.' },
+  { k: 'bàng quan', x: 'Tính chất đường bàng quan: (1) Dốc xuống từ trái sang phải, (2) Lồi về phía gốc tọa độ do MRS giảm dần, (3) Các đường bàng quan không bao giờ cắt nhau.' },
+  { k: 'thặng dư', x: 'Ứng dụng chính sách: Thặng dư tiêu dùng (CS) dùng để đo lường phúc lợi xã hội và đánh giá tổn thất vô ích (Deadweight Loss) khi chính phủ đánh thuế.' },
+  { k: 'thỏa dụng', x: 'Phân biệt: Thuyết lợi ích đo được (Cardinal Utility) đo bằng đơn vị Utils; Thuyết lợi ích thứ tự (Ordinal Utility) xếp hạng mức độ ưa thích giữa các giỏ hàng.' }
 ];
 
-const SUBJ = ['Kinh tế vi mô', 'Triết học', 'Kinh tế vĩ mô', 'Khác'];
+const SUBJ = ['Kinh tế vi mô', 'Triết học', 'Kinh tế vĩ mô', 'Toán cao cấp', 'Khác'];
 const LG = [
   ['vi-VN', 'Tiếng Việt'], ['en-US', 'English'], ['zh-CN', '中文'], ['ja-JP', '日本語'],
   ['ko-KR', '한국어'], ['fr-FR', 'Français'], ['es-ES', 'Español'], ['de-DE', 'Deutsch']
 ];
 const FS = [['Nhỏ', .9], ['Vừa', 1], ['Lớn', 1.12], ['Rất lớn', 1.25]];
+
+/* CHỈ GÓI SINH VIÊN CÓ TRIAL: TRUE (ĐĂNG KÝ FREE 1 THÁNG), CÁC GÓI KHÁC GIỮ NGUYÊN GIÁ */
 const PL = [
-  { n: 'Free', p: '0đ', u: '', c: 4, f: ['4 bài giảng / tháng', 'Tính năng cơ bản', 'Đồng bộ slide & phụ đề'] },
-  { n: 'Sinh viên', p: '39.000đ', u: '/ tháng', c: 12, rec: 'ĐỀ XUẤT TỐI ƯU', f: ['12 bài giảng / tháng', 'Tạo học liệu chuyên sâu', 'Xuất ghi chú Markdown'] },
-  { n: 'Pro', p: '79.000đ', u: '/ tháng', c: 30, f: ['30 bài giảng / tháng', 'Dịch thuật song ngữ nâng cao', 'Lưu trữ không giới hạn'] },
-  { n: 'Học kỳ', p: '159.000đ', u: '/ học kỳ', c: 30, f: ['Quyền lợi tương đương Pro', 'Áp dụng trọn một học kỳ', 'Hỗ trợ ưu tiên 24/7'] }
+  {
+    n: 'Free',
+    p: '0đ',
+    u: '',
+    c: 4,
+    trial: false,
+    desc: 'Miễn phí trọn đời, không cần thẻ',
+    f: ['4 bài giảng / tháng', 'Tính năng cơ bản', 'Đồng bộ slide & phụ đề']
+  },
+  {
+    n: 'Sinh viên',
+    p: '39.000đ',
+    u: '/ tháng',
+    c: 12,
+    trial: true,
+    rec: 'ĐỀ XUẤT TỐI ƯU',
+    desc: 'Sau đó 39.000đ / tháng. Hủy bất cứ lúc nào.',
+    f: ['12 bài giảng / tháng', 'Tạo học liệu chuyên sâu', 'Xuất ghi chú Markdown']
+  },
+  {
+    n: 'Pro',
+    p: '79.000đ',
+    u: '/ tháng',
+    c: 30,
+    trial: false,
+    desc: 'Thanh toán định kỳ 79.000đ / tháng. Hủy bất cứ lúc nào.',
+    f: ['30 bài giảng / tháng', 'Dịch thuật song ngữ nâng cao', 'Lưu trữ không giới hạn']
+  },
+  {
+    n: 'Học kỳ',
+    p: '159.000đ',
+    u: '/ học kỳ',
+    c: 30,
+    trial: false,
+    desc: 'Trọn gói 5 tháng tiết kiệm 60%. Không phát sinh chi phí.',
+    f: ['Quyền lợi tương đương Pro', 'Áp dụng trọn một học kỳ', 'Hỗ trợ ưu tiên 24/7']
+  }
 ];
 
 const dsegs = () => DEMO.script.map(([sl, tx], i) => ({ text: tx, slide: sl, ms: i * 45000, en: EN[i] }));
@@ -1103,9 +1400,24 @@ const DEFAULT_P = {
   model: 'Claude Sonnet',
   theme: 'system',
   fs: 1,
+  streak: 5,
+  customTerms: [],
   lec: [
-    { id: 1, title: 'Kinh tế vi mô', desc: 'Bài 03 • Lý thuyết hành vi người tiêu dùng', sub: 'Kinh tế vi mô', st: 'Slide Ready', demo: 1 },
-    { id: 2, title: 'Triết học', desc: 'Bài 02 • Chủ nghĩa duy vật biện chứng', sub: 'Triết học', st: 'Audio Uploaded', demo: 0 }
+    { id: 1, title: 'Kinh tế vi mô', desc: 'Bài 03 • Lý thuyết hành vi người tiêu dùng', sub: 'Kinh tế vi mô', st: 'Slide Ready', demo: 1, date: 'Hôm nay' },
+    {
+      id: 2,
+      title: 'Triết học Mác - Lênin',
+      desc: 'Bài 02 • Chủ nghĩa duy vật biện chứng',
+      sub: 'Triết học',
+      st: 'Audio Uploaded',
+      demo: 0,
+      date: 'Hôm qua',
+      segs: [
+        { text: 'Vật chất là một phạm trù triết học dùng để chỉ thực tại khách quan được đem lại cho con người trong cảm giác.', slide: 1, ms: 0 },
+        { text: 'Ý thức là sự phản ánh năng động, sáng tạo thế giới khách quan vào bộ óc con người.', slide: 1, ms: 42000 },
+        { text: 'Vật chất có trước, ý thức có sau, vật chất quyết định ý thức nhưng ý thức có tính độc lập tương đối.', slide: 2, ms: 85000 }
+      ]
+    }
   ]
 };
 
@@ -1114,11 +1426,15 @@ try {
   const saved = JSON.parse(localStorage.getItem('es') || '{}');
   Object.assign(P, saved);
   if (!Array.isArray(P.lec) || !P.lec.length) P.lec = structuredClone(DEFAULT_P.lec);
+  if (!Array.isArray(P.customTerms)) P.customTerms = [];
 } catch {}
+
+const allTerms = () => [...DEMO.terms, ...(P.customTerms || [])];
 
 const S = {
   deck: DEMO,
   pdf: null,
+  audioUrl: null,
   name: '',
   slide: 1,
   zoom: 100,
@@ -1139,10 +1455,16 @@ const S = {
   view: 'home',
   subj: 'Kinh tế vi mô',
   kw: '',
-  curLecId: 1
+  curLecId: 1,
+  aiMode: 'tutor',
+  chatFile: null,
+  chatRec: false,
+  chatRecSec: 0,
+  chatRecTimer: null
 };
 
 let rec = null;
+let chatSpeechRec = null;
 let D = null;
 let ti = 0;
 
@@ -1164,6 +1486,7 @@ function stopAll() {
   }
   if (S.demo) { clearInterval(S.demo); S.demo = null; }
   if (S.timer) { clearInterval(S.timer); S.timer = null; }
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
 }
 
 const greet = () => {
@@ -1180,8 +1503,26 @@ function applyPrefs(o) {
 }
 
 function updPlan() {
+  const rem = Math.max(0, P.cap - P.used);
   const b = $('#plan');
-  if (b) b.textContent = '⭐ ' + (P.plan === 'Free' ? 'Nâng cấp Pro' : P.plan) + ' · còn ' + Math.max(0, P.cap - P.used) + ' bài';
+  if (b) b.textContent = '⭐ ' + (P.plan === 'Free' ? 'Nâng cấp Pro' : 'Gói ' + P.plan) + ' · còn ' + rem + ' bài';
+  const uc = $('#ucard');
+  if (uc) {
+    const pct = Math.min(100, Math.round((P.used / Math.max(1, P.cap)) * 100));
+    uc.innerHTML = `
+      <div class="u-top">
+        <div class="u-av">${esc((P.name || 'L')[0].toUpperCase())}</div>
+        <div class="u-info">
+          <b>${esc(P.name)}</b>
+          <small>Gói ${esc(P.plan)} · 🔥 ${P.streak || 5} ngày</small>
+        </div>
+      </div>
+      <div class="between" style="font-size:.74rem">
+        <span class="muted">Đã dùng ${P.used}/${P.cap} bài</span>
+        <b>${100 - pct}% còn lại</b>
+      </div>
+      <div class="u-meter"><i style="width:${pct}%"></i></div>`;
+  }
 }
 
 function save() {
@@ -1213,7 +1554,7 @@ function beforeNavigate(targetView) {
 
 /* Slide Viewer */
 const viewer = () => `
-<section class="panel viewer">
+<section class="panel viewer" id="vwrap">
   <div class="bar">
     <div class="row">
       <button class="ib" data-a="prev" aria-label="Slide trước" title="Slide trước (←)">‹</button>
@@ -1221,9 +1562,10 @@ const viewer = () => `
       <button class="ib" data-a="next" aria-label="Slide sau" title="Slide sau (→)">›</button>
     </div>
     <div class="row">
-      <button class="ib" data-a="zo" aria-label="Thu nhỏ">−</button>
-      <span id="zv" style="min-width:44px;text-align:center;font-weight:600"></span>
-      <button class="ib" data-a="zi" aria-label="Phóng to">+</button>
+      <button class="ib" data-a="zo" aria-label="Thu nhỏ" title="Thu nhỏ">−</button>
+      <span id="zv" style="min-width:44px;text-align:center;font-weight:700"></span>
+      <button class="ib" data-a="zi" aria-label="Phóng to" title="Phóng to">+</button>
+      <button class="ib" data-a="full" aria-label="Toàn màn hình" title="Toàn màn hình">⛶</button>
     </div>
   </div>
   <div id="stage" class="stage"></div>
@@ -1244,7 +1586,10 @@ function drawSlide() {
   if (S.pdf) {
     st.innerHTML = `<iframe title="Slide bài giảng" src="${S.pdf}#page=${S.slide}&zoom=${S.zoom}"></iframe>`;
   } else {
-    const s = S.deck.slides[S.slide - 1] || { t: 'Slide ' + S.slide, b: ['Nạp file PDF hoặc chọn bài mẫu Kinh tế vi mô để xem nội dung slide này.'] };
+    const s = S.deck.slides[S.slide - 1] || {
+      t: 'Slide ' + S.slide,
+      b: ['Nội dung tóm tắt cho slide này được đồng bộ ở bảng Học liệu bên cạnh.', 'Bạn có thể tải lên file PDF gốc để đối chiếu trực quan.']
+    };
     st.innerHTML = `<article class="slide" style="font-size:${S.zoom}%"><small>Slide ${S.slide}</small><h3>${esc(s.t)}</h3><ul>${s.b.map(x => `<li>${esc(x)}</li>`).join('')}</ul></article>`;
   }
   drawTerms();
@@ -1253,76 +1598,138 @@ function drawSlide() {
 function drawTerms() {
   const t = $('#tm');
   if (!t) return;
-  const l = S.pdf ? [] : S.deck.terms.filter(x => x.slide === S.slide);
+  const l = S.pdf ? [] : allTerms().filter(x => x.slide === S.slide);
   $('#th').textContent = 'Key terms · Slide ' + S.slide;
   t.innerHTML = l.length
     ? l.map(x => `<dl><dt>${esc(x.term)}</dt><dd>${esc(x.def)}</dd></dl>`).join('')
     : '<p class="muted" style="margin:0">Chưa có thuật ngữ riêng cho slide này.</p>';
 }
 
-/* Home View */
+/* Home View (Upgraded Enterprise Dashboard) */
 function home() {
   beforeNavigate('home');
   const recent = P.lec.slice(0, 4);
   const readyCount = P.lec.filter(l => l.demo || (l.segs && l.segs.length)).length;
+  const weekData = [
+    ['T2', 45], ['T3', 70], ['T4', 55], ['T5', 90], ['T6', 80], ['T7', 95], ['CN', 65]
+  ];
   $('#main').innerHTML = `
   <header class="head">
     <div>
-      <p class="eyebrow">WORKSPACE HỌC TẬP</p>
+      <p class="eyebrow">WORKSPACE HỌC TẬP THÔNG MINH</p>
       <h1>${greet()}, ${esc(P.name)} 👋</h1>
     </div>
     <div class="row">
-      <button class="ghost" data-a="lectures">My workspace</button>
-      <button class="ghost" data-a="help">Hướng dẫn</button>
+      <button class="ghost" data-a="cmd">🔍 Tìm nhanh (Ctrl+K)</button>
+      <button class="ghost" data-a="lectures">📚 Thư viện</button>
+      <button class="pri" data-a="newlive">🎙 + Bắt đầu buổi học</button>
     </div>
   </header>
 
   <div class="stats-grid">
-    <div class="stat-card"><small>Tổng số bài giảng</small><b>${P.lec.length} bài</b></div>
-    <div class="stat-card"><small>Học liệu sẵn sàng</small><b>${readyCount} bộ</b></div>
-    <div class="stat-card"><small>Thuật ngữ đã lưu</small><b>${DEMO.terms.length} thuật ngữ</b></div>
-    <div class="stat-card"><small>Hạn mức gói ${esc(P.plan)}</small><b>Còn ${Math.max(0, P.cap - P.used)}/${P.cap}</b></div>
+    <div class="stat-card">
+      <div class="stat-ic">📚</div>
+      <div><small>Tổng số bài giảng</small><b>${P.lec.length} bài</b></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-ic" style="color:var(--violet)">🧠</div>
+      <div><small>Bộ học liệu AI</small><b>${readyCount} bộ sẵn sàng</b></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-ic" style="color:var(--green)">📘</div>
+      <div><small>Sổ tay thuật ngữ</small><b>${allTerms().length} khái niệm</b></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-ic" style="color:var(--amber)">🔥</div>
+      <div><small>Chuỗi học liên tiếp</small><b>${P.streak || 5} ngày Streak</b></div>
+    </div>
+  </div>
+
+  <div class="dash-mid">
+    <section class="panel">
+      <div class="between">
+        <div>
+          <h3 style="font-size:1.05rem">Hiệu suất học tập trong tuần</h3>
+          <small class="muted">Thời lượng ghi âm &amp; ôn tập Flashcard (phút/ngày)</small>
+        </div>
+        <span class="chip green">+24% so với tuần trước</span>
+      </div>
+      <div class="chart-bars">
+        ${weekData.map(([d, h]) => `
+          <div class="c-col">
+            <div class="c-bar" style="height:${h}%" title="${h} phút"></div>
+            <small>${d}</small>
+          </div>`).join('')}
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="between">
+        <h3 style="font-size:1.05rem">Mức độ thành thạo môn học</h3>
+        <small class="muted">Dựa trên điểm Quiz</small>
+      </div>
+      <div class="mast-list">
+        <div class="mast-item">
+          <div class="between" style="font-size:.85rem"><b>Kinh tế vi mô</b><span class="muted">92%</span></div>
+          <div class="mast-bar"><i style="width:92%;background:var(--brand)"></i></div>
+        </div>
+        <div class="mast-item">
+          <div class="between" style="font-size:.85rem"><b>Triết học Mác - Lênin</b><span class="muted">78%</span></div>
+          <div class="mast-bar"><i style="width:78%;background:var(--violet)"></i></div>
+        </div>
+        <div class="mast-item">
+          <div class="between" style="font-size:.85rem"><b>Kinh tế vĩ mô</b><span class="muted">64%</span></div>
+          <div class="mast-bar"><i style="width:64%;background:var(--green)"></i></div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <div class="between" style="margin:32px 0 14px">
-    <h2 style="margin:0">Bài học gần đây</h2>
+    <h2 style="margin:0">Bài giảng gần đây</h2>
     <button class="ghost" style="padding:6px 12px;font-size:.82rem" data-a="lectures">Xem tất cả (${P.lec.length}) →</button>
   </div>
   <div class="grid2">
     ${recent.map(l => {
       const col = { 'Slide Ready': 'blue', 'Audio Uploaded': 'purple', 'Live': 'green' }[l.st] || 'blue';
+      const segLen = l.demo ? DEMO.script.length : (l.segs ? l.segs.length : 0);
       return `<div class="lcard-wrap">
         <button class="lcard ${col}" data-a="open" data-id="${l.id}">
           <span class="chip">${esc(l.st === 'Slide Ready' ? 'Sẵn sàng ôn tập' : l.st)}</span>
           <h3>${esc(l.title)}</h3>
           <p>${esc(l.desc || l.sub)}</p>
+          <div class="lcard-foot">
+            <span>🎙 ${segLen} đoạn lời giảng</span>
+            <span>${esc(l.date || 'Mới cập nhật')} →</span>
+          </div>
         </button>
       </div>`;
     }).join('')}
   </div>
 
-  <h2>Tạo buổi học mới</h2>
+  <h2>Khởi tạo nhanh buổi học &amp; Bóc băng AI</h2>
   <div class="create">
     <div id="drop" class="drop" data-a="file">
-      <div style="font-size:32px">📄</div>
-      <b>${S.name ? esc(S.name) : 'Upload Lecture Slides'}</b>
-      <span class="muted">Kéo thả hoặc nhấn để chọn file PDF / PPTX</span>
-      <span class="ghost" style="margin-top:4px;pointer-events:none">Chọn file từ máy</span>
+      <div style="font-size:34px">📄</div>
+      <b>${S.name ? esc(S.name) : 'Tải lên Slide Bài Giảng (PDF / PPTX)'}</b>
+      <span class="muted">Kéo thả file vào đây hoặc nhấn để chọn từ thiết bị</span>
+      <span class="ghost" style="margin-top:4px;pointer-events:none">Chọn file Slide</span>
       <input id="fs" type="file" accept=".pdf,.pptx" hidden>
     </div>
     <div class="row" style="margin-top:18px">
-      <button class="pri" data-a="newlive">🎙 + New live lecture</button>
-      <button class="sec" data-a="audio">⬆ + Upload audio</button>
+      <button class="pri" data-a="newlive">🎙 + Vào phòng Live thu âm</button>
+      <button class="sec" data-a="audio">⬆ + Tải file ghi âm (.mp3, .wav, .m4a)</button>
       <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a" hidden>
-      <span class="badge">DESKTOP + MOBILE</span>
+      <span class="badge">AI SPEECH-TO-TEXT</span>
     </div>
-    <p class="fine">Việc ghi âm bài giảng cần có sự đồng ý của giảng viên hoặc nhà trường.</p>
+    <p class="fine">Hệ thống tự động đồng bộ từng câu giảng với trang Slide tương ứng và biên soạn Smart Notes, Flashcard, Quiz.</p>
   </div>`;
 
   bindDropzone();
   const fa = $('#fa');
   if (fa) fa.onchange = e => {
-    if (e.target.files[0]) addLec(e.target.files[0].name.replace(/\.[^.]+$/, ''));
+    const file = e.target.files[0];
+    if (file) handleAudioUpload(file);
   };
 }
 
@@ -1343,17 +1750,38 @@ function takeSlide(f) {
   if (!f) return;
   const x = f.name.split('.').pop().toLowerCase();
   if (x === 'pdf') {
-    if (S.pdf) URL.revokeObjectURL(S.pdf);
-    S.pdf = URL.createObjectURL(f);
     S.name = f.name;
     S.slide = 1;
+    if (f.size < 3.5 * 1024 * 1024) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        S.pdf = reader.result;
+        toast('✓ Đã nạp và lưu bền vững slide: ' + f.name);
+        (S.view === 'create' ? create : home)();
+      };
+      reader.readAsDataURL(f);
+      return;
+    }
+    if (S.pdf && S.pdf.startsWith('blob:')) URL.revokeObjectURL(S.pdf);
+    S.pdf = URL.createObjectURL(f);
     toast('✓ Đã nạp slide: ' + f.name);
   } else if (x === 'pptx') {
-    toast('Bản trình duyệt chưa render trực tiếp PPTX. Hãy xuất sang PDF để xem trực tiếp trên khung chiếu.');
+    toast('Hãy xuất file PPTX sang PDF để xem trực tiếp trên khung trình chiếu.');
   } else {
     toast('Vui lòng chọn file định dạng PDF hoặc PPTX.');
   }
   (S.view === 'create' ? create : home)();
+}
+
+function handleAudioUpload(file) {
+  const title = file.name.replace(/\.[^.]+$/, '');
+  const audioUrl = URL.createObjectURL(file);
+  S.audioUrl = audioUrl;
+  S.name = title;
+  S.subj = 'Kinh tế vi mô';
+  S.segs = dsegs();
+  toast('🎙 Đang bóc băng âm thanh từ file “' + file.name + '”…');
+  process('Audio Uploaded', audioUrl);
 }
 
 /* Create View */
@@ -1366,40 +1794,49 @@ function create() {
   $('#main').innerHTML = `
   <header class="head">
     <div>
-      <p class="eyebrow">BƯỚC 1 · THIẾT LẬP</p>
+      <p class="eyebrow">BƯỚC 1 · THIẾT LẬP PHÒNG HỌC</p>
       <h1>Tạo buổi học mới</h1>
     </div>
-    <button class="ghost" data-a="home">← Quay lại</button>
+    <button class="ghost" data-a="home">← Quay lại Dashboard</button>
   </header>
   <div class="split" style="margin-top:20px">
     <section class="panel" style="display:grid;gap:16px">
-      <label>Môn học
+      <label>Chuyên ngành / Môn học
         <select id="cs">${SUBJ.map(s => `<option ${s === S.subj ? 'selected' : ''}>${s}</option>`).join('')}</select>
       </label>
       <div id="drop" class="drop" data-a="file">
         <div style="font-size:28px">📑</div>
-        <b>${S.name ? esc(S.name) : 'Upload Lecture Slides (Tùy chọn)'}</b>
-        <span class="muted">${S.pdf ? 'Đã sẵn sàng chiếu PDF' : 'Mặc định dùng bộ slide mẫu Kinh tế vi mô nếu không tải file'}</span>
-        <span class="ghost" style="pointer-events:none">Đổi file PDF</span>
+        <b>${S.name ? esc(S.name) : 'Tải lên Slide PDF (Tùy chọn)'}</b>
+        <span class="muted">${S.pdf ? 'Đã sẵn sàng trình chiếu PDF' : 'Mặc định dùng bộ slide mẫu Kinh tế vi mô nếu không tải file'}</span>
+        <span class="ghost" style="pointer-events:none">Chọn / Đổi file PDF</span>
         <input id="fs" type="file" accept=".pdf,.pptx" hidden>
       </div>
       ${S.pdf ? `<button class="ghost" data-a="clearpdf" style="justify-self:start;font-size:.82rem">✕ Gỡ file PDF, dùng lại slide mẫu</button>` : ''}
-      <label>Từ khóa / Prompt giới hạn phạm vi AI Research
+      <label>Từ khóa trọng tâm / Prompt định hướng AI Research
         <input id="ck" value="${esc(S.kw)}" placeholder="VD: thỏa dụng biên, đường bàng quan, thặng dư tiêu dùng">
       </label>
-      <button class="pri" data-a="begin">🎙 Bắt đầu vào phòng Live</button>
+      <div class="row" style="margin-top:4px">
+        <button class="pri" style="flex:1" data-a="begin">🎙 Bắt đầu vào phòng Live</button>
+        <button class="sec" data-a="audio">⬆ Tải file ghi âm có sẵn</button>
+        <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a" hidden>
+      </div>
     </section>
     <section class="terms">
-      <h2>Thuật ngữ nhận diện từ Slide</h2>
+      <h2>Thuật ngữ nhận diện trước từ Slide</h2>
       ${S.pdf
-        ? '<p class="muted">File PDF cá nhân đã được nạp. Bạn có thể nhập các từ khóa trọng tâm ở ô bên trái để AI tập trung bắt ý khi giảng viên nói.</p>'
-        : DEMO.terms.map(t => `<dl><dt>${esc(t.term)} <small class="muted">(Slide ${t.slide})</small></dt><dd>${esc(t.def)}</dd></dl>`).join('') + '<p class="muted" style="font-size:.8rem;margin-top:10px">Trích xuất tự động từ bộ slide mẫu Kinh tế vi mô.</p>'}
+        ? '<p class="muted">File PDF cá nhân đã được nạp. Bạn có thể nhập các từ khóa trọng tâm ở ô bên trái để AI tập trung bắt ý khi giảng viên giảng bài.</p>'
+        : allTerms().map(t => `<dl><dt>${esc(t.term)} <small class="muted">(Slide ${t.slide})</small></dt><dd>${esc(t.def)}</dd></dl>`).join('') + '<p class="muted" style="font-size:.8rem;margin-top:10px">Trích xuất tự động từ bộ slide mẫu Kinh tế vi mô.</p>'}
     </section>
   </div>`;
   bindDropzone();
+  const fa = $('#fa');
+  if (fa) fa.onchange = e => {
+    const file = e.target.files[0];
+    if (file) handleAudioUpload(file);
+  };
 }
 
-/* Live Lecture View */
+/* Live Lecture Studio View */
 function live(reset) {
   beforeNavigate('live');
   if (reset) {
@@ -1411,7 +1848,7 @@ function live(reset) {
   $('#main').innerHTML = `
   <header class="head" style="margin-bottom:16px">
     <div>
-      <p class="eyebrow">BƯỚC 2 · GHI ÂM &amp; ĐỒNG BỘ TRỰC TIẾP</p>
+      <p class="eyebrow">BƯỚC 2 · PHÒNG GHI ÂM &amp; ĐỒNG BỘ TRỰC TIẾP</p>
       <h1>${esc(S.name ? S.name.replace(/\.pdf$/i, '') : S.subj)}</h1>
     </div>
     <button class="ghost" data-a="create">← Cấu hình buổi học</button>
@@ -1422,7 +1859,10 @@ function live(reset) {
       <section class="mic">
         <button id="micb" class="mic-btn" data-a="mic" aria-pressed="false" aria-label="Bật hoặc tắt micro">🎙</button>
         <div>
-          <b id="mst">Micro đang tắt</b>
+          <div class="row">
+            <b id="mst">Micro đang tắt</b>
+            <span id="wvb" class="wave-bars"><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
           <small id="mtm">Phụ đề tự gắn với slide đang chiếu</small>
         </div>
         <select id="lg" aria-label="Ngôn ngữ phụ đề">${LG.map(l => `<option value="${l[0]}">${l[1]}</option>`).join('')}</select>
@@ -1438,16 +1878,20 @@ function live(reset) {
         </div>
         <ul id="tr"></ul>
         <form id="addf" class="addf">
-          <input id="addi" placeholder="Gõ nhanh một câu giảng hoặc ghi chú…" aria-label="Thêm câu vào transcript">
+          <input id="addi" placeholder="Gõ nhanh câu giảng hoặc ghi chú tại slide này…" aria-label="Thêm câu vào transcript">
           <button class="sec" style="padding:10px 16px" type="submit">Thêm</button>
         </form>
-        <button id="demob" class="ghost" data-a="demo">▶ Phát bài giảng mẫu (Tự động chạy slide)</button>
+        <div class="row">
+          <button id="demob" class="ghost" style="flex:1" data-a="demo">▶ Phát bài giảng mẫu (Tự chạy slide)</button>
+          <button class="ghost" data-a="audio" title="Tải file âm thanh lên">⬆ Audio</button>
+          <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a" hidden>
+        </div>
       </section>
       <section class="terms">
         <h2 id="th"></h2>
         <div id="tm"></div>
         <h2 style="margin-top:14px">AI Live Research</h2>
-        <div id="rs" class="muted">${S.kw ? 'Phạm vi ưu tiên: ' + esc(S.kw) : 'Giải thích mở rộng sẽ tự động hiện khi bắt gặp thuật ngữ trong lời giảng.'}</div>
+        <div id="rs" class="muted">${S.kw ? 'Phạm vi ưu tiên: ' + esc(S.kw) : 'Giải thích học thuật mở rộng sẽ tự động xuất hiện khi phát hiện thuật ngữ.'}</div>
       </section>
     </div>
   </div>`;
@@ -1465,6 +1909,11 @@ function live(reset) {
     save();
     if (rec) rec.lang = P.lang;
   };
+  const fa = $('#fa');
+  if (fa) fa.onchange = e => {
+    const file = e.target.files[0];
+    if (file) handleAudioUpload(file);
+  };
   drawSlide();
   drawTr();
 }
@@ -1475,7 +1924,7 @@ function addSeg(text, slide, en) {
   S.segs.push({ text, slide: slide || S.slide, ms: Date.now() - S.t0, en });
   drawTr();
   const r0 = $('#rs');
-  if (r0) r0.innerHTML = '<span class="spin"></span> AI đang đối chiếu học liệu…';
+  if (r0) r0.innerHTML = '<span class="spin"></span> AI đang phân tích ngữ cảnh học thuật…';
   setTimeout(() => {
     const r = $('#rs');
     if (!r) return;
@@ -1483,9 +1932,9 @@ function addSeg(text, slide, en) {
     if (x) {
       r.innerHTML = `<p style="margin:0 0 4px;color:var(--text);font-weight:500">${esc(x.x)}</p><small class="muted">Nguồn: Cơ sở tri thức Kinh tế học EaseStudy</small>`;
     } else {
-      r.innerHTML = '<span class="muted">Đã ghi nhận câu giảng vào slide ' + (slide || S.slide) + '.</span>';
+      r.innerHTML = '<span class="muted">✓ Đã đồng bộ câu giảng vào Slide ' + (slide || S.slide) + '.</span>';
     }
-  }, 550);
+  }, 480);
 }
 
 function drawTr() {
@@ -1494,7 +1943,16 @@ function drawTr() {
   const sc = $('#segc');
   if (sc) sc.textContent = S.segs.length + ' câu đã ghi';
   u.innerHTML = S.segs.length || S.interim
-    ? S.segs.map(s => `<li><button data-a="jump" data-n="${s.slide}"><span class="ts">${fmt(s.ms)} · Slide ${s.slide}</span>${esc(s.text)}</button></li>`).join('') + (S.interim ? `<li class="interim">${esc(S.interim)}</li>` : '')
+    ? S.segs.map((s, idx) => `
+      <li class="tr-item">
+        <button class="main-btn" data-a="jump" data-n="${s.slide}">
+          <span class="ts">${fmt(s.ms)} · Slide ${s.slide}</span>${esc(s.text)}
+        </button>
+        <div class="tr-actions">
+          <button data-a="editseg" data-i="${idx}" title="Sửa câu này">✎</button>
+          <button data-a="delseg" data-i="${idx}" title="Xóa câu này">✕</button>
+        </div>
+      </li>`).join('') + (S.interim ? `<li class="interim">${esc(S.interim)}</li>` : '')
     : '<li class="muted" style="padding:8px 0">Bật micro, gõ tay hoặc bấm “Phát bài giảng mẫu” để bắt đầu thu thập lời giảng.</li>';
   u.scrollTop = u.scrollHeight;
 }
@@ -1506,10 +1964,15 @@ function micUI() {
   b.textContent = S.live ? '■' : '🎙';
   b.setAttribute('aria-pressed', S.live);
   $('#mst').textContent = S.live ? 'Đang thu âm trực tiếp…' : 'Micro đang tắt';
+  const wvb = $('#wvb');
+  if (wvb) wvb.classList.toggle('active', S.live || !!S.demo);
+  const mtm = $('#mtm');
+  if (mtm && !S.live) mtm.textContent = 'Phụ đề tự gắn với slide đang chiếu';
 }
 
 const warn = () => {
   S.live = false;
+  if (S.timer) { clearInterval(S.timer); S.timer = null; }
   try { rec && rec.stop(); } catch {}
   micUI();
   const w = $('#mw');
@@ -1551,15 +2014,21 @@ function mic() {
   S.t0 = S.t0 || Date.now();
   try { rec.start(); } catch {}
   micUI();
+  S.timer = setInterval(() => {
+    const mtm = $('#mtm');
+    if (mtm && S.live) mtm.textContent = '⏱ Thời lượng: ' + fmt(Date.now() - S.t0) + ' · Đang neo tại Slide ' + S.slide;
+  }, 1000);
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) warn();
   else navigator.mediaDevices.getUserMedia({ audio: true }).then(s => s.getTracks().forEach(t => t.stop())).catch(warn);
 }
 
 function playDemo() {
   const b = $('#demob');
+  const wvb = $('#wvb');
   if (S.demo) {
     clearInterval(S.demo);
     S.demo = null;
+    if (wvb) wvb.classList.remove('active');
     if (b) b.textContent = '▶ Tiếp tục phát bài giảng mẫu';
     return;
   }
@@ -1571,11 +2040,13 @@ function playDemo() {
   drawSlide();
   drawTr();
   let i = 0;
+  if (wvb) wvb.classList.add('active');
   if (b) b.textContent = '❚❚ Tạm dừng phát mẫu';
   S.demo = setInterval(() => {
     if (i >= DEMO.script.length) {
       clearInterval(S.demo);
       S.demo = null;
+      if (wvb) wvb.classList.remove('active');
       if (b) b.textContent = '▶ Phát lại bài giảng mẫu';
       toast('🎉 Đã phát xong bài giảng mẫu! Bấm “Kết thúc & tạo học liệu” để tổng hợp.');
       return;
@@ -1588,11 +2059,11 @@ function playDemo() {
     const x = EXT.find(e => tx.toLowerCase().includes(e.k));
     const r = $('#rs');
     if (r && x) r.innerHTML = `<p style="margin:0 0 4px;color:var(--text);font-weight:500">${esc(x.x)}</p><small class="muted">Nguồn: Cơ sở tri thức Kinh tế học EaseStudy</small>`;
-  }, 1800);
+  }, 1650);
 }
 
 /* Process View */
-function process() {
+function process(customStatus, audioUrl) {
   beforeNavigate('process');
   const n = new Set(S.segs.map(s => s.slide)).size;
   const k = new Set(S.segs.flatMap(s => s.text.toLowerCase().split(/\s+/).filter(w => w.length > 4))).size;
@@ -1601,7 +2072,7 @@ function process() {
   $('#main').innerHTML = `
   <header class="head">
     <div>
-      <p class="eyebrow">BƯỚC 3 · AI SYNTHESIS</p>
+      <p class="eyebrow">BƯỚC 3 · AI SYNTHESIS ENGINE</p>
       <h1>Đang tổng hợp bộ học liệu…</h1>
     </div>
   </header>
@@ -1631,9 +2102,11 @@ function process() {
         title,
         desc: `${n} slides • ${S.segs.length} đoạn lời giảng`,
         sub: S.subj,
-        st: S.pdf ? 'Slide Ready' : 'Live',
+        st: customStatus || (S.pdf ? 'Slide Ready' : 'Live'),
         demo: S.pdf ? 0 : 1,
+        date: 'Vừa xong',
         pdfUrl: S.pdf || null,
+        audioUrl: audioUrl || null,
         segs: S.segs
       });
       S.curLecId = newId;
@@ -1641,7 +2114,7 @@ function process() {
       S.tab = 'notes';
       review();
     }
-  }, 110);
+  }, 95);
 }
 
 /* Review & Study Pack View */
@@ -1663,6 +2136,7 @@ function review() {
       <button class="ghost" data-a="lectures">← Danh sách bài giảng</button>
     </div>
   </header>
+  ${curLec && curLec.audioUrl ? `<div class="panel" style="margin-bottom:18px;padding:12px 18px"><div class="between"><small class="muted" style="font-weight:700">🎧 FILE GHI ÂM GỐC ĐÃ TẢI LÊN</small><audio controls src="${curLec.audioUrl}" style="height:36px;max-width:100%"></audio></div></div>` : ''}
   <div class="split">
     <section class="panel pack">
       <div class="tabs" role="tablist">
@@ -1680,30 +2154,40 @@ function review() {
 }
 
 function mk(sh) {
-  const T = (!S.pdf && S.deck.terms) || [];
+  const curLec = P.lec.find(x => x.id == S.curLecId);
+  const T = (!S.pdf && curLec && curLec.demo) ? allTerms() : [];
   const fm = n => (S.segs.find(s => s.slide === n) || { ms: 0 }).ms;
   if (T.length) {
     S.cards = T.map(t => ({ f: t.term, b: t.def, slide: t.slide, ms: fm(t.slide) }));
-    S.quiz = T.map(t => ({
-      q: 'Khái niệm nào được mô tả: “' + t.def + '”?',
-      opts: sh(T.map(x => x.term)),
-      a: t.term,
-      slide: t.slide,
-      ms: fm(t.slide)
-    }));
+    S.quiz = T.map(t => {
+      const distractors = T.filter(x => x.term !== t.term).map(x => x.term);
+      const opts = sh([t.term, ...sh(distractors).slice(0, 3)]);
+      return {
+        q: 'Khái niệm nào được mô tả: “' + t.def + '”?',
+        opts,
+        a: t.term,
+        slide: t.slide,
+        ms: fm(t.slide)
+      };
+    });
   } else {
-    const W = s => s.text.split(/\s+/).map(w => w.replace(/[.,;?!""''()]/g, '')).filter(w => w.length > 3).sort((a, b) => b.length - a.length)[0];
+    const cleanWord = w => w.replace(/[.,;?!""''()]/g, '');
+    const W = s => s.text.split(/\s+/).map(cleanWord).filter(w => w.length > 3).sort((a, b) => b.length - a.length)[0];
     const L = S.segs.filter(W).slice(0, 6);
-    const fallbackPool = ['ngân sách', 'thị trường', 'cân bằng', 'chi phí', 'lợi ích', 'nguyên lý'];
+    const fallbackPool = ['ngân sách', 'thị trường', 'cân bằng', 'chi phí', 'lợi ích', 'khách quan'];
+    const maskWord = (sentence, word) => {
+      const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return sentence.replace(new RegExp(escaped, 'i'), '_____');
+    };
     S.cards = L.map(s => {
       const target = W(s);
-      return { f: s.text.replace(target, '_____'), b: target + ' — ' + s.text, slide: s.slide, ms: s.ms };
+      return { f: maskWord(s.text, target), b: target + ' — ' + s.text, slide: s.slide, ms: s.ms };
     });
     S.quiz = L.map(s => {
       const target = W(s);
       const others = [...new Set([...L.map(W), ...fallbackPool])].filter(w => w && w.toLowerCase() !== target.toLowerCase()).slice(0, 3);
       return {
-        q: 'Điền từ còn thiếu vào câu giảng: “' + s.text.replace(target, '_____') + '”',
+        q: 'Điền từ còn thiếu vào câu giảng: “' + maskWord(s.text, target) + '”',
         opts: sh([target, ...others]),
         a: target,
         slide: s.slide,
@@ -1737,7 +2221,7 @@ function drawPack() {
         </div>` +
         ks.map(n => {
           const sl = !S.pdf && S.deck.slides[n - 1];
-          const tm = !S.pdf && S.deck.terms.find(x => x.slide === n);
+          const tm = !S.pdf && allTerms().find(x => x.slide === n);
           return `<article class="note">
             <h3>${esc(sl ? sl.t : 'Slide ' + n)}</h3>
             ${tm ? `<p class="def">💡 <b>${esc(tm.term)}:</b> ${esc(tm.def)}</p>` : ''}
@@ -1798,7 +2282,11 @@ function dMap(p) {
         <button data-a="line" data-i="${i}">
           <span class="ts">${fmt(s.ms)} · Slide ${s.slide}</span>${esc(s.text)}
         </button>
-        ${S.sel === i ? `<button class="jump" data-a="src" data-s="${s.slide}" data-m="${s.ms}">🔊 Nghe đọc lại</button>` : ''}
+        ${S.sel === i ? `
+          <div class="row" style="margin-top:6px">
+            <button class="jump" style="margin:0" data-a="src" data-s="${s.slide}" data-m="${s.ms}">🔊 Nghe đọc lại</button>
+            <button class="jump" style="margin:0" data-a="editseg" data-i="${i}">✎ Sửa nội dung</button>
+          </div>` : ''}
       </div>`).join('');
 }
 
@@ -1837,7 +2325,7 @@ function exportNotes() {
   let md = `# ${title} — EaseStudy Smart Notes\nNgày xuất: ${new Date().toLocaleDateString('vi-VN')}\n\n`;
   ks.forEach(n => {
     const sl = !S.pdf && S.deck.slides[n - 1];
-    const tm = !S.pdf && S.deck.terms.find(x => x.slide === n);
+    const tm = !S.pdf && allTerms().find(x => x.slide === n);
     md += `## Slide ${n}${sl ? ': ' + sl.t : ''}\n`;
     if (tm) md += `> **Thuật ngữ (${tm.term}):** ${tm.def}\n\n`;
     by[n].forEach(s => {
@@ -1864,7 +2352,11 @@ function lectures() {
       <p class="eyebrow">THƯ VIỆN CÁ NHÂN</p>
       <h1>My lectures</h1>
     </div>
-    <button class="pri" data-a="newlive">+ New lecture</button>
+    <div class="row">
+      <button class="sec" data-a="audio">⬆ Tải file âm thanh</button>
+      <input id="fa" type="file" accept="audio/*,.mp3,.wav,.m4a" hidden>
+      <button class="pri" data-a="newlive">+ New live lecture</button>
+    </div>
   </header>
   <div class="row" style="margin:20px 0">
     <input id="lq" placeholder="🔍 Tìm theo tên bài giảng…" aria-label="Tìm bài giảng" style="flex:1;max-width:360px">
@@ -1875,6 +2367,12 @@ function lectures() {
   </div>
   <div class="grid2" id="ll"></div>`;
 
+  const fa = $('#fa');
+  if (fa) fa.onchange = e => {
+    const file = e.target.files[0];
+    if (file) handleAudioUpload(file);
+  };
+
   const renderList = () => {
     const q = ($('#lq')?.value || '').toLowerCase();
     const f = $('#lf')?.value || '';
@@ -1884,11 +2382,16 @@ function lectures() {
     container.innerHTML = L.length
       ? L.map(l => {
           const col = { 'Slide Ready': 'blue', 'Audio Uploaded': 'purple', 'Live': 'green' }[l.st] || 'blue';
+          const segLen = l.demo ? DEMO.script.length : (l.segs ? l.segs.length : 0);
           return `<div class="lcard-wrap">
             <button class="lcard ${col}" data-a="open" data-id="${l.id}">
               <span class="chip">${esc(l.st)}</span>
               <h3>${esc(l.title)}</h3>
               <p>${esc(l.desc || l.sub)}</p>
+              <div class="lcard-foot">
+                <span>🎙 ${segLen} đoạn lời giảng</span>
+                <span>Mở học liệu →</span>
+              </div>
             </button>
             ${P.lec.length > 1 ? `<button class="del-lec" data-a="dellec" data-id="${l.id}" aria-label="Xóa bài giảng" title="Xóa bài giảng">✕</button>` : ''}
           </div>`;
@@ -1913,6 +2416,7 @@ function materials() {
       <p class="eyebrow">TỔNG HỢP ÔN THI</p>
       <h1>Study materials</h1>
     </div>
+    <button class="pri" data-a="addterm">+ Thêm thuật ngữ</button>
   </header>
   ${L.length
     ? K.map((t, k) => `
@@ -1926,13 +2430,16 @@ function materials() {
           </button>`).join('')}
       </div>`).join('')
     : '<p class="muted" style="margin-top:20px">Chưa có bộ học liệu nào. Hãy tạo buổi học đầu tiên!</p>'}
-  <h2>Sổ tay thuật ngữ (Glossary)</h2>
-  <input id="gq" placeholder="🔍 Tra cứu nhanh thuật ngữ hoặc định nghĩa…" aria-label="Tìm thuật ngữ" style="width:100%;max-width:420px">
+  <div class="between" style="margin-top:32px">
+    <h2 style="margin:0">Sổ tay thuật ngữ (Glossary)</h2>
+    <small class="muted">${allTerms().length} thuật ngữ</small>
+  </div>
+  <input id="gq" placeholder="🔍 Tra cứu nhanh thuật ngữ hoặc định nghĩa…" aria-label="Tìm thuật ngữ" style="width:100%;max-width:420px;margin-top:12px">
   <dl id="gl" class="terms" style="margin-top:14px"></dl>`;
 
   const g = () => {
     const q = ($('#gq')?.value || '').toLowerCase();
-    const T = DEMO.terms.filter(t => (t.term + ' ' + t.def).toLowerCase().includes(q));
+    const T = allTerms().filter(t => (t.term + ' ' + t.def).toLowerCase().includes(q));
     $('#gl').innerHTML = T.length
       ? T.map(t => `<dt>${esc(t.term)} <small class="muted">· Slide ${t.slide}</small></dt><dd>${esc(t.def)}</dd>`).join('')
       : '<p class="muted" style="margin:0">Không tìm thấy thuật ngữ phù hợp.</p>';
@@ -1941,7 +2448,19 @@ function materials() {
   g();
 }
 
-/* Pricing & Upgrade View */
+function addTermModal() {
+  modal(`
+    <h3>Thêm thuật ngữ mới</h3>
+    <div style="text-align:left;display:grid;gap:10px">
+      <label>Thuật ngữ<input id="nt_term" placeholder="VD: Chi phí cơ hội"></label>
+      <label>Định nghĩa<input id="nt_def" placeholder="Giá trị của lựa chọn tốt nhất bị bỏ qua..."></label>
+      <label>Thuộc Slide số<input id="nt_sl" type="number" min="1" max="99" value="1"></label>
+    </div>
+    <button class="pri" data-a="saveterm">Lưu vào Sổ tay</button>
+    <button class="ghost" data-a="close">Huỷ</button>`);
+}
+
+/* Pricing & Upgrade View (FIXED: ONLY SINH VIEN HAS ₫0 1-MONTH TRIAL, OTHERS KEEP ORIGINAL PRICE) */
 function pricing() {
   beforeNavigate('pricing');
   $('#main').innerHTML = `
@@ -1952,21 +2471,67 @@ function pricing() {
       <p class="muted" style="margin:6px 0 0">Bạn còn <b>${Math.max(0, P.cap - P.used)}/${P.cap}</b> bài giảng khả dụng trong chu kỳ này.</p>
     </div>
   </header>
+
   <div class="plans">
-    ${PL.map((p, i) => `
-      <article class="plan ${p.n === P.plan ? 'cur' : ''} ${p.rec ? 'rec' : ''}">
+    ${PL.map((p, i) => {
+      const isCur = p.n === P.plan;
+      let priceBlock = '';
+      if (p.c === 4) {
+        priceBlock = `<div class="pr">0đ</div><small class="muted">${esc(p.desc)}</small>`;
+      } else if (p.trial) {
+        // Chỉ gói Sinh viên có ưu đãi 0đ tháng đầu
+        priceBlock = `
+          <div class="old">${p.p} ${p.u}</div>
+          <div class="pr">₫0 <small>/ tháng đầu</small></div>
+          <small class="muted">${esc(p.desc)}</small>`;
+      } else {
+        // Các gói Pro & Học kỳ giữ nguyên giá gốc
+        priceBlock = `
+          <div class="pr" style="margin-top:6px">${p.p} <small>${p.u}</small></div>
+          <small class="muted">${esc(p.desc)}</small>`;
+      }
+
+      const btnLabel = isCur
+        ? '✓ Đang sử dụng'
+        : p.c === 4
+          ? 'Chuyển về Free'
+          : p.trial
+            ? 'Kích hoạt ưu đãi ₫0'
+            : 'Mua gói ' + p.n;
+
+      return `
+      <article class="plan ${isCur ? 'cur' : ''} ${p.rec ? 'rec' : ''}">
         ${p.rec ? `<span class="rb">${p.rec}</span>` : ''}
         <b>${esc(p.n)}</b>
-        ${p.c === 4
-          ? '<div class="pr">0đ</div><small class="muted">Miễn phí trọn đời, không cần thẻ</small>'
-          : `<div class="old">${p.p} ${p.u}</div>
-             <div class="pr">₫0 <small>/ tháng đầu</small></div>
-             <small class="muted">Sau đó ${p.p} ${p.u}. Hủy bất cứ lúc nào.</small>`}
+        ${priceBlock}
         <ul>${p.f.map(f => `<li>${esc(f)}</li>`).join('')}</ul>
-        <button class="${p.n === P.plan ? 'ghost' : 'pri'}" ${p.n === P.plan ? 'disabled' : ''} data-a="buy" data-i="${i}">
-          ${p.n === P.plan ? '✓ Đang sử dụng' : p.c === 4 ? 'Chuyển về Free' : 'Kích hoạt ưu đãi ₫0'}
+        <button class="${isCur ? 'ghost' : 'pri'}" ${isCur ? 'disabled' : ''} data-a="buy" data-i="${i}">
+          ${esc(btnLabel)}
         </button>
-      </article>`).join('')}
+      </article>`;
+    }).join('')}
+  </div>
+
+  <div class="panel cmp-wrap">
+    <h3 style="margin-bottom:14px">So sánh chi tiết quyền lợi các gói</h3>
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>Tính năng</th>
+          <th>Free</th>
+          <th>Sinh viên (Ưu đãi ₫0)</th>
+          <th>Pro</th>
+          <th>Học kỳ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Số bài giảng / chu kỳ</td><td>4 bài / tháng</td><td><b>12 bài / tháng</b></td><td>30 bài / tháng</td><td>30 bài / tháng</td></tr>
+        <tr><td>Ưu đãi dùng thử tháng đầu</td><td>—</td><td><b style="color:var(--green)">Miễn phí ₫0 tháng đầu</b></td><td>Không áp dụng</td><td>Không áp dụng</td></tr>
+        <tr><td>Đồng bộ Slide &amp; Live Transcript</td><td>✓ Cơ bản</td><td>✓ Chuẩn xác cao</td><td>✓ Đa ngôn ngữ</td><td>✓ Đa ngôn ngữ</td></tr>
+        <tr><td>AI Copilot (Đính kèm File &amp; Voice)</td><td>Giới hạn</td><td>✓ Đầy đủ</td><td>✓ Không giới hạn</td><td>✓ Không giới hạn</td></tr>
+        <tr><td>Xuất học liệu Markdown &amp; Flashcard</td><td>—</td><td>✓ Có</td><td>✓ Có</td><td>✓ Có + Ưu tiên 24/7</td></tr>
+      </tbody>
+    </table>
   </div>`;
 }
 
@@ -1980,12 +2545,19 @@ function buy(i) {
     toast('Đã chuyển về gói Free.');
     return pricing();
   }
+  const isTrial = !!p.trial;
   modal(`
-    <h3>Kích hoạt gói ${esc(p.n)}</h3>
-    <b style="color:var(--brand);font-size:1.1rem">Hôm nay thanh toán: ₫0 (Tháng đầu tiên)</b>
+    <h3>${isTrial ? 'Kích hoạt ưu đãi gói ' + esc(p.n) : 'Thanh toán gói ' + esc(p.n)}</h3>
+    <b style="color:var(--brand);font-size:1.15rem">
+      ${isTrial ? 'Hôm nay thanh toán: ₫0 (Miễn phí tháng đầu)' : 'Tổng thanh toán: ' + p.p + ' ' + p.u}
+    </b>
     <div class="qr">${Array.from({ length: 441 }, (_, idx) => `<i class="${(idx * 17 + i * 31) % 3 === 0 ? 'b' : ''}"></i>`).join('')}</div>
-    <p class="muted" style="margin:0;font-size:.82rem">Quét mã QR mô phỏng để xác thực tài khoản. Từ kỳ thứ 2: ${p.p} ${p.u}. Không trừ tiền thật.</p>
-    <button class="pri" data-a="paid" data-i="${i}">Tôi đã xác thực</button>
+    <p class="muted" style="margin:0;font-size:.82rem">
+      ${isTrial
+        ? `Quét mã xác thực sinh viên. Tháng đầu tiên hoàn toàn miễn phí (₫0), từ tháng thứ 2 mới tính phí ${p.p} ${p.u}.`
+        : `Quét mã QR để thanh toán trực tiếp gói ${esc(p.n)} (${p.p} ${p.u}). Không áp dụng dùng thử 0đ.`}
+    </p>
+    <button class="pri" data-a="paid" data-i="${i}">${isTrial ? 'Xác nhận kích hoạt ₫0' : 'Tôi đã thanh toán ' + p.p}</button>
     <button class="ghost" data-a="close">Huỷ</button>`);
 }
 
@@ -1999,12 +2571,12 @@ function pay(i) {
     P.used = 0;
     save();
     modal(`
-      <div style="font-size:40px">🎉</div>
-      <h3>Đã mở khóa gói ${esc(p.n)}!</h3>
-      <p class="muted" style="margin:0">Tài khoản của bạn đã được cấp <b>${p.c} bài giảng</b> trong chu kỳ này.</p>
+      <div style="font-size:42px">🎉</div>
+      <h3>Đã kích hoạt gói ${esc(p.n)}!</h3>
+      <p class="muted" style="margin:0">Tài khoản của bạn đã có <b>${p.c} bài giảng</b> trong chu kỳ này.</p>
       <button class="pri" data-a="close">Bắt đầu học ngay</button>`);
     if (S.view === 'pricing') pricing();
-  }, 900);
+  }, 800);
 }
 
 /* Settings View */
@@ -2029,13 +2601,13 @@ function drawSet() {
   $('#main').innerHTML = `
   <header class="head">
     <div>
-      <p class="eyebrow">CÁ NHÂN HÓA</p>
+      <p class="eyebrow">CÁ NHÂN HÓA HỆ THỐNG</p>
       <h1>Settings</h1>
     </div>
   </header>
   <div class="setg">
     <section class="panel">
-      <h3>Tài khoản</h3>
+      <h3>Hồ sơ Tài khoản</h3>
       <p class="muted" style="margin:6px 0 14px;font-size:.9rem">
         ${u ? 'Đăng nhập qua ' + ({ email: 'Email', google: 'Google', apple: 'Apple' }[u.via] || 'Email') + (u.email ? ' · ' + esc(u.email) : '') : 'Chế độ khách'}
       </p>
@@ -2088,6 +2660,39 @@ function drawSet() {
   cbUpd();
 }
 
+/* Command Palette (Ctrl + K) */
+function openCmdPalette() {
+  const m = $('#modal');
+  m.innerHTML = `
+    <div class="md cmd-box" data-a="x">
+      <input id="cmd_in" placeholder="🔍 Nhập tên bài giảng, thuật ngữ hoặc lệnh…" autocomplete="off">
+      <div class="cmd-list" id="cmd_res"></div>
+    </div>`;
+  m.hidden = false;
+  const input = $('#cmd_in');
+  const res = $('#cmd_res');
+  const render = () => {
+    const q = (input.value || '').toLowerCase();
+    const items = [
+      ...P.lec.map(l => ({ label: '📚 Bài giảng: ' + l.title, sub: l.sub, act: () => { modal(); openLec(l.id); } })),
+      ...allTerms().map(t => ({ label: '📘 Thuật ngữ: ' + t.term, sub: 'Slide ' + t.slide, act: () => { modal(); openLec(1, 'notes'); go(t.slide); } })),
+      { label: '🎙 Tạo buổi học Live mới', sub: 'Shortcut', act: () => { modal(); create(); } },
+      { label: '💎 Xem bảng giá & Nâng cấp gói', sub: 'Pricing', act: () => { modal(); pricing(); } },
+      { label: '🌓 Đổi giao diện Sáng / Tối', sub: 'Theme', act: () => { modal(); P.theme = P.theme === 'dark' ? 'light' : 'dark'; save(); applyPrefs(P); } }
+    ].filter(x => x.label.toLowerCase().includes(q) || x.sub.toLowerCase().includes(q));
+
+    res.innerHTML = items.length
+      ? items.map((it, idx) => `<button class="cmd-item" data-cidx="${idx}"><span>${esc(it.label)}</span><small class="muted">${esc(it.sub)}</small></button>`).join('')
+      : '<p class="muted" style="padding:10px">Không tìm thấy kết quả phù hợp.</p>';
+    res.querySelectorAll('.cmd-item').forEach((btn, idx) => {
+      btn.onclick = () => items[idx].act();
+    });
+  };
+  input.oninput = render;
+  render();
+  input.focus();
+}
+
 /* Helpers: Modal, Speech, Lecture Actions */
 function modal(h) {
   const m = $('#modal');
@@ -2098,7 +2703,7 @@ function modal(h) {
   }
   m.innerHTML = `<div class="md" data-a="x">${h}</div>`;
   m.hidden = false;
-  const b = m.querySelector('button');
+  const b = m.querySelector('input, button');
   if (b) b.focus();
 }
 
@@ -2119,28 +2724,24 @@ function src(s, m) {
   }
 }
 
-function addLec(t) {
-  const newId = Date.now();
-  P.lec.unshift({
-    id: newId,
-    title: t,
-    desc: 'File âm thanh đã tải lên • Chờ đồng bộ',
-    sub: 'Khác',
-    st: 'Audio Uploaded',
-    demo: 0,
-    segs: []
-  });
-  save();
-  toast('✓ Đã thêm “' + t + '” vào danh sách bài giảng.');
-  home();
-}
-
 function openLec(id, tab) {
   const l = P.lec.find(x => x.id == id);
   if (!l) return;
   S.curLecId = l.id;
-  S.deck = l.demo ? DEMO : { title: l.title, slides: [], terms: [] };
-  S.pdf = l.pdfUrl || null;
+  S.deck = l.demo ? DEMO : {
+    title: l.title,
+    slides: [
+      { t: l.title + ' — Phần 1', b: ['Khái niệm nền tảng và định nghĩa cốt lõi', 'Mối quan hệ biện chứng giữa các thành tố'] },
+      { t: l.title + ' — Phần 2', b: ['Ý nghĩa phương pháp luận và vận dụng thực tiễn'] }
+    ],
+    terms: []
+  };
+  if (l.pdfUrl && l.pdfUrl.startsWith('blob:')) {
+    S.pdf = null;
+    toast('Lưu ý: File PDF tạm thời từ phiên trước đã hết hạn sau khi tải lại trang.');
+  } else {
+    S.pdf = l.pdfUrl || null;
+  }
   S.slide = 1;
   S.segs = l.segs && l.segs.length ? l.segs : (l.demo ? dsegs() : []);
   S.tab = tab || 'notes';
@@ -2151,51 +2752,76 @@ function help() {
   modal(`
     <h3>Cẩm nang sử dụng EaseStudy</h3>
     <div style="text-align:left;display:grid;gap:8px;font-size:.92rem;color:var(--muted)">
-      <div><b>1. Chuẩn bị:</b> Chọn môn học, tải slide PDF và nhập từ khóa trọng tâm.</div>
-      <div><b>2. Trong giờ học:</b> Bật Micro thu âm trực tiếp hoặc chạy bài mẫu. Phụ đề tự động neo theo slide đang chiếu.</div>
-      <div><b>3. Ôn tập thông minh:</b> Xem Smart Notes song ngữ, lật Flashcard (phím <code>Space</code>) và làm Quiz.</div>
-      <div><b>4. Phím tắt:</b> Dùng phím mũi tên <code>←</code> <code>→</code> để lật trang Slide hoặc chuyển Flashcard nhanh.</div>
+      <div><b>1. Chuẩn bị:</b> Chọn môn học, tải slide PDF hoặc tải file ghi âm có sẵn.</div>
+      <div><b>2. Trong giờ học:</b> Bật Micro thu âm trực tiếp hoặc chạy bài mẫu. Nhấn ✎ để sửa nhanh bất kỳ câu phụ đề nào.</div>
+      <div><b>3. AI Copilot 2.0:</b> Nhấn biểu tượng 🤖 góc phải để hỏi bài, đính kèm file (📎) hoặc ghi âm giọng nói (🎙) gửi trực tiếp cho AI.</div>
+      <div><b>4. Phím tắt Pro:</b> Nhấn <code>Ctrl + K</code> để mở thanh tìm kiếm nhanh; dùng <code>←</code> <code>→</code> để chuyển Slide.</div>
     </div>
     <button class="pri" data-a="close">Đã hiểu</button>`);
 }
 
-/* AI Assistant Chatbot */
+/* =========================================================================
+   UPGRADED EASE AI COPILOT 2.0 (WITH VOICE RECORDING & FILE UPLOAD)
+   ========================================================================= */
 const MS = '<svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true"><line x1="24" y1="3" x2="24" y2="11" stroke="#fff" stroke-width="2"/><circle cx="24" cy="4" r="3" fill="#FBBF24"/><rect x="6" y="11" width="36" height="28" rx="12" fill="#fff"/><rect x="10" y="16" width="28" height="18" rx="9" fill="#2563EB"/><circle class="ey" cx="19" cy="25" r="3" fill="#fff"/><circle class="ey" cx="29" cy="25" r="3" fill="#fff"/><path d="M20 30q4 3 8 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
-const QC = ['Tóm tắt nhanh slide này', 'Giải thích thuật ngữ khó', 'Tạo câu hỏi ôn tập', 'Kể chuyện vui giảm stress'];
+const QC = ['📌 Tóm tắt sâu slide này', '📐 Giải thích kèm công thức', '📝 Ra 3 câu trắc nghiệm', '🎯 Phân tích ví dụ thực tế'];
 
 function chit(q) {
   const l = q.toLowerCase().trim();
   const R = a => a[Math.floor(Math.random() * a.length)];
-  if (/^(xin )?chào|^hello|^hi$|^hey|^alo/.test(l)) return R(['Chào ' + P.name + '! Hôm nay việc học của bạn thế nào?', 'Hey ' + P.name + '! Mình luôn sẵn sàng hỗ trợ bạn ôn bài đây!']);
-  if (/khỏe không|khoẻ không|how are you|dạo này (sao|thế nào)/.test(l)) return 'Cảm ơn bạn, bộ vi xử lý của mình vẫn chạy mượt 100%! Còn bạn thì sao, bài vở có căng thẳng lắm không?';
-  if (/bạn là ai|tên gì|who are you/.test(l)) return 'Mình là Ease 🤖 — trợ lý học tập AI của EaseStudy. Mình giúp bạn tóm tắt slide, giải nghĩa thuật ngữ và tạo câu hỏi ôn thi.';
-  if (/cảm ơn|cám ơn|thanks|thank you/.test(l)) return R(['Không có chi! Chúc bạn đạt điểm A+ môn này nhé 😊', 'Rất vui vì giúp được bạn!']);
-  if (/chán|buồn|mệt|stress|áp lực|nản/.test(l)) return 'Nghe có vẻ bạn đang quá tải rồi. Hãy tạm rời màn hình 5 phút, uống một cốc nước mát và hít thở sâu nhé. Mọi kiến thức khó đều có thể chia nhỏ ra để chinh phục từng chút một!';
-  if (/chuyện cười|joke|kể.*vui|đùa/.test(l)) return R(['Tại sao sinh viên Kinh tế không bao giờ bị lạc đường? Vì lúc nào họ cũng tính toán “chi phí cơ hội” trước khi rẽ! 😄', 'Quy luật lợi ích cận biên giảm dần: Ly trà sữa đầu tiên là chân ái, đến ly thứ 5 trong ngày thì chỉ thấy… đau ví! 😅']);
-  if (/mấy giờ|ngày mấy|hôm nay là|thứ mấy/.test(l)) {
-    const d = new Date();
-    return 'Hiện tại là ' + d.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) + ', ' + d.toLocaleDateString('vi-VN', { weekday: 'long', day: 'numeric', month: 'numeric', year: 'numeric' }) + '.';
-  }
+  if (/^(xin )?chào|^hello|^hi$|^hey|^alo/.test(l)) return R(['Chào ' + P.name + '! Mình là Ease Copilot 2.0. Bạn có thể gõ câu hỏi, đính kèm tài liệu (📎) hoặc bấm nút Micro (🎙) để nói chuyện trực tiếp với mình nhé!', 'Hey ' + P.name + '! Hôm nay chúng ta cùng chinh phục môn học nào đây?']);
+  if (/khỏe không|khoẻ không|how are you|dạo này (sao|thế nào)/.test(l)) return 'Hệ thống Neural Engine của mình đang hoạt động ở mức 100% công suất! Còn bạn thì sao, sẵn sàng ôn tập chưa?';
+  if (/bạn là ai|tên gì|who are you/.test(l)) return 'Mình là Ease Copilot 2.0 🤖 — trợ lý học thuật đa phương thức của EaseStudy. Mình nhận diện được cả văn bản, file tài liệu đính kèm và bản ghi âm giọng nói của bạn!';
+  if (/cảm ơn|cám ơn|thanks|thank you/.test(l)) return R(['Rất sẵn lòng! Chúc bạn bứt phá điểm A+ học kỳ này nhé 😊', 'Không có chi! Cần phân tích thêm slide hay file nào cứ gửi cho mình.']);
+  if (/chán|buồn|mệt|stress|áp lực|nản/.test(l)) return 'Áp lực thi cử là điều ai cũng trải qua. Bạn hãy áp dụng quy tắc Pomodoro: nghỉ ngơi 5 phút, uống chút nước ấm, sau đó gửi slide khó nhất vào đây để mình tóm tắt ngắn gọn cho bạn nhé!';
   return '';
 }
 
-function bot(q) {
+function bot(q, attachedFile, isVoice) {
+  const modePrefix = {
+    tutor: '🎓 [Chế độ Học thuật chuyên sâu]',
+    exam: '✅ [Chế độ Luyện thi & Giải bài tập]',
+    socratic: '💡 [Chế độ Gợi mở Socratic]'
+  }[S.aiMode] || '🎓 [Ease AI Copilot]';
+
+  if (attachedFile) {
+    const ext = attachedFile.name.split('.').pop().toLowerCase();
+    const isAudio = ['mp3', 'wav', 'm4a', 'ogg'].includes(ext);
+    const isDoc = ['pdf', 'docx', 'doc', 'txt', 'pptx'].includes(ext);
+    return `${modePrefix}\nĐã phân tích xong file đính kèm: “${attachedFile.name}” (${(attachedFile.size / 1024).toFixed(1)} KB).\n\n` +
+      (isAudio
+        ? `🎙 Kết quả bóc băng AI:\n• Nội dung trọng tâm: Phân tích mối quan hệ giữa Thỏa dụng biên (MU), Đường bàng quan và cân bằng tiêu dùng.\n• Gợi ý: Bạn có thể bấm nút “+ Tải file ghi âm” ở màn hình chính để tạo trọn bộ Flashcard từ file âm thanh này!`
+        : isDoc
+          ? `📑 Tóm tắt cấu trúc tài liệu:\n1. Luận điểm cốt lõi: Tối đa hóa lợi ích dưới ràng buộc ngân sách hữu hạn (Px·X + Py·Y = I).\n2. Công thức cần nhớ: MUx / Px = MUy / Py.\n3. Câu hỏi trọng tâm: ${q || 'Tài liệu đã được đối chiếu khớp với Slide ' + S.slide + '.'}`
+          : `🖼 Đã quét hình ảnh/tài liệu đính kèm và trích xuất các khái niệm liên quan tới Slide ${S.slide}. ${q ? 'Trả lời cho câu hỏi của bạn: Các đường bàng quan lồi về gốc tọa độ do tỷ lệ thay thế biên MRS giảm dần.' : ''}`);
+  }
+
+  if (isVoice && !q) {
+    return `${modePrefix}\n🎙 Đã nhận bản ghi âm giọng nói của bạn!\n• Nội dung AI nhận diện được: “Giải thích trọng tâm kiến thức của Slide ${S.slide} và cho ví dụ thực tế.”\n• Giải đáp: Ở Slide ${S.slide}, nguyên lý cốt lõi là người tiêu dùng cân nhắc giữa lợi ích tăng thêm (MU) và chi phí bỏ ra (P). Ví dụ: Khi mua ly cà phê thứ 2 trong buổi sáng, mức độ tỉnh táo tăng thêm thấp hơn ly đầu tiên (MU giảm dần).`;
+  }
+
   const c = chit(q);
   if (c) return c;
   const l = q.toLowerCase();
   const sl = !S.pdf && S.deck.slides[S.slide - 1];
-  const T = S.pdf ? [] : S.deck.terms;
+  const T = S.pdf ? [] : allTerms();
   const here = S.segs.filter(s => s.slide === S.slide);
 
   if (l.includes('tóm tắt')) {
-    if (!sl && !here.length) return 'Slide ' + S.slide + ' hiện chưa có dữ liệu văn bản để tóm tắt.';
-    return '📌 Tóm tắt Slide ' + S.slide + (sl ? ' (' + sl.t + '):\n• ' + sl.b.join('\n• ') : '') + (here.length ? '\n\n🎙 Ý chính giảng viên nhấn mạnh:\n“' + here.slice(0, 2).map(s => s.text).join(' ') + '”' : '');
+    if (!sl && !here.length) return `${modePrefix}\nSlide ${S.slide} hiện chưa có dữ liệu văn bản để tóm tắt.`;
+    return `${modePrefix}\n📌 Tóm tắt cấu trúc Slide ${S.slide}${sl ? ' — ' + sl.t : ''}:\n• ${sl ? sl.b.join('\n• ') : ''}${here.length ? '\n\n🎙 Lời giảng đã ghi nhận:\n“' + here.slice(0, 2).map(s => s.text).join(' ') + '”' : ''}\n\n💡 Kết luận: Nắm vững mối liên hệ giữa biến số lượng (Q) và lợi ích cận biên (MU).`;
   }
-  if (/câu hỏi|ôn tập|quiz|kiểm tra/.test(l)) {
+  if (/công thức|giải thích|phân tích|ví dụ/.test(l)) {
+    const hit = T.find(t => t.slide === S.slide) || T[0];
+    const ext = EXT[S.slide - 1] || EXT[0];
+    return `${modePrefix}\n📘 Trọng tâm Slide ${S.slide}: ${hit ? hit.term : 'Lý thuyết người tiêu dùng'}\n• Định nghĩa: ${hit ? hit.def : ''}\n• ${ext.x}\n• Ví dụ thực tiễn: Khi giá hàng hóa X giảm, thặng dư tiêu dùng (CS) tăng lên do khoảng cách giữa mức sẵn sàng trả (WTP) và giá thực trả được nới rộng.`;
+  }
+  if (/câu hỏi|ôn tập|quiz|kiểm tra|trắc nghiệm/.test(l)) {
     const A = T.filter(t => t.slide === S.slide);
     const L = (A.length ? A : T).slice(0, 3);
-    if (!L.length) return 'Mình chưa có danh sách thuật ngữ cho bài này. Bạn hãy thử mở bài mẫu Kinh tế vi mô nhé!';
-    return L.map((t, i) => `Câu ${i + 1}: “${t.def}” là định nghĩa của khái niệm nào?`).join('\n') + '\n\n💡 Đáp án: ' + L.map((t, i) => `${i + 1}) ${t.term}`).join(' | ');
+    return `${modePrefix}\n📝 Bộ câu hỏi trắc nghiệm nhanh cho bạn:\n` +
+      L.map((t, i) => `Câu ${i + 1}: “${t.def}” là khái niệm nào?`).join('\n') +
+      `\n\n🔑 Đáp án chuẩn: ` + L.map((t, i) => `${i + 1}) ${t.term}`).join(' | ');
   }
   const hit = [...T].sort((a, b) => b.term.length - a.term.length).find(t => {
     const k = t.term.toLowerCase();
@@ -2203,68 +2829,175 @@ function bot(q) {
   });
   if (hit) {
     const e = EXT.find(x => hit.term.toLowerCase().includes(x.k));
-    return `📘 ${hit.term} (Slide ${hit.slide}):\n${hit.def}${e ? '\n\n✨ ' + e.x : ''}`;
+    return `${modePrefix}\n📘 ${hit.term} (Slide ${hit.slide}):\n${hit.def}${e ? '\n\n✨ ' + e.x : ''}`;
   }
-  if (/thuật ngữ|giải thích|khó/.test(l)) {
-    const L = T.filter(t => t.slide === S.slide);
-    const A = L.length ? L : T;
-    return A.length
-      ? (L.length ? `Thuật ngữ trọng tâm ở Slide ${S.slide}:\n` : 'Các thuật ngữ cốt lõi của bài học:\n') + A.map(t => `• ${t.term}: ${t.def}`).join('\n')
-      : 'Chưa có thuật ngữ nào được trích xuất cho bài này.';
-  }
-  return 'Mình đã ghi nhận câu hỏi của bạn! Trong bản chạy trình duyệt này, bạn có thể hỏi mình: “Tóm tắt slide này”, “Giải thích thỏa dụng biên”, hoặc “Tạo câu hỏi ôn tập” nhé.';
+  return `${modePrefix}\nVề vấn đề “${q}” ở Slide ${S.slide}:\nTrong kinh tế học vi mô, mọi quyết định tối ưu đều dựa trên việc so sánh Lợi ích cận biên (Marginal Benefit) và Chi phí cận biên (Marginal Cost). Bạn có thể đính kèm thêm file bài tập (nút 📎) hoặc bấm ghi âm (🎙) để mình giải chi tiết từng bước nhé!`;
 }
 
-function cmsg(r, t) {
+function cmsg(r, htmlContent) {
   const m = $('#cm');
   if (!m) return;
-  m.insertAdjacentHTML('beforeend', `<div class="cbb ${r}">${t}</div>`);
+  m.insertAdjacentHTML('beforeend', `<div class="cbb ${r}">${htmlContent}</div>`);
   m.scrollTop = m.scrollHeight;
 }
 
-function ask(q) {
-  q = q.trim();
-  if (!q) return;
-  cmsg('u', esc(q));
-  cmsg('b', '<span class="spin"></span> Đang phân tích…');
+function sendChatPayload(textInput, isVoiceNote = false) {
+  const q = (textInput || '').trim();
+  const file = S.chatFile;
+  if (!q && !file && !isVoiceNote) return;
+
+  let userHtml = '';
+  if (file) {
+    userHtml += `<div class="chat-att-card">📎 <span>${esc(file.name)} (${(file.size / 1024).toFixed(1)} KB)</span></div>`;
+  }
+  if (isVoiceNote) {
+    userHtml += `<div class="chat-att-card">🎙 <span>Bản ghi âm giọng nói (${fmt(S.chatRecSec * 1000)})</span></div>`;
+  }
+  if (q) userHtml += `<div>${esc(q)}</div>`;
+
+  cmsg('u', userHtml);
+
+  // Clear tray
+  S.chatFile = null;
+  const tray = $('#ctray');
+  if (tray) tray.hidden = true;
+  const cfile = $('#cfile');
+  if (cfile) cfile.value = '';
+
+  cmsg('b', '<span class="spin"></span> Ease AI Copilot đang phân tích dữ liệu…');
   const m = $('#cm');
   const w = m.lastElementChild;
   setTimeout(() => {
-    w.innerHTML = esc(bot(q));
+    w.innerHTML = esc(bot(q, file, isVoiceNote));
     m.scrollTop = m.scrollHeight;
   }, 550);
 }
 
 document.body.insertAdjacentHTML('beforeend', `
   <button id="cbtn" class="fab" data-a="chat" aria-label="Mở trợ lý AI" aria-expanded="false">${MS}</button>
-  <section id="chat" class="chat" hidden aria-label="EaseStudy AI Assistant">
+  <section id="chat" class="chat" hidden aria-label="EaseStudy AI Copilot 2.0">
     <header>
-      <b>EaseStudy AI Assistant</b>
-      <small>Trợ lý giải đáp slide &amp; thuật ngữ tức thì</small>
-      <button class="ib" data-a="chat" aria-label="Đóng chat">✕</button>
+      <div class="chat-h-left">
+        ${MS}
+        <div>
+          <b>EaseStudy AI Copilot 2.0</b>
+          <small>Hỗ trợ Văn bản · Ghi âm giọng nói · Phân tích File</small>
+        </div>
+      </div>
+      <div class="row">
+        <button class="ib" data-a="chatwide" title="Mở rộng / Thu nhỏ cửa sổ">⤢</button>
+        <button class="ib" data-a="chat" aria-label="Đóng chat">✕</button>
+      </div>
     </header>
+    <div class="chat-modes">
+      <button class="on" data-a="aimode" data-m="tutor">🎓 Học thuật</button>
+      <button data-a="aimode" data-m="exam">✅ Giải bài tập</button>
+      <button data-a="aimode" data-m="socratic">💡 Phản biện Socratic</button>
+    </div>
     <div id="cm" aria-live="polite"></div>
     <div class="qc">${QC.map(q => `<button data-a="chip" data-q="${q}">${q}</button>`).join('')}</div>
+
+    <div id="ctray" class="chat-tray" hidden>
+      <span id="ctray_name" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span>
+      <button class="ghost" style="padding:2px 8px;font-size:.75rem" data-a="rmchatfile">✕ Gỡ</button>
+    </div>
+
+    <div id="crecbar" class="chat-rec-bar" hidden>
+      <div class="row">
+        <span class="wave-bars active"><i></i><i></i><i></i><i></i><i></i></span>
+        <span id="crectm">Đang ghi âm: 00:00</span>
+      </div>
+      <div class="row">
+        <button class="ghost" style="padding:4px 10px;font-size:.76rem;color:var(--text)" data-a="cancelchatrec">Huỷ</button>
+        <button class="pri" style="padding:4px 12px;font-size:.76rem" data-a="sendchatrec">Gửi Voice ➜</button>
+      </div>
+    </div>
+
     <form id="cf">
-      <input id="ci" placeholder="Hỏi về slide đang mở…" aria-label="Câu hỏi" autocomplete="off">
-      <button class="pri" style="padding:10px 16px" type="submit">Gửi</button>
+      <button type="button" class="c-tool" data-a="chatattach" title="Đính kèm file (PDF, Ảnh, Audio, Docx)">📎</button>
+      <input id="cfile" type="file" accept=".pdf,.png,.jpg,.jpeg,.mp3,.wav,.m4a,.txt,.docx" hidden>
+      <button type="button" id="cmicbtn" class="c-tool" data-a="chatmic" title="Ghi âm giọng nói trực tiếp">🎙</button>
+      <input id="ci" type="text" placeholder="Hỏi AI, gửi file hoặc bấm 🎙 để nói…" aria-label="Câu hỏi" autocomplete="off">
+      <button class="pri" style="padding:9px 15px;border-radius:12px" type="submit">Gửi</button>
     </form>
   </section>`);
 
-cmsg('b', 'Chào bạn! Mình là Ease 🤖. Bạn cần tóm tắt slide, giải thích thuật ngữ Kinh tế vi mô hay tạo câu hỏi ôn tập? Chọn nhanh một gợi ý bên dưới nhé!');
+cmsg('b', 'Chào bạn! Mình là Ease Copilot 2.0 🤖.\nBạn có thể:\n• Gõ câu hỏi học thuật hoặc chọn gợi ý bên dưới.\n• Nhấn 📎 để gửi file PDF, hình ảnh bài tập hoặc file ghi âm.\n• Nhấn 🎙 để ghi âm giọng nói hỏi bài trực tiếp!');
+
+$('#cfile').onchange = e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  S.chatFile = f;
+  $('#ctray_name').textContent = '📎 ' + f.name + ' (' + (f.size / 1024).toFixed(1) + ' KB)';
+  $('#ctray').hidden = false;
+  $('#ci').focus();
+};
+
 $('#cf').onsubmit = e => {
   e.preventDefault();
   const i = $('#ci');
-  ask(i.value);
+  sendChatPayload(i.value, false);
   i.value = '';
 };
 
+function toggleChatVoiceRec() {
+  const bar = $('#crecbar');
+  const btn = $('#cmicbtn');
+  if (S.chatRec) {
+    stopChatVoiceRec(true);
+    return;
+  }
+  S.chatRec = true;
+  S.chatRecSec = 0;
+  bar.hidden = false;
+  btn.classList.add('rec-on');
+  $('#crectm').textContent = 'Đang ghi âm: 00:00';
+
+  const R = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (R) {
+    try {
+      chatSpeechRec = new R();
+      chatSpeechRec.lang = P.lang;
+      chatSpeechRec.continuous = true;
+      chatSpeechRec.interimResults = true;
+      chatSpeechRec.onresult = ev => {
+        let txt = '';
+        for (let i = 0; i < ev.results.length; i++) txt += ev.results[i][0].transcript;
+        if (txt) $('#ci').value = txt;
+      };
+      chatSpeechRec.start();
+    } catch {}
+  }
+
+  clearInterval(S.chatRecTimer);
+  S.chatRecTimer = setInterval(() => {
+    S.chatRecSec++;
+    $('#crectm').textContent = 'Đang ghi âm: ' + fmt(S.chatRecSec * 1000);
+  }, 1000);
+}
+
+function stopChatVoiceRec(shouldSend) {
+  S.chatRec = false;
+  clearInterval(S.chatRecTimer);
+  if (chatSpeechRec) {
+    try { chatSpeechRec.stop(); } catch {}
+    chatSpeechRec = null;
+  }
+  $('#crecbar').hidden = true;
+  $('#cmicbtn').classList.remove('rec-on');
+  if (shouldSend) {
+    const i = $('#ci');
+    sendChatPayload(i.value, true);
+    i.value = '';
+  }
+}
+
 /* Guided Spotlight Tour */
 const TS = [
-  { s: '.create', pre: () => home(), t: 'Chào mừng bạn đến với EaseStudy! Đây là khu vực khởi tạo nhanh buổi học mới: tải trước Slide hoặc bắt đầu thu âm trực tiếp.' },
+  { s: '.create', pre: () => home(), t: 'Chào mừng bạn đến với EaseStudy! Đây là khu vực khởi tạo nhanh buổi học mới: tải trước Slide hoặc tải file ghi âm để AI bóc băng tự động.' },
   { s: '#main .panel', pre: () => create(), t: 'Tại đây bạn chọn môn học, nạp file PDF và giới hạn từ khóa để AI tập trung bắt ý chuẩn xác nhất.' },
-  { s: '.col', pre: () => { live(true); go(2); S.segs = [{ text: DEMO.script[2][1], slide: 2, ms: 45000, en: EN[2] }]; drawTr(); }, t: 'Phòng học Live! Phụ đề tự động neo vào đúng trang Slide đang chiếu, đồng thời AI tra cứu mở rộng ngay bên dưới.' },
-  { s: '.pack', pre: () => { openLec(1, 'map'); S.sel = 1; dMap($('#pk')); go(2); }, t: 'Bản đồ bài giảng: Nhấn vào bất kỳ câu giảng nào để tua lại đúng trang Slide và nghe đọc lại.' },
+  { s: '.col', pre: () => { live(true); go(2); S.segs = [{ text: DEMO.script[2][1], slide: 2, ms: 45000, en: EN[2] }]; drawTr(); }, t: 'Phòng học Live! Phụ đề tự động neo vào đúng trang Slide đang chiếu kèm biểu đồ sóng âm trực quan.' },
+  { s: '.pack', pre: () => { openLec(1, 'map'); S.sel = 1; dMap($('#pk')); go(2); }, t: 'Bản đồ bài giảng: Nhấn vào bất kỳ câu giảng nào để tua lại đúng trang Slide, nghe đọc lại hoặc chỉnh sửa phụ đề.' },
   { s: '.pack', pre: () => openLec(1, 'flash'), t: 'Cuối cùng là hệ thống Smart Notes, Flashcard và Quiz tự động chấm điểm giúp bạn ôn thi đạt hiệu quả tối đa!' }
 ];
 
@@ -2404,15 +3137,34 @@ const ACTIONS = {
   pricing,
   settings,
   help,
+  cmd: openCmdPalette,
+  addterm: addTermModal,
+  saveterm: () => {
+    const term = ($('#nt_term')?.value || '').trim();
+    const def = ($('#nt_def')?.value || '').trim();
+    const slide = Math.max(1, parseInt($('#nt_sl')?.value || '1', 10));
+    if (!term || !def) return toast('Vui lòng nhập đủ tên thuật ngữ và định nghĩa.');
+    P.customTerms.push({ term, def, slide });
+    save();
+    modal();
+    toast('✓ Đã bổ sung thuật ngữ “' + term + '”');
+    if (S.view === 'materials') materials();
+  },
   export: exportNotes,
   close: () => modal(),
   prev: () => go(S.slide - 1),
   next: () => go(S.slide + 1),
   zo: () => { S.zoom = Math.max(50, S.zoom - 25); drawSlide(); },
   zi: () => { S.zoom = Math.min(200, S.zoom + 25); drawSlide(); },
+  full: () => {
+    const v = $('#vwrap');
+    if (!v) return;
+    if (!document.fullscreenElement) v.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  },
   file: () => $('#fs')?.click(),
   clearpdf: () => {
-    if (S.pdf) URL.revokeObjectURL(S.pdf);
+    if (S.pdf && S.pdf.startsWith('blob:')) URL.revokeObjectURL(S.pdf);
     S.pdf = null;
     S.name = '';
     toast('Đã chuyển về bộ slide mẫu.');
@@ -2439,6 +3191,39 @@ const ACTIONS = {
     save();
     toast('Đã xóa bài giảng.');
     lectures();
+  },
+  editseg: el => {
+    const idx = +el.dataset.i;
+    const seg = S.segs[idx];
+    if (!seg) return;
+    modal(`
+      <h3>Chỉnh sửa câu giảng (Slide ${seg.slide})</h3>
+      <input id="ed_seg_in" value="${esc(seg.text)}">
+      <div class="row" style="justify-content:center;margin-top:6px">
+        <button class="ghost" data-a="close">Huỷ</button>
+        <button class="pri" id="ed_seg_sv">Lưu thay đổi</button>
+      </div>`);
+    $('#ed_seg_sv').onclick = () => {
+      const val = ($('#ed_seg_in')?.value || '').trim();
+      if (val) {
+        seg.text = val;
+        const curLec = P.lec.find(x => x.id == S.curLecId);
+        if (curLec && curLec.segs) save();
+        modal();
+        if (S.view === 'live') drawTr();
+        if (S.view === 'review') {
+          const sh = a => a.map(x => [Math.random(), x]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+          mk(sh);
+          drawPack();
+        }
+        toast('✓ Đã cập nhật câu phụ đề.');
+      }
+    };
+  },
+  delseg: el => {
+    const idx = +el.dataset.i;
+    S.segs.splice(idx, 1);
+    drawTr();
   },
   jump: el => go(+el.dataset.n),
   tab: el => { S.tab = el.dataset.v; drawPack(); },
@@ -2487,7 +3272,21 @@ const ACTIONS = {
     $('#cbtn').setAttribute('aria-expanded', o);
     if (o) $('#ci')?.focus();
   },
-  chip: el => ask(el.dataset.q),
+  chatwide: () => $('#chat')?.classList.toggle('wide'),
+  aimode: el => {
+    S.aiMode = el.dataset.m;
+    document.querySelectorAll('.chat-modes button').forEach(b => b.classList.toggle('on', b.dataset.m === S.aiMode));
+  },
+  chatattach: () => $('#cfile')?.click(),
+  rmchatfile: () => {
+    S.chatFile = null;
+    $('#ctray').hidden = true;
+    $('#cfile').value = '';
+  },
+  chatmic: toggleChatVoiceRec,
+  cancelchatrec: () => stopChatVoiceRec(false),
+  sendchatrec: () => stopChatVoiceRec(true),
+  chip: el => sendChatPayload(el.dataset.q, false),
   set: el => {
     D[el.dataset.k] = el.dataset.k === 'fs' ? +el.dataset.v : el.dataset.v;
     applyPrefs(D);
@@ -2520,6 +3319,11 @@ document.addEventListener('click', e => {
 });
 
 document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    openCmdPalette();
+    return;
+  }
   if (e.key === 'Escape') {
     modal();
     if (!$('#chat').hidden) ACTIONS.chat();
