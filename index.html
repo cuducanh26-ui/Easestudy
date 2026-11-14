@@ -521,23 +521,54 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--brand); bor
 .sw button { width: 100%; padding: 14px; border-radius: 99px; background: rgba(30, 95, 168, .88); backdrop-filter: blur(6px); color: #fff; font-weight: 700; font-size: 1rem; transition: .15s; }
 .sw button:hover { background: rgba(30, 95, 168, 1); transform: translateY(-1px); }
 
-/* Auth Scene Animations */
-.bt { animation: bobBoat 3.2s ease-in-out infinite; transform-origin: center; }
-@keyframes bobBoat { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(6px) rotate(1.2deg); } }
-.cl-1 { animation: driftCloud 14s ease-in-out infinite alternate; }
-.cl-2 { animation: driftCloud 18s ease-in-out infinite alternate-reverse; }
-@keyframes driftCloud { from { transform: translateX(-12px); } to { transform: translateX(14px); } }
-.fsh-1 { animation: swimFish 9s ease-in-out infinite alternate; }
-.fsh-2 { animation: swimFish 12s ease-in-out infinite alternate-reverse; }
-@keyframes swimFish { from { transform: translateX(-16px) translateY(0); } to { transform: translateX(16px) translateY(-4px); } }
-.bulb-glow { animation: bulbPulse 2s ease-in-out infinite; }
-@keyframes bulbPulse { 0%, 100% { filter: drop-shadow(0 0 2px #FBBF24); } 50% { filter: drop-shadow(0 0 10px #F59E0B); } }
+/* Auth Scene Animations — Luôn bật & Rõ nét trên mọi cấu hình Windows */
+.auth {
+  background: radial-gradient(700px 450px at 15% 15%, rgba(96, 165, 250, .45), transparent 60%),
+              radial-gradient(650px 450px at 85% 85%, rgba(167, 139, 250, .42), transparent 60%), var(--bg);
+  background-size: 140% 140%;
+  animation: authBgShift 8s ease-in-out infinite alternate;
+}
+@keyframes authBgShift { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+
+.big {
+  background: linear-gradient(90deg, #2563EB, #7C3AED, #06B6D4, #2563EB);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textShine 4s linear infinite;
+}
+@keyframes textShine { to { background-position: 200% center; } }
+
+.bt, .cl-1, .cl-2, .fsh-1, .fsh-2, .wv-1, .wv-2, .bulb-glow { transform-box: fill-box; transform-origin: center; }
+.bt { animation: bobBoat 2.4s ease-in-out infinite !important; }
+@keyframes bobBoat {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50% { transform: translateY(12px) rotate(2.5deg); }
+}
+.cl-1 { animation: driftCloud1 5.5s ease-in-out infinite alternate !important; }
+.cl-2 { animation: driftCloud2 7s ease-in-out infinite alternate-reverse !important; }
+@keyframes driftCloud1 { from { transform: translateX(-28px); } to { transform: translateX(32px); } }
+@keyframes driftCloud2 { from { transform: translateX(-35px); } to { transform: translateX(25px); } }
+
+.wv-1 { animation: waveRoll 3.2s ease-in-out infinite alternate !important; }
+.wv-2 { animation: waveRoll 4.2s ease-in-out infinite alternate-reverse !important; }
+@keyframes waveRoll { from { transform: translateX(-18px) scaleY(.96); } to { transform: translateX(18px) scaleY(1.05); } }
+
+.fsh-1 { animation: swimFish1 4.5s ease-in-out infinite alternate !important; }
+.fsh-2 { animation: swimFish2 5.8s ease-in-out infinite alternate-reverse !important; }
+@keyframes swimFish1 { from { transform: translateX(-42px) translateY(0); } to { transform: translateX(46px) translateY(-10px); } }
+@keyframes swimFish2 { from { transform: translateX(-50px) translateY(6px); } to { transform: translateX(40px) translateY(-8px); } }
+
+.bulb-glow { animation: bulbSwing 2s ease-in-out infinite alternate !important; transform-origin: top center; }
+@keyframes bulbSwing {
+  0% { transform: rotate(-8deg) scale(.95); filter: drop-shadow(0 0 4px #FBBF24); }
+  100% { transform: rotate(8deg) scale(1.12); filter: drop-shadow(0 0 16px #F59E0B); }
+}
 #ae { color: var(--danger); font-size: .85rem; min-height: 18px; font-weight: 600; }
 
 .mbar, .ov { display: none; }
-@media (max-width: 960px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-}
+@media (max-width: 960px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 900px) {
   .app { flex-direction: column; }
   .mbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 10px; background: var(--sidebg); color: var(--sidetx); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 15; }
@@ -550,13 +581,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--brand); bor
 @media (max-width: 760px) {
   .acard { grid-template-columns: 1fr; } .ar { order: -1; min-height: 220px; } .big { font-size: 2.6rem; } .big span { font-size: 2.8rem; } .al { padding: 24px 20px; }
 }
-@media (max-width: 480px) {
-  .stats-grid { grid-template-columns: 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ey, .spin, .score, .bt, .cl-1, .cl-2, .fsh-1, .fsh-2, #bub .mas, .fab, .mic-btn.on, .wave-bars.active i { animation: none; }
-  .side, main > *, .lcard, #toast, .acard { transition: none; animation: none; }
-}
+@media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -2914,8 +2939,7 @@ window.addEventListener('scroll', () => { if ($('#sp')) positionTourSpotlight();
 
 /* =========================================================================
    LIVELY ANIMATED AUTHENTICATION UI (DRIFTING CLOUDS, SWIMMING FISH, BOBBING BOAT & PULSING LIGHTBULB)
-   ========================================================================= */
-const SCENE = '<svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="sg"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="400" height="540" fill="#CFE8FA"/><circle cx="290" cy="200" r="170" fill="url(#sg)"/><g fill="#fff" class="cl-1"><rect x="30" y="50" width="160" height="26" rx="13"/><rect x="70" y="135" width="120" height="22" rx="11" opacity=".8"/></g><g fill="#fff" class="cl-2"><rect x="215" y="95" width="140" height="24" rx="12"/><rect x="250" y="20" width="110" height="20" rx="10" opacity=".7"/></g><path d="M0 320q50-18 100 0t100 0 100 0 100 0V540H0z" fill="#5AA9E6"/><path d="M0 385q50-14 100 0t100 0 100 0 100 0V540H0z" fill="#3B8FD6" opacity=".75"/><g fill="#2F7FC9" opacity=".85" class="fsh-1"><ellipse cx="80" cy="430" rx="20" ry="8"/><path d="M98 430l13-8v16z"/><ellipse cx="160" cy="500" rx="16" ry="6"/><path d="M174 500l10-6v12z"/></g><g fill="#1D6FA5" opacity=".8" class="fsh-2"><ellipse cx="250" cy="470" rx="24" ry="9"/><path d="M272 470l14-9v18z"/></g><g class="bt"><path d="M95 305h190l-24 36H119z" fill="#8B6B52"/><rect x="172" y="252" width="48" height="54" rx="18" fill="#2563EB"/><circle cx="196" cy="238" r="18" fill="#FFD6B0"/><path d="M174 230l22-11 22 11-22 11z" fill="#12192C"/><rect x="186" y="231" width="20" height="10" fill="#12192C"/><path d="M212 262L340 170" stroke="#6B4F3A" stroke-width="3" fill="none"/><path d="M340 170q6 55 0 110" stroke="#fff" stroke-width="1.5" fill="none"/><g class="bulb-glow"><circle cx="340" cy="292" r="11" fill="#FBBF24"/><rect x="336" y="280" width="8" height="5" rx="2" fill="#475569"/></g></g></svg>';
+   ========================================================================= */const SCENE = '<svg viewBox="0 0 400 540" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="sg"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="400" height="540" fill="#CFE8FA"/><circle cx="290" cy="200" r="170" fill="url(#sg)"/><g fill="#fff" class="cl-1"><rect x="30" y="50" width="160" height="26" rx="13"/><rect x="70" y="135" width="120" height="22" rx="11" opacity=".8"/></g><g fill="#fff" class="cl-2"><rect x="215" y="95" width="140" height="24" rx="12"/><rect x="250" y="20" width="110" height="20" rx="10" opacity=".7"/></g><path class="wv-1" d="M-40 320q50-22 100 0t100 0 100 0 100 0 100 0V540H-40z" fill="#5AA9E6"/><path class="wv-2" d="M-40 385q50-18 100 0t100 0 100 0 100 0 100 0V540H-40z" fill="#3B8FD6" opacity=".78"/><g fill="#2F7FC9" opacity=".85" class="fsh-1"><ellipse cx="80" cy="430" rx="20" ry="8"/><path d="M98 430l13-8v16z"/><ellipse cx="160" cy="500" rx="16" ry="6"/><path d="M174 500l10-6v12z"/></g><g fill="#1D6FA5" opacity=".85" class="fsh-2"><ellipse cx="250" cy="470" rx="24" ry="9"/><path d="M272 470l14-9v18z"/></g><g class="bt"><path d="M95 305h190l-24 36H119z" fill="#8B6B52"/><rect x="172" y="252" width="48" height="54" rx="18" fill="#2563EB"/><circle cx="196" cy="238" r="18" fill="#FFD6B0"/><path d="M174 230l22-11 22 11-22 11z" fill="#12192C"/><rect x="186" y="231" width="20" height="10" fill="#12192C"/><path d="M212 262L340 170" stroke="#6B4F3A" stroke-width="3" fill="none"/><path d="M340 170q6 55 0 110" stroke="#fff" stroke-width="1.5" fill="none"/><g class="bulb-glow"><circle cx="340" cy="292" r="12" fill="#FBBF24"/><rect x="336" y="278" width="8" height="5" rx="2" fill="#475569"/></g></g></svg>';
 const APPLE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/></svg>';
 
 function authUI(m) {
